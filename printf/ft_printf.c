@@ -6,15 +6,25 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:02:57 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/21 17:52:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/21 18:04:06 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_printf.h"
 
-static	ft_conversion(char *text, va_list args)
+
+int	ft_printf(char *text, ...)
 {
-	if (text[++i] == 'c')
+	long long int		i;
+	va_list	args;
+
+	i = 0;
+	va_start(args, text);
+	while (text[i])
+	{
+		if (text[i] == '%')
+		{	
+		if (text[++i] == 'c')
 		ft_putchar_fd(va_arg(args, int), 1);
 	else if (text[i] == 's')
 		ft_putstr_fd(va_arg(args, char *), 1);
@@ -32,20 +42,6 @@ static	ft_conversion(char *text, va_list args)
 		ft_putchar_fd('%', 1);
 	else
 		ft_putchar_fd('%', 1); // If '%' isn't followed by one of these?
-}
-
-int	ft_printf(char *text, ...)
-{
-	long long int		i;
-	va_list	args;
-
-	i = 0;
-	va_start(args, text);
-	while (text[i])
-	{
-		if (text[i] == '%')
-		{	
-			ft_conversion
 			i++;
 		}
 		else
