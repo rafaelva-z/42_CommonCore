@@ -2,10 +2,9 @@
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_printf.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_putstr_fd.c ft_strlen.c
-
-SRC_BONUS = blank
+SRC = ft_printf.c ft_nputchar_fd.c ft_nputendl_fd.c ft_nputnbr_fd.c \
+	ft_nputstr_fd.c ft_strlen.c ft_nputaddr_fd.c ft_nputhex_fd.c
+	
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
@@ -30,4 +29,4 @@ fclean: clean
 re: fclean all
 	@echo "$(NAME) - Recompiling."  
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re blank

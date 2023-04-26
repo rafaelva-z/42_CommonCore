@@ -2,12 +2,12 @@ Main function
 
 ✔%c char
 ✔%s string
-• %p void * (pointer) in hexadecimal format.
+✔ %p void * (pointer) in hexadecimal format.
 ✔%d base 10 number.
 ✔%i int
 ✔%u Prints an unsigned decimal (base 10) number.
-• %x Prints a number in hexadecimal (base 16) lowercase format.
-• %X Prints a number in hexadecimal (base 16) uppercase format.
+✔ %x Prints a number in hexadecimal (base 16) lowercase format.
+✔ %X Prints a number in hexadecimal (base 16) uppercase format.
 ✔ %% Prints a percent sign
 
 
