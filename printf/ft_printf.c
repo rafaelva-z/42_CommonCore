@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:02:57 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/26 01:19:17 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/26 12:11:35 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_conversion(char c, va_list args)
 	else if (c == 's')
 		count = ft_nputstr_fd(va_arg(args, char *), 1);
 	else if (c == 'p')
-		count = ft_nputaddr_fd(va_arg(args, long int), 1, 1) + 1; //why 1 and not 2??
+		count = ft_nputaddr_fd(va_arg(args, long int), 1, 1) + 1;
 	else if (c == 'd' || c == 'i')
 		count = ft_nputnbr_fd(va_arg(args, int), 1);
 	else if (c == 'u')
