@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_nputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 12:22:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/27 10:55:00 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/11 20:36:40 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:37:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_nputstr(char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i])
-		i++;
+	if (!s)
+		return (ft_nputstr("(null)"));
+	while (s[i])
+		i += ft_nputchar(s[i]);
 	return (i);
 }

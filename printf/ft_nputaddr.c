@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nputhex_fd.c                                    :+:      :+:    :+:   */
+/*   ft_nputaddr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 12:50:29 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/27 10:52:19 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/25 19:45:37 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:33:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_nputhex_fd(unsigned long n, char *hex_case, int fd)
+size_t	ft_nputaddr(unsigned long ptr)
 {
-	if (n < 16)
-		return (ft_nputchar_fd(hex_case[n], fd));
-	return (ft_nputhex_fd(n / 16, hex_case, fd)
-		+ ft_nputchar_fd(hex_case[n % 16], fd));
+	if (!ptr)
+		return (ft_nputstr("(nil)"));
+	return (ft_nputstr("0x") + ft_nputhex(ptr, HEX_LOW));
 }
-

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:31:34 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/27 11:03:06 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 16:35:50 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *text, ...);
+int		ft_printf(const char *text, ...);
 size_t	ft_strlen(const char *str);
-size_t	ft_nputchar_fd(char c, int fd);
-size_t	ft_nputstr_fd(char *s, int fd);
-size_t	ft_nputnbr_fd(long n, int fd);
-size_t	ft_nputaddr_fd(unsigned long ptr, int fd);
-size_t	ft_nputhex_fd(unsigned long ptr, char *hex_case, int fd);
+size_t	ft_nputchar(char c);
+size_t	ft_nputstr(char *s);
+size_t	ft_nputnbr(long n);
+size_t	ft_nputaddr(unsigned long ptr);
+size_t	ft_nputhex(unsigned long ptr, char *hex_case);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:02:57 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/27 10:54:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 16:35:14 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static size_t	ft_conversion(char c, va_list args)
 
 	count = 0;
 	if (c == 'c')
-		count = ft_nputchar_fd(va_arg(args, int), 1);
+		count = ft_nputchar(va_arg(args, int));
 	else if (c == 's')
-		count = ft_nputstr_fd(va_arg(args, char *), 1);
+		count = ft_nputstr(va_arg(args, char *));
 	else if (c == 'p')
-		count = ft_nputaddr_fd(va_arg(args, unsigned long), 1);
+		count = ft_nputaddr(va_arg(args, unsigned long));
 	else if (c == 'd' || c == 'i')
-		count = ft_nputnbr_fd(va_arg(args, int), 1);
+		count = ft_nputnbr(va_arg(args, int));
 	else if (c == 'u')
-		count = ft_nputnbr_fd(va_arg(args, unsigned int), 1);
+		count = ft_nputnbr(va_arg(args, unsigned int));
 	else if (c == 'x')
-		count = ft_nputhex_fd(va_arg(args, unsigned int), HEX_LOW, 1);
+		count = ft_nputhex(va_arg(args, unsigned int), HEX_LOW);
 	else if (c == 'X')
-		count = ft_nputhex_fd(va_arg(args, unsigned int), HEX_HIGH, 1);
+		count = ft_nputhex(va_arg(args, unsigned int), HEX_HIGH);
 	else if (c == '%')
-		count = ft_nputchar_fd('%', 1);
+		count = ft_nputchar('%');
 	return (count);
 }
 
@@ -50,7 +50,7 @@ int	ft_printf(const char *text, ...)
 		if (text[i] == '%')
 			count += ft_conversion(text[++i], args);
 		else
-			count += ft_nputchar_fd(text[i], 1);
+			count += ft_nputchar(text[i]);
 		i++;
 	}
 	va_end(args);
