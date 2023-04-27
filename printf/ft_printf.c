@@ -6,15 +6,15 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:02:57 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/26 16:38:10 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 10:54:31 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_conversion(char c, va_list args)
+static size_t	ft_conversion(char c, va_list args)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	if (c == 'c')
@@ -22,7 +22,7 @@ static int	ft_conversion(char c, va_list args)
 	else if (c == 's')
 		count = ft_nputstr_fd(va_arg(args, char *), 1);
 	else if (c == 'p')
-		count = ft_nputaddr_fd(va_arg(args, unsigned long), 1, 1);
+		count = ft_nputaddr_fd(va_arg(args, unsigned long), 1);
 	else if (c == 'd' || c == 'i')
 		count = ft_nputnbr_fd(va_arg(args, int), 1);
 	else if (c == 'u')
@@ -38,9 +38,9 @@ static int	ft_conversion(char c, va_list args)
 
 int	ft_printf(const char *text, ...)
 {
-	va_list					args;
-	unsigned long int		i;
-	unsigned long int		count;
+	va_list		args;
+	size_t		i;
+	size_t		count;
 
 	i = 0;
 	count = 0;

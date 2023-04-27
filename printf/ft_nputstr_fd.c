@@ -6,15 +6,15 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:36:40 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/26 19:21:18 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 10:52:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_nputstr_fd(char *s, int fd)
+size_t	ft_nputstr_fd(char *s, int fd)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!s)

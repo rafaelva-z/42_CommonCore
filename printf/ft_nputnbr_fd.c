@@ -6,15 +6,15 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:43:27 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/26 15:03:14 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 10:52:41 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_nputnbr_fd(long n, int fd)
+size_t	ft_nputnbr_fd(long n, int fd)
 {
-	long int	count;
+	size_t	count;
 
 	count = 0;
 	if (n < 0)

@@ -6,14 +6,13 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:38:06 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/26 00:33:21 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/27 10:52:11 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_nputchar_fd(char c, int fd)
+size_t	ft_nputchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
-	return (1);
+	return (write(fd, &c, 1));
 }
