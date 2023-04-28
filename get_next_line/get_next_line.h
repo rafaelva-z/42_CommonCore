@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 20:58:12 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/28 00:15:10 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/28 11:42:13 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define BUFFER_SIZE 1
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 //Delete the printf library
 # include <stdio.h>
