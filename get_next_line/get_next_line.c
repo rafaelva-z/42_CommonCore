@@ -6,46 +6,47 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/28 15:59:36 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/29 19:39:17 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int check_next_line(char *str)
+int	check_nl(char *str)
 {
 	size_t	i;
 
 	i = -1;
-	while (str[++i])
+	while (str[++i] && i < BUFFER_SIZE)
 	{
-		if (str[i] == '\n')
+		if (str[i] == '\n' )
 			return (i);
 	}
 	return (-1);
 }
 
-// wont work bc it will do a bunch of '\0' on the starting "line"
 char	*get_next_line(int fd)
 {
 	int			i;
 	static char	buffer[BUFFER_SIZE + 1];
-	char 		line[BUFFER_SIZE + 1];
+	char		*line;
 
 	i = 0;
-	ft_bzero(buffer, BUFFER_SIZE + 1);
-	ft_bzero(line, BUFFER_SIZE + 1);
+	line = NULL;
 
-	while (check_next_line(buffer) < 0)
+	read(fd, buffer, BUFFER_SIZE);
+	line = ft_strjoin(line, buffer);
+
+	while (i > 0)
 	{
-		if(!buffer[0])
-			read(fd, buffer, BUFFER_SIZE);
-		else
-		{
-			line = ft_strjoin(line, buffer); 
-			ft_bzero(buffer, BUFFER_SIZE);
-		}
+		if (!buffer[0])
+			i = read(fd, buffer, BUFFER_SIZE);
+		if (i > 0)
+			line = ft_strjoin(line, buffer);
+		if (check_nl > 0)
+			break ;
 	}
+	//while()
 	return (line);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:29 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/28 15:56:05 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/04/29 12:04:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		a;
 
-	new = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	i = 0;
-	a = 0;
+	if(!s1 && s2)
+		new = malloc(ft_strlen(s2) + 1);
+	else
+		new = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new)
 		return (NULL);
-	while (s1[i])
+	i = 0;
+	a = 0;
+	if(s1)
 	{
-		new[i] = s1[i];
-		i++;
+		while (s1[i])
+		{
+			new[i] = s1[i];
+			i++;
+		}
 	}
 	while (s2[a])
 	{
