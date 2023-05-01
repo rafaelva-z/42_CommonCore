@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 20:58:12 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/29 18:33:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/01 15:01:08 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_nl(char const *s1, char const *s2);
 void	*ft_bzero(void *s, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:29 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/01 09:43:14 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/01 15:01:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ size_t	ft_strlen(const char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while
-		(str[i++]);
+	while (str[i++])
+		;
 	return (i);
 }
 
 char	*ft_strjoin_nl(char const *s1, char const *s2)
 {
-	char	*new;
-	int		i;
-	int		j;
-	
+	char *new;
+	int i;
+	int j;
+
 	i = -1;
 	j = -1;
 	if (!s2)
@@ -50,7 +50,9 @@ char	*ft_strjoin_nl(char const *s1, char const *s2)
 	if (s1)
 	{
 		while (s1[++i])
+		{
 			new[i] = s1[i];
+		}
 	}
 	while (s2[++j])
 	{
@@ -59,5 +61,6 @@ char	*ft_strjoin_nl(char const *s1, char const *s2)
 			break ;
 	}
 	new[++i] = '\0';
+	// printf("join: %s\n", new);
 	return (new);
 }
