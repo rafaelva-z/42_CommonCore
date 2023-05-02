@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 20:58:12 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/02 22:53:05 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/02 22:55:48 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-
-//Delete the printf library
 # include <stdio.h>
 
 char	*get_next_line(int fd);

@@ -1,5 +1,0 @@
-hello
-My name is shell
-
-Cakes are very tasty
-
