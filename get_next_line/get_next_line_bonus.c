@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/02 22:53:03 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/03 16:13:35 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,25 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-/* 
-int	main(void)
-{
-	int	i;
 
-	i = open("text.txt", O_RDONLY);
+/* int	main(void)
+{
+	int		fd;
+	char	*line;
+	int		check;
+
+	check = 1;
+	fd = open("text.txt", O_RDONLY);
 	printf("\nBuff_size: %d\n", BUFFER_SIZE);
-	printf("Line: %s", get_next_line(i));
-	printf("Line: %s", get_next_line(i));
-	printf("Line: %s", get_next_line(i));
-	printf("Line: %s", get_next_line(i));
+	while (check)
+	{
+		line = get_next_line(fd);
+		if (!line)
+		{
+			check = 0;
+			printf("\n");
+		}
+		printf("Line: %s", line);
+		free(line);
+	}
 } */

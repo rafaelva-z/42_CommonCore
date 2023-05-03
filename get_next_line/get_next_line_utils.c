@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:29 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/02 22:53:07 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/03 16:34:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ size_t	ft_strlen(const char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i++])
-		;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		i++;
 	return (i);
 }
 
@@ -43,7 +45,7 @@ char	*ft_strjoin_nl(char *s1, char *s2)
 	i = 0;
 	j = -1;
 	new = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!new || !s2)
+	if (!new)
 		return (NULL);
 	while (s1 && s1[i])
 	{
@@ -67,21 +69,16 @@ int	ft_check_nl(char *buffer)
 	int	j;
 	int	nl_check;
 
-	i = -1;
+	i = 0;
 	j = 0;
 	nl_check = 0;
-	while (buffer[++i] && i < BUFFER_SIZE)
+	while (buffer[i])
 	{
-		if (buffer[i] == '\n')
-		{
+		if (nl_check)
+			buffer[j++] = buffer[i];
+		else if (buffer[i] == '\n')
 			nl_check = 1;
-			buffer[i] = '\0';
-			break ;
-		}
-		buffer[i] = '\0';
+		buffer[i++] = '\0';
 	}
-	while (buffer[++i] && nl_check == 1)
-		buffer[j++] = buffer[i];
-	ft_bzero(&buffer[j], ft_strlen(&buffer[j]));
 	return (nl_check);
 }
