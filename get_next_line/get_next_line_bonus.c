@@ -6,11 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/03 16:13:35 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/05 16:29:41 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -38,18 +38,23 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/* int	main(void)
+/*
+//Prints a line from each file one at a time 
+int	main(void)
 {
-	int		fd;
+	int		fd[2];
+	int		i;
 	char	*line;
 	int		check;
 
 	check = 1;
-	fd = open("text.txt", O_RDONLY);
+	i = 0;
+	fd[0] = open("text1.txt", O_RDONLY);
+	fd[1] = open("text2.txt", O_RDONLY);
 	printf("\nBuff_size: %d\n", BUFFER_SIZE);
 	while (check)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd[i]);
 		if (!line)
 		{
 			check = 0;
@@ -57,5 +62,9 @@ char	*get_next_line(int fd)
 		}
 		printf("Line: %s", line);
 		free(line);
+		if (i == 0)
+			i++;
+		else
+			i--;
 	}
-} */
+}*/

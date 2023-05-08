@@ -6,11 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:39:29 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/03 16:38:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/05 16:11:29 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_bzero(void *s, size_t n)
 {
