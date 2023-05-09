@@ -10,14 +10,14 @@ Rated out of 100 + 25 for bonus points.
 ## Rank 01
 **125** | [libft](./libft) - code a C library composed of 45 functions
 
-**100** | [ft_printf](./printf) - recreate printf, but simpler
+**100** | [ft_printf](./ft_printf) - recreate printf, but simpler
 
 **125** | [get_next_line](./get_next_line) - create a function that with each call, returns the next line in a text file
 
-WIP | born2beroot - set up a Debian virtual machine using VirtualBox
+**108** | [born2beroot](./born2beroot) - set up a Debian virtual machine using VirtualBox
 
 ## Rank 02
-XXX | push_swap
+WIP | push_swap
 
 XXX | FdF
 
