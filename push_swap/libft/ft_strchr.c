@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/03/11 20:22:00 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/17 09:58:18 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+char	*ft_strchr(const char *s, int c)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	char	*ptr;
 
-void	push_swap(int *seq, int seq_size);
+	ptr = (char *)s;
+	while (*ptr && *ptr != (char)c)
+		ptr++;
+	if (*ptr == (char)c)
+		return (ptr);
+	return (NULL);
+}
 
-#endif
+/*
+#include <stdio.h>
+int	main()
+{
+	char	str[] = "Hey mister 42";
+	char	*ptr;
+	ptr = strchr(str, 's');
+	printf("Input: %s | Output: %s\n", str, ptr);
+}
+*/

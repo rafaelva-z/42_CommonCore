@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/18 23:54:32 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/19 00:17:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+t_list	*ft_lstlast(t_list *lst)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-void	push_swap(int *seq, int seq_size);
-
-#endif
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

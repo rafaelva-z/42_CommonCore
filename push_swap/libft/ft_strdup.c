@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 16:13:27 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/06 12:23:53 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/19 15:51:32 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push_swap(int *seq, int seq_size)
+char	*ft_strdup(const char *s)
 {
-	stack	tack_a;
-	stack	*stack_b;
-
-	
-}
-
-int main(int argc, char **argv)
-{
-	int	i;
-	int j;
+	int		i;
+	int		slen;
+	char	*s2;
 
 	i = 0;
-	j = -1;
-	while (argv[++i])
+	slen = ft_strlen(s);
+	s2 = ft_calloc(sizeof(char), slen + 1);
+	if (!s2)
+		return (NULL);
+	while (i <= slen)
 	{
-		while (argv[i][++j])
-		{
-			if (ft_isdigit(argv[i][j]))
-			{
-				printf("sizeof: %lu\n", sizeof(argv[i]));
-			}
-
-
-		}
+		s2[i] = s[i];
+		i++;
 	}
-	printf("Nuthin");
+	return (s2);
 }
+
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char s1[] = "Helloooo";
+	char *s2;
+
+	s2 = ft_strdup(s1);
+	printf("s2: %s", s2);
+}
+*/

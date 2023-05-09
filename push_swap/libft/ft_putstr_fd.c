@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/11 20:36:40 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/12 21:25:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+void	ft_putstr_fd(char *s, int fd)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int	i;
 
-void	push_swap(int *seq, int seq_size);
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+}
 
-#endif
+/*
+int	main(void)
+{
+	ft_putstr_fd("Hello", 1);
+}
+*/

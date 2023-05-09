@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/19 01:10:39 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/19 01:37:09 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_list	*tmp;
 
-void	push_swap(int *seq, int seq_size);
-
-#endif
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+	lst = NULL;
+}

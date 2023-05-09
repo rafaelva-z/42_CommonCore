@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/09 19:00:53 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+static void	ft_error(void)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	printf("ERROR\n\n");
+}
 
-void	push_swap(int *seq, int seq_size);
+int main(int argc, char **argv)
+{
+	int	i;
+	int	j;
 
-#endif
+	i = 0;
+	if(argc)
+	{
+		
+	}
+	while (argv[++i])
+	{
+		j = -1;
+		while (argv[i][++j])
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				ft_error();
+				return (0);
+			}
+		}
+		printf("number: %d\n", ft_atoi(argv[i]));
+	}
+	printf("Nuthin");
+}

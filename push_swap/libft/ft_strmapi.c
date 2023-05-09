@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/17 20:00:25 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/17 20:12:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	unsigned int	i;
+	char			*str;
 
-void	push_swap(int *seq, int seq_size);
-
-#endif
+	i = 0;
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = (char)f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/19 01:42:06 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/19 02:10:57 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_list	*new;
+	t_list	*tmp;
 
-void	push_swap(int *seq, int seq_size);
-
-#endif
+	if (!lst)
+		return (NULL);
+	new = ft_lstnew(f(lst->content));
+	tmp = lst->next;
+	while (tmp)
+	{
+		ft_lstadd_back(&new, ft_lstnew(f(tmp->content)));
+		tmp = tmp->next;
+	}
+	del(tmp);
+	return (new);
+}

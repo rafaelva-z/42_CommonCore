@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/06 15:24:35 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/18 22:16:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	size_t	i;
 
-void	push_swap(int *seq, int seq_size);
+	i = 0;
+	while (i < n && ((unsigned char *)s)[i] != (unsigned char)c)
+		i++;
+	if (i < n && ((unsigned char *)s)[i] == (unsigned char)c)
+		return (&((unsigned char *)s)[i]);
+	return (NULL);
+}
 
-#endif
+/*
+#include <stdio.h>
+int	main()
+{
+	unsigned char s[] = "Olab";
+	unsigned char *s2 = ft_memchr(s, 'a', 2);
+	printf("result: %s", s2);
+}
+*/

@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/09 18:34:59 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/18 23:23:43 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/19 00:29:32 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct stack{
-	int		number;
-	void	*next;
-}	t_stack;
-typedef struct s_list
+int	ft_lstsize(t_list *lst)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int	i;
 
-void	push_swap(int *seq, int seq_size);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
 
-#endif
+/* 
+#include <stdio.h>
+int	main()
+{
+	t_list *list1;
+	t_list *list2;
+	t_list *list3;
+
+	list1 = ft_lstnew("");
+	list2 = ft_lstnew("");
+	list3 = ft_lstnew("");
+
+	ft_lstadd_front(&list1, list2);
+	ft_lstadd_front(&list2, list3);
+	printf("Result: %d", ft_lstsize(list1));
+}  */
