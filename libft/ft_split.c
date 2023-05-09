@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:05:32 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/19 15:52:18 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/09 14:03:13 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ char	**ft_split(char const *s, char c)
 	int		wordcnt;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	wordcnt = ft_wordcnt(s, c);
 	split = ft_calloc(sizeof(char *), (wordcnt + 1));
 	if (!split)
