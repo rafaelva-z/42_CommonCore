@@ -9,7 +9,7 @@ SRC = main.c
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) run
+all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(OTHERFLAG)
@@ -28,10 +28,11 @@ fclean: clean
 	@rm -f $(NAME)
 	@make -C $(LIBFT_FOLDER) fclean
 
-re: fclean all
+re: fclean all 
 	@echo "$(NAME) - Recompiling."  
 
-run:
-	./push_swap 1 2 3 400 
+run: re clean
+	@echo "====RUN===="
+	./push_swap -10 0 5 6 7 800
 
 .PHONY: all bonus clean fclean re
