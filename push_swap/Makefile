@@ -22,7 +22,7 @@ $(LIBFT):
 
 clean:
 	@echo "$(NAME) - Cleaning all object files."
-	@rm -f $(OBJ) $(OBJ_BONUS)
+	@rm -f $(OBJ)
 	@make -C $(LIBFT_FOLDER) clean
 
 fclean: clean
@@ -34,7 +34,7 @@ re: fclean all
 	@echo "$(NAME) - Recompiling."  
 
 run: re clean
-	@echo "====RUN===="
-	./push_swap 1 2 3 4
+	@echo "$(NAME) - running"
+	./push_swap -5000 100 985 21320 -100 -2
 
 .PHONY: all bonus clean fclean re
