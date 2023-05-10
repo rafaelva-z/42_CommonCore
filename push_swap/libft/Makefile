@@ -9,14 +9,15 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_strcat.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c \
 	ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncat.c \
 	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-	ft_tolower.c ft_toupper.c
-
-SRC_BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
-	ft_lstdelone.c ft_lstiter.c \
-	ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+	ft_tolower.c ft_toupper.c \
+	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
+	\
+	ft_printf.c ft_nputchar.c ft_nputnbr.c ft_nputstr.c \
+	ft_nputaddr.c ft_nputhex.c\
 
 OBJ = $(SRC:.c=.o)
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -24,13 +25,9 @@ $(NAME): $(OBJ)
 	@echo "$(NAME) - Making library"
 	@ar rs $(NAME) $(OBJ)
 
-bonus: $(OBJ_BONUS)
-	@echo "$(NAME) - Making library (Bonus)"
-	@ar rs $(NAME) $(OBJ_BONUS)
-
 clean:
 	@echo "$(NAME) - Cleaning all object files."
-	@rm -f $(OBJ) $(OBJ_BONUS)
+	@rm -f $(OBJ)
 
 fclean: clean
 	@echo "$(NAME) - Full clean."  
@@ -39,4 +36,4 @@ fclean: clean
 re: fclean all
 	@echo "$(NAME) - Recompiling."  
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

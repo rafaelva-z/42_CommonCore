@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_nputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 22:45:25 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 16:55:14 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/12 12:43:27 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:37:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstnew(int nb)
+size_t	ft_nputnbr(long n)
 {
-	t_list	*node;
+	size_t	count;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->nb = nb;
-	node->next = NULL;
-	return (node);
+	count = 0;
+	if (n < 0)
+	{
+		n = -n;
+		count += ft_nputchar('-');
+	}
+	if (n > 9)
+	{
+		count += ft_nputnbr(n / 10);
+		count += ft_nputnbr(n % 10);
+	}
+	else
+		count += ft_nputchar(n + '0');
+	return (count);
 }

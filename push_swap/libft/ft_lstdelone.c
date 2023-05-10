@@ -6,14 +6,14 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 00:34:20 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/19 02:11:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/10 16:54:09 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
-{
-	del(lst->content);
-	free(lst);
-}
+// void	ft_lstdelone(t_list *lst, void (*del)(void*))
+// {
+// 	del(lst->content);
+// 	free(lst);
+// }

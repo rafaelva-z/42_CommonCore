@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   is_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 22:45:25 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 16:55:14 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/10 14:07:28 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/10 14:07:29 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list	*ft_lstnew(int nb)
+int	is_signal(char c)
 {
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->nb = nb;
-	node->next = NULL;
-	return (node);
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_nputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 22:45:25 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 16:55:14 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/11 20:36:40 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:37:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstnew(int nb)
+size_t	ft_nputstr(char *s)
 {
-	t_list	*node;
+	size_t	i;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->nb = nb;
-	node->next = NULL;
-	return (node);
+	i = 0;
+	if (!s)
+		return (ft_nputstr("(null)"));
+	while (s[i])
+		i += ft_nputchar(s[i]);
+	return (i);
 }

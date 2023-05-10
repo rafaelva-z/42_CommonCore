@@ -5,7 +5,9 @@ LIBFT_FOLDER = ./libft/
 LIBFT = $(LIBFT_FOLDER)libft.a
 OTHERFLAG = -L$(LIBFT_FOLDER) -lft -o $(NAME)
 CFLAGS = -Wall -Wextra -Werror
-SRC = main.c
+SRC = main.c \
+	./utils/is_signal.c ./utils/ft_error.c ./utils/input_check.c \
+	./operations/ls_push.c ./operations/ls_rotate.c ./operations/ls_swap.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -33,6 +35,6 @@ re: fclean all
 
 run: re clean
 	@echo "====RUN===="
-	./push_swap -10 0 5 6 7 800
+	./push_swap 1 2 3 4
 
 .PHONY: all bonus clean fclean re

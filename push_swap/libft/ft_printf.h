@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 15:42:36 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/20 13:31:34 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:35:50 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# define HEX_HIGH "0123456789ABCDEF"
+# define HEX_LOW "0123456789abcdef"
 # include <unistd.h>
-# include <limits.h>
-# include "./libft/libft.h"
+# include <stdarg.h>
 
-typedef struct stack{
-	int				nb;
-	struct stack	*next;
-}	t_stack;
-
-void	push_swap(int *seq, int seq_size);
-int		input_check(char **input);
-int		is_signal(char c);
-int		ft_error(void);
-
-t_list	*create_stack(char **argv, int argc);
-
+int		ft_printf(const char *text, ...);
+size_t	ft_strlen(const char *str);
+size_t	ft_nputchar(char c);
+size_t	ft_nputstr(char *s);
+size_t	ft_nputnbr(long n);
+size_t	ft_nputaddr(unsigned long ptr);
+size_t	ft_nputhex(unsigned long ptr, char *hex_case);
 
 #endif

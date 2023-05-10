@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:31:58 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/19 13:17:21 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/10 17:01:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int			nb;
 	struct s_list	*next;
 }	t_list;
 
@@ -65,7 +65,7 @@ size_t	ft_strlen(const char *str);
 
 //Part 3 - Bonus Functions
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int nb);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -74,5 +74,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//ft_printf
+
+int		ft_printf(const char *text, ...);
+size_t	ft_strlen(const char *str);
+size_t	ft_nputchar(char c);
+size_t	ft_nputstr(char *s);
+size_t	ft_nputnbr(long n);
+size_t	ft_nputaddr(unsigned long ptr);
+size_t	ft_nputhex(unsigned long ptr, char *hex_case);
 
 #endif
