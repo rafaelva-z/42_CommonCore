@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_issignal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 23:54:32 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 23:13:00 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/10 14:07:28 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/11 00:30:07 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list	*ft_lstlast(t_list *lst)
+int	ft_issignal(char c)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
 }

@@ -5,9 +5,9 @@ LIBFT_FOLDER = ./libft/
 LIBFT = $(LIBFT_FOLDER)libft.a
 OTHERFLAG = -L$(LIBFT_FOLDER) -lft -o $(NAME)
 CFLAGS = -Wall -Wextra -Werror
-SRC = main.c \
-	./utils/is_signal.c ./utils/ft_error.c ./utils/input_check.c \
-	./operations/ls_push.c ./operations/ls_rotate.c ./operations/ls_swap.c \
+SRC = main.c push_swap.c \
+	./utils/ft_issignal.c ./utils/ft_error.c ./utils/input_check.c ./utils/ft_lstbeforelast.c \
+	./operations/ls_push.c ./operations/ls_rotate.c ./operations/ls_rrotate.c ./operations/ls_swap.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -18,7 +18,7 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "$(NAME) - Done"
 
 $(LIBFT):
-	make -C $(LIBFT_FOLDER)
+	@make -C $(LIBFT_FOLDER)
 
 clean:
 	@echo "$(NAME) - Cleaning all object files."
@@ -33,8 +33,9 @@ fclean: clean
 re: fclean all 
 	@echo "$(NAME) - Recompiling."  
 
-run: re clean
+run: re
 	@echo "$(NAME) - running"
-	./push_swap -5000 100 985 21320 -100 -2
+	./push_swap 1 2 3 4 5
+	@make fclean
 
 .PHONY: all bonus clean fclean re

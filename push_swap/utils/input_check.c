@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:19:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/10 16:07:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/11 00:30:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	input_check(char **input)
 	while (input[++i])
 	{
 		j = -1;
-		if (!is_signal(input[i][++j]) && !ft_isdigit(input[i][j]))
+		if (!ft_issignal(input[i][++j]) && !ft_isdigit(input[i][j]))
 			return (0);
 		while (input[i][++j])
 		{
