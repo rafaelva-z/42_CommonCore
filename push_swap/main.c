@@ -6,13 +6,13 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 00:48:56 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/11 17:09:15 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_stacks(t_list *stack_a, t_list *stack_b)
+void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	ft_printf("\n=====PushSwap=====\n");
 	ft_printf("stack A\t stack B\n");
@@ -34,6 +34,40 @@ static void	print_stacks(t_list *stack_a, t_list *stack_b)
 	ft_printf("=============rvaz=\n\n");
 }
 
+static void heapPermutation(int *a, int size, int n, t_list **stack_a, t_list **stack_b, int argc)
+{
+	
+	int	tmp;
+    if (size == 1)
+	{
+		ft_lstclear(stack_a, ft_bzero_int);
+		*stack_a = create_stack_int(a, argc);
+		//print_stacks(*stack_a, *stack_b);
+		brute_solver(stack_a, stack_b, argc);
+		ft_printf("%d %d %d %d %d %d\n", a[0], a[1], a[2], a[3], a[4], a[5]);
+        return ;
+    }
+ 
+    for (int i = 0; i < size; i++)
+	{
+        heapPermutation(a, size - 1, n, stack_a, stack_b, argc);
+        if (size % 2 == 1)
+		{
+            tmp = a[0];
+			a[0] = a[size - 1];
+			a[size - 1] = tmp;
+		}
+        else
+		{
+            tmp = a[i];
+			a[i] = a[size - 1];
+			a[size - 1] = tmp;
+		}
+    }
+	
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -46,9 +80,11 @@ int	main(int argc, char **argv)
 	if (!input_check(argv))
 		return (ft_error());
 	stack_a = create_stack(argv, argc);
-	print_stacks(stack_a, stack_b);
-	sa(&stack_a);
-	ft_printf("Solve state: %d\n", solve_check(stack_a, stack_b));
+
+	/*HEAPERMUTATIONS*/
+	int a[] = {2, 1, 3, 4, 5, 6};
+	int n = sizeof a / sizeof a[0];
+	heapPermutation(a, n, n, &stack_a, &stack_b, argc);
 }
 
 /*

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_bzero_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 00:34:20 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 16:36:40 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/11 16:24:39 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/11 16:38:07 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(int*))
+void	ft_bzero_int(int *nb)
 {
-	del(&(lst->nb));
-	free(lst);
+	ft_memset(nb, '\0', 4);
 }

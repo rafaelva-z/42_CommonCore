@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 00:43:29 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/11 16:35:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ int		ft_issignal(char c);
 int		ft_error(void);
 t_list	*create_stack(char **argv, int argc);
 t_list	*ft_lstbeforelast(t_list *lst);
-int	solve_check(t_list *stack_a, t_list *stack_b);
+int		solve_check(t_list *stack_a, t_list *stack_b);
+void	brute_solver(t_list **stack_a, t_list **stack_b, int argc);
+
+void	print_stacks(t_list *stack_a, t_list *stack_b);
+t_list	*create_stack_int(int *seq, int argc);
+void	ft_bzero_int(int *nb);
 
 // Operations
 void	sa(t_list **stack_a);

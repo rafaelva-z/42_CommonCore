@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:35:54 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 00:29:21 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/11 14:19:39 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	push(t_list **stack_a, t_list **stack_b)
 void	pa(t_list **stack_a, t_list **stack_b)
 {
 	push(stack_b, stack_a);
-	ft_printf("pa\n");
+	// ft_printf("pa\n");
 }
 
 void	pb(t_list **stack_a, t_list **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_printf("pb\n");
+	// ft_printf("pb\n");
 }
