@@ -1,0 +1,32 @@
+Numlen-Most moves to solve
+
+2-1
+3-2
+4-5
+5-7
+6-10--435216
+
+useless moves:
+sb/sb
+sa/sa
+ss/ss
+ra/rra
+rra/ra
+rb/rrb
+rrb/rb
+rrr/rrr
+pa/pb
+pb/pa
+
+ineficient moves:
+(sa/sb) > ss
+(ra/rb) > rr
+(rra/rrb) > rrr
+
+Dont try to perform the above moves
+Dont enter the loop if you wont move
+
+
+seq-tries
+
+3214-84.625
