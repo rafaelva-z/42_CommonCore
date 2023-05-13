@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 16:35:45 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/13 21:31:08 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,38 @@
 # include "./libft/libft.h"
 
 // Utils
-int		input_check(char **input);
 int		ft_issignal(char c);
 int		ft_error(void);
-t_list	*create_stack(char **argv, int argc);
-t_list	*ft_lstbeforelast(t_list *lst);
-int		solve_check(t_list *stack_a, t_list *stack_b);
-void	brute_solver(t_list **stack_a, t_list **stack_b, int argc);
-
-void	print_stacks(t_list *stack_a, t_list *stack_b);
-t_list	*create_stack_int(int *seq, int argc);
 void	ft_bzero_int(int *nb);
+t_list	*ft_lstbeforelast(t_list *lst);
+int		input_checker(char **input);
+t_list	*create_stack(char **argv, int argc);
+int		ps_checker(t_list *stack_a, t_list *stack_b);
+int     ps_input_checker(char **input);
+
+// Algorithms
+void	ps_bruteforce(t_list **stack_a, t_list **stack_b);
+void    ps_newsort(t_list **stack_a, t_list **stack_b, int argc);
+
 
 // Operations
-void	sa(t_list **stack_a);
-void	sb(t_list **stack_b);
-void	ss(t_list **stack_a, t_list **stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
-void	ra(t_list **stack_a);
-void	rb(t_list **stack_b);
-void	rr(t_list **stack_a, t_list **stack_b);
-void	rra(t_list **stack_a);
-void	rrb(t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	sa(t_list **stack_a, int print);
+void	sb(t_list **stack_b, int print);
+void	ss(t_list **stack_a, t_list **stack_b, int print);
+void	pa(t_list **stack_a, t_list **stack_b, int print);
+void	pb(t_list **stack_a, t_list **stack_b, int print);
+void	ra(t_list **stack_a, int print);
+void	rb(t_list **stack_b, int print);
+void	rr(t_list **stack_a, t_list **stack_b, int print);
+void	rra(t_list **stack_a, int print);
+void	rrb(t_list **stack_b, int print);
+void	rrr(t_list **stack_a, t_list **stack_b, int print);
+
+//others (not necessarily used)
+void    heapperm(int *a, int size, int n, t_list **stack_a, t_list **stack_b, int argc);
+t_list	*create_stack_int(int *seq, int argc);
+void	print_stacks(t_list *stack_a, t_list *stack_b);
+void    ft_swap(void *a, void *b, size_t bytes);
+
 
 #endif

@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_check.c                                      :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 14:19:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 00:30:00 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/12 12:23:48 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/12 12:52:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-//one extra line..
-int	input_check(char **input)
+void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
-	int		i;
-	int		j;
-	long	this_nb;
-
-	i = 0;
-	while (input[++i])
+	ft_printf("\n=====PushSwap=====\n");
+	ft_printf("stack A\t stack B\n");
+	while (stack_a || stack_b)
 	{
-		j = -1;
-		if (!ft_issignal(input[i][++j]) && !ft_isdigit(input[i][j]))
-			return (0);
-		while (input[i][++j])
+		if (stack_a)
 		{
-			if (!ft_isdigit(input[i][j]))
-				return (0);
+			ft_printf("%d", stack_a->nb);
+			stack_a = stack_a->next;
 		}
-		this_nb = ft_atoi(input[i]);
-		if (this_nb > INT_MAX || this_nb < INT_MIN)
-			return (0);
-		j = i;
-		while (j > 1)
+		ft_printf("\t|\t");
+		if (stack_b)
 		{
-			if (ft_atoi(input[--j]) == this_nb)
-				return (0);
+			ft_printf("%d", stack_b->nb);
+			stack_b = stack_b->next;
 		}
+		ft_printf("\n");
 	}
-	return (1);
+	ft_printf("=============rvaz=\n\n");
 }

@@ -5,10 +5,12 @@ LIBFT_FOLDER = ./libft/
 LIBFT = $(LIBFT_FOLDER)libft.a
 OTHERFLAG = -L$(LIBFT_FOLDER) -lft -o $(NAME)
 CFLAGS = #-Wall -Wextra -Werror
-SRC = main.c push_swap.c \
-	./utils/ft_issignal.c ./utils/ft_error.c ./utils/input_check.c ./utils/ft_lstbeforelast.c \
-	./utils/ft_bzero_int.c \
+SRC = main.c \
+	./utils/ft_issignal.c ./utils/ft_error.c ./utils/ft_lstbeforelast.c \
+	./utils/ft_swap.c ./utils/heapperm.c ./utils/ft_bzero_int.c ./utils/print_utils.c \
+	./utils/ps_checkers.c ./utils/ps_create_stack.c \
 	./operations/ls_push.c ./operations/ls_rotate.c ./operations/ls_rrotate.c ./operations/ls_swap.c \
+	./algos/ps_bruteforce.c ./algos/ps_newsort.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +38,7 @@ re: fclean all
 
 run: re
 	@echo "$(NAME) - running"
-	./push_swap 1 2 3 4 5 6
+	./push_swap 1 2 3 4 5
 	@make fclean
 
 .PHONY: all bonus clean fclean re

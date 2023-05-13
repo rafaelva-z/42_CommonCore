@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ls_push.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 14:35:54 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 20:54:03 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/19 01:42:06 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/12 15:09:29 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-static void	push(t_list **stack_a, t_list **stack_b)
+t_list	*ft_lstdup(t_list *lst)
 {
+	t_list	*new;
 	t_list	*tmp;
 
-	tmp = (*stack_a)->next;
-	ft_lstadd_front(stack_b, *stack_a);
-	*stack_a = tmp;
-}
-
-void	pa(t_list **stack_a, t_list **stack_b, int print)
-{
-	push(stack_b, stack_a);
-	if (print)
-		ft_printf("pa\n");
-}
-
-void	pb(t_list **stack_a, t_list **stack_b, int print)
-{
-	push(stack_a, stack_b);
-	if (print)
-		ft_printf("pb\n");
+	if (!lst)
+		return (NULL);
+	new = ft_lstnew(lst->nb);
+	tmp = lst->next;
+	while (tmp)
+	{
+		ft_lstadd_back(&new, ft_lstnew(tmp->nb));
+		tmp = tmp->next;
+	}
+	free(tmp);
+	return (new);
 }

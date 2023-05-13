@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:36:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 14:19:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/13 20:54:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,24 @@ static void	rotate(t_list **stack)
 	}
 }
 
-void	ra(t_list **stack_a)
+void	ra(t_list **stack_a, int print)
 {
 	rotate(stack_a);
-	// ft_printf("ra\n");
+	if (print)
+		ft_printf("ra\n");
 }
 
-void	rb(t_list **stack_b)
+void	rb(t_list **stack_b, int print)
 {
 	rotate(stack_b);
-	// ft_printf("rb\n");
+	if (print)
+		ft_printf("rb\n");
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b, int print)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	// ft_printf("rr\n");
+	if (print)
+		ft_printf("rr\n");
 }

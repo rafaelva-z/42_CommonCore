@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 01:42:06 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/11 11:32:56 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/12 12:33:18 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/12 15:55:17 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst)
+void	ft_swap(void *a, void *b, size_t bytes)
 {
-	t_list	*new;
-	t_list	*tmp;
+	char	*tmp;
+	char	*ca;
+	char	*cb;
 
-	if (!lst)
-		return (NULL);
-	new = ft_lstnew(lst->nb);
-	tmp = lst->next;
-	while (tmp)
+	if (!a || !b || !bytes)
+		return ;
+	ca = (char *)a;
+	cb = (char *)b;
+	tmp = calloc(sizeof(char), bytes);
+	while (bytes--)
 	{
-		ft_lstadd_back(&new, ft_lstnew(tmp->nb));
-		tmp = tmp->next;
+		tmp[bytes] = ca[bytes];
+		ca[bytes] = cb[bytes];
+		cb[bytes] = tmp[bytes];
 	}
 	free(tmp);
-	return (new);
 }
