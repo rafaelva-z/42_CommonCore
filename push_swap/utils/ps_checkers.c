@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:23:20 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 21:35:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/15 16:47:51 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	ps_checker(t_list *stack_a, t_list *stack_b)
 {
-	if (!stack_a)
+	if (!stack_a || stack_b)
 		return (0);
 	while (stack_a->next)
 	{
-		if (stack_a->nb > stack_a->next->nb || stack_b)
+		if (stack_a->nb > stack_a->next->nb)
 			return (0);
 		stack_a = stack_a->next;
 	}
+	printf("Check!\n");
 	return (1);
 }
 

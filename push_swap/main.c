@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 21:36:03 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/15 16:48:34 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	push_swap(int argc, char **argv)
 	stack_b = NULL;
 	if (ps_checker(stack_a, stack_b))
 		return ;
-	else if(argc < 6)
+	if(argc < 7)
 		ps_bruteforce(&stack_a, &stack_b);
 	else if(argc < 100)
 		ps_newsort(&stack_a, &stack_b, argc);

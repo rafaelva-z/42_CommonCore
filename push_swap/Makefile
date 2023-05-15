@@ -38,7 +38,7 @@ re: fclean all
 
 run: re
 	@echo "$(NAME) - running"
-	./push_swap 1 2 3 4 5
+	./push_swap 5 3 4 2 1
 	@make fclean
 
 .PHONY: all bonus clean fclean re

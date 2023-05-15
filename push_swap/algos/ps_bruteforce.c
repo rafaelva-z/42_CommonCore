@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:21:00 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 21:57:48 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/15 17:05:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,34 @@ static	void	perform_bf(t_list **stack_a, t_list **stack_b, int **solve)
 	stack_ab = ft_lstdup(*stack_a);
 	stack_bb = ft_lstdup(*stack_b);
 	i = 14;
+/* 	for(int k = 14; k >= 0; k--)
+			printf("s%d: %d||%d ", k, (*solve)[k], i); 
+		printf("\n\n"); */
 	while (i >= 1 && (*solve)[i] != 0)
 		operations(&stack_ab, &stack_bb, *solve, i--);
+													printf("a");
+	i = 14;
+														printf("b");
 	if (!ps_checker(stack_ab, stack_bb) && (*solve)[0] == 0)
 	{
+															printf("c");
+		print_solve(*solve, i);
+		printf("\n");
 		calc_solve(solve, i);
+		//print_stacks(stack_ab, stack_bb);
 		perform_bf(stack_a, stack_b, solve);
+															printf("d");
 	}
-	/*else
+	else
 	{
-		(*solve)[0] = 1;
-		perform_bf(stack_a, stack_b, solve);
+		if((*solve)[0] == 0)
+		{
+			(*solve)[0] = 1;
+			perform_bf(stack_a, stack_b, solve);
+		}
 	}
 	ft_lstclear(&stack_ab, ft_bzero_int);
-	ft_lstclear(&stack_bb, ft_bzero_int); */
+	ft_lstclear(&stack_bb, ft_bzero_int);
 }
 
 void	ps_bruteforce(t_list **stack_a, t_list **stack_b)
@@ -110,4 +124,5 @@ void	ps_bruteforce(t_list **stack_a, t_list **stack_b)
 	solve = calloc(sizeof(int), 15);
 	solve[14] = 1;
 	perform_bf(stack_a, stack_b, &solve);
+	printf("welp\n");
 }
