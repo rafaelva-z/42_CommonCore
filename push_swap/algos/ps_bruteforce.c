@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:21:00 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/15 17:05:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/15 20:50:44 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,31 @@ static void	print_solve(int *solve, int argc)
 	}
 }
 
-static void	calc_solve(int **solve, int i)
+static void	calc_solve(int **s, int i)
 {
+	int	k;
+	int	j;
+
+	k = 1;
+	j = 1;
 	if (i > 0)
 	{
-		if ((*solve)[i] < 11)
+		while (j++ < i)
 		{
-			(*solve)[i] = (*solve)[i] + 1;
-			return ;
+			if (((*s)[j] == (*s)[k] && ((*s)[j] == 1 || (*s)[j] == 2
+			|| (*s)[j] == 3)) || ((*s)[j] == (*s)[k] - 1 && ((*s)[j] == 1 ||
+			(*s)[j] == 4 || (*s)[j] == 7 || (*s)[j] == 10)) ||
+			((*s)[j] == (*s)[k++] + 1 && ((*s)[j] == 2 || (*s)[j] == 5 ||
+			(*s)[j] == 8 || (*s)[j] == 11)))
+			{
+				(*s)[j]++;
+				return ;
+			}
 		}
-		(*solve)[i--] = 1;
-		calc_solve(solve, i);
+		if ((*s)[i]++ < 11)
+			return ;
+		(*s)[i--] = 1;
+		calc_solve(s, i);
 	}
 }
 
@@ -87,34 +101,25 @@ static	void	perform_bf(t_list **stack_a, t_list **stack_b, int **solve)
 	stack_ab = ft_lstdup(*stack_a);
 	stack_bb = ft_lstdup(*stack_b);
 	i = 14;
-/* 	for(int k = 14; k >= 0; k--)
-			printf("s%d: %d||%d ", k, (*solve)[k], i); 
-		printf("\n\n"); */
 	while (i >= 1 && (*solve)[i] != 0)
 		operations(&stack_ab, &stack_bb, *solve, i--);
-													printf("a");
 	i = 14;
-														printf("b");
 	if (!ps_checker(stack_ab, stack_bb) && (*solve)[0] == 0)
 	{
-															printf("c");
+		ft_lstclear(&stack_ab, ft_bzero_int);
+		ft_lstclear(&stack_bb, ft_bzero_int);
 		print_solve(*solve, i);
-		printf("\n");
 		calc_solve(solve, i);
-		//print_stacks(stack_ab, stack_bb);
 		perform_bf(stack_a, stack_b, solve);
-															printf("d");
 	}
 	else
 	{
-		if((*solve)[0] == 0)
+		if ((*solve)[0] == 0)
 		{
 			(*solve)[0] = 1;
 			perform_bf(stack_a, stack_b, solve);
 		}
 	}
-	ft_lstclear(&stack_ab, ft_bzero_int);
-	ft_lstclear(&stack_bb, ft_bzero_int);
 }
 
 void	ps_bruteforce(t_list **stack_a, t_list **stack_b)
