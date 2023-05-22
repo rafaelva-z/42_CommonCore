@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 21:31:08 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/22 15:23:28 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	rrb(t_list **stack_b, int print);
 void	rrr(t_list **stack_a, t_list **stack_b, int print);
 
 //others (not necessarily used)
-void    heapperm(int *a, int size, int n, t_list **stack_a, t_list **stack_b, int argc);
+void	heapperm(int *a, int size, int n, t_list **stack_a, t_list **stack_b, int argc);
 t_list	*create_stack_int(int *seq, int argc);
 void	print_stacks(t_list *stack_a, t_list *stack_b);
-void    ft_swap(void *a, void *b, size_t bytes);
+void	ft_swap(void *a, void *b, size_t bytes);
 
 
 #endif
