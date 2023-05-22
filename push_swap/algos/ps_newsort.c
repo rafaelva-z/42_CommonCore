@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/16 15:27:07 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/22 16:44:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b, int argc)
 	t_list *tmp;
 	int i;
 	
-	printf("hey\n");
 	norm_seq = calloc(sizeof(int), argc - 1);
 	if (!norm_seq)
 		return ;
@@ -31,5 +30,5 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b, int argc)
 	}
 	for (int a = 0; a < argc - 1; a++)
 		printf("%d", norm_seq[a]);
-	printf("\nwelp");
+	printf("\nwelp\n\n");
 }
