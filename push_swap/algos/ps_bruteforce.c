@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:21:00 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/22 15:28:14 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/23 21:10:13 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,6 @@ void	ps_bruteforce(t_list **stack_a, t_list **stack_b)
 
 	solve = calloc(sizeof(int), 15);
 	perform_bf(stack_a, stack_b, &solve);
-	printf("welp\n");
+	printf("welp bf\n");
 	free(solve);
 }
