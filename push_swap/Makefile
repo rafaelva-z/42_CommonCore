@@ -4,7 +4,7 @@ CC = cc
 LIBFT_FOLDER = ./libft/ 
 LIBFT = $(LIBFT_FOLDER)libft.a
 OTHERFLAG = -L$(LIBFT_FOLDER) -lft -o $(NAME)
-CFLAGS = -g -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
 SRC = main.c \
 	./utils/ft_issignal.c ./utils/ft_error.c ./utils/ft_lstbeforelast.c \
 	./utils/ft_swap.c ./utils/heapperm.c ./utils/ft_bzero_int.c ./utils/print_utils.c \

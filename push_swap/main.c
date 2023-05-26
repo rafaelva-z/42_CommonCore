@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/24 12:11:41 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/26 15:58:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	push_swap(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 		ps_bruteforce(stack_a, stack_b);
 	else if (argc < 1000)
 	{
-		printf("b\n");
 		ps_newsort(stack_a, stack_b, argc - 1);
 	}
 	//HEAPERMUTATIONS
@@ -37,9 +36,7 @@ int	main(int argc, char **argv)
 
 	stack_a = create_stack(argv, argc);
 	stack_b = NULL;
-
-	printf("%d\n", argc);
-
+	
 	if (argc <= 1)
 		return (0);
 	if (!ps_input_checker(argv))
