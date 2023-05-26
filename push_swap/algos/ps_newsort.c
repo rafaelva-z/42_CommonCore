@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/24 17:58:15 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/26 11:38:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,16 @@ static int	best_num(t_list stack_a, t_list *stack_b)
 	tmp = stack_b;
 	while (tmp)
 	{
-		printf("heyyyyyy tmp->nb %d,, stack_a.nb %d \n\n\n", tmp->nb, stack_a.nb);
 		if (tmp->nb >= bestnum && tmp->nb < stack_a.nb)
 		{
 			bestnum = tmp->nb;
-			printf("%d------", bestnum);
 			flag = 1;
 		}
 		if (!(tmp->next))
 			break ;
 		tmp = tmp->next;
 	}
-	if (flag != 0)
+	if (!flag)
 	{
 		bestnum = INT_MAX;
 		tmp = stack_b;
@@ -100,49 +98,58 @@ static int	best_num(t_list stack_a, t_list *stack_b)
 	return (bestnum);
 }
 
-void	find_cheapest(t_list *stack_a, t_list *stack_b, int *norm_seq)
+void	find_cheapest(t_list *stack_a, t_list *stack_b)
 {
 	int		bestnum;
 	int		cost;
-	int		count;
 	int		a_moves;
+	int		b_moves;
 	t_list	*tmp;
 	int		stack_a_size;
 
 	a_moves = 0;
-	count = 0;
 	stack_a_size = ft_lstsize(stack_a);
 	while (stack_a)
 	{
+		b_moves = 0;
 		tmp = stack_b;
 		bestnum = best_num(*stack_a, stack_b);
-		//printf("%d!!!", bestnum);
 		while (tmp->nb != bestnum && tmp)
 		{
-			count++;
+			b_moves++;
 			tmp = tmp->next;
 		}
-		if (count < (ft_lstsize(stack_b) / 2))
+		if (b_moves <= (ft_lstsize(stack_b) / 2))
 		{
-			cost = count;
+			cost = b_moves;
 		}
 		else
 		{
-			count = 0;
+			b_moves = 0;
 			while (tmp)
 			{
-				count++;
+				b_moves++;
 				tmp = tmp->next;
 			}
 		}
-		a_moves++;
-		if (a_moves > stack_a_size / 2)
-			cost = a_moves - (stack_a_size / 2) + count + 1;
+		if(stack_a->nb > best_num)
+		{
+			if (a_moves > stack_a_size / 2)
+				cost = stack_a_size - a_moves + b_moves + 1;
+			else
+				cost = a_moves + b_moves + 1;
+		} //Falta ajustar os b_moves na situação em que o bestnum é maior que o numero no stack_a
 		else
-			cost = a_moves + count + 1;
+		{
+			if (a_moves > stack_a_size / 2)
+				cost = stack_a_size - a_moves + b_moves + 1;
+			else
+				cost = a_moves + b_moves + 1;
+		}
+		printf("NUM STACKA: %d, bestnum: %d, COST: %d\n", stack_a->nb, bestnum, cost);
+		a_moves++;
 		stack_a = stack_a->next;
 	}
-	free(tmp);
 }
 
 void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
@@ -155,7 +162,7 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
 	print_stacks(*stack_a, *stack_b);
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		find_cheapest(*stack_a, *stack_b, norm_seq);
+		find_cheapest(*stack_a, *stack_b);
 		pb(stack_a, stack_b, 1);
 		// if ((*stack_a)->nb > norm_seq[num_size / 2])
 		// {
