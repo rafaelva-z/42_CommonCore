@@ -6,12 +6,13 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 17:24:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/27 20:07:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/*
 static int	*normalize_seq(t_list **stack_a, int num_size)
 {
 	int		*norm_seq;
@@ -48,7 +49,7 @@ static int	*normalize_seq(t_list **stack_a, int num_size)
 		i++;
 	}
 	return (norm_seq);
-}
+}*/
 
 static int	lst_maxint(t_list *stack)
 {
@@ -64,7 +65,7 @@ static int	lst_maxint(t_list *stack)
 	return (max);
 }
 
-static int	best_num(t_list stack_a, t_list *stack_b)
+int	best_num(t_list stack_a, t_list *stack_b)
 {
 	int		bestnum;
 	t_list	*tmp;
@@ -94,65 +95,6 @@ static int	best_num(t_list stack_a, t_list *stack_b)
 		}
 	}
 	return (bestnum);
-}
-
-
-static int calculate_cost(t_list stack, int stack_size, int *moves, int *return_value)
-{
-	int			cost;
-	static int	best_cost;
-
-	if (moves[0] > stack_size / 2)
-		cost = stack_size - moves[0] + moves[1] + 1;
-	else
-		cost = moves[0] + moves[1] + 1;
-	if (cost < best_cost || !*return_value)
-	{
-		*return_value = stack.nb;
-		best_cost = cost;
-	}
-	//printf("Stack_a: %d, COST: %d\n", stack_a.nb, cost);
-}
-
-static int calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
-{
-	int		bestnum;
-	int		stack_b_size;
-
-	stack_b_size = ft_lstsize(stack_b);
-	bestnum = best_num(*stack_a, stack_b);
-	while (stack_b && stack_b->nb != bestnum)
-	{
-			(*moves_1)++;
-			stack_b = stack_b->next;
-	}
-	if ((*stack_a).nb > bestnum && *moves_1 >= (stack_b_size / 2))
-		*moves_1 = stack_b_size - *moves_1;
-	else if ((*stack_a).nb < bestnum && *moves_1 >= (stack_b_size / 2))
-		*moves_1 = stack_b_size - *moves_1 - 1;
-	else if ((*stack_a).nb < bestnum && *moves_1 < (stack_b_size / 2))
-		*moves_1++;
-}
-
-//Need to optizmize when ra + rb to rotate both on one move
-int	find_cheapest(t_list *stack_a, t_list *stack_b)
-{
-	int		moves[2];
-	int		return_value;
-	int		stack_a_size;
-
-	stack_a_size = ft_lstsize(stack_a);
-	return_value = 0;
-	moves[0] = 0;
-	while (stack_a)
-	{
-		moves[1] = 0;
-		calculate_moves(stack_a, stack_b, &moves[1]);
-		calculate_cost(*stack_a, stack_a_size, moves, &return_value);
-		moves[0]++;
-		stack_a = stack_a->next;
-	}
-	return (return_value);
 }
 
 static void	rotate_stacks(
@@ -198,7 +140,7 @@ static void	rotate_stacks(
 	}
 }
 
-static void organized_pb(t_list **stack_a, t_list **stack_b, int nb)
+static void	organized_pb(t_list **stack_a, t_list **stack_b, int nb)
 {
 	int		bestnum;
 	int		a_moves;
@@ -233,71 +175,22 @@ static void organized_pb(t_list **stack_a, t_list **stack_b, int nb)
 	pb(stack_a, stack_b, 1);
 }
 
-static	int lst_biggest_nb_pos(t_list *stack)
-{
-	int		biggest_nb;
-	int		count;
-	int		tmp_count;
-
-	tmp_count = 0;
-	count = 0;
-	biggest_nb = stack->nb;
-	while (stack)
-	{
-		if (stack->nb > biggest_nb)
-		{
-			biggest_nb = stack->nb;
-			count = tmp_count;
-		}
-		tmp_count++;
-		stack = stack->next;
-	}
-	return (count);
-}
-
-
-void	r_bigtotop(t_list **stack)
-{
-	int		count;
-
-	count = lst_biggest_nb_pos(*stack);
-	if (count >= ft_lstsize(*stack) / 2)
-		count = (ft_lstsize(*stack) - count) * -1;
-	while (count != 0)
-	{
-		if (count > 0)
-		{
-			rb(stack, 1);
-			count--;
-		}
-		else if (count < 0)
-		{
-			rrb(stack, 1);
-			count++;
-		}
-	}
-}
-
-
 void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
 {
-	int		*norm_seq;
-	t_list	*stack_bb;
+	t_list	*aaa;
 
-	stack_bb = NULL;
-	norm_seq = normalize_seq(stack_a, num_size);
+	aaa = NULL;
+
 	pb(stack_a, stack_b, 1);
 	pb(stack_a, stack_b, 1);
 	if ((*stack_b)->nb < (*stack_b)->next->nb)
 		sb(stack_b, 1);
 	while (ft_lstsize(*stack_a) > 0)
 		organized_pb(stack_a, stack_b, find_cheapest(*stack_a, *stack_b));
-	if(!ps_checker(*stack_a, *stack_b) && *stack_a)
-		ps_bruteforce(stack_a, &stack_bb);
+	if (!ps_checker(*stack_a, *stack_b) && *stack_a)
+		ps_bruteforce(stack_a, &aaa);
 	//print_stacks(*stack_a, *stack_b);
 	r_bigtotop(stack_b);
-	while(ft_lstsize(*stack_b))
+	while (ft_lstsize(*stack_b))
 		pa(stack_a, stack_b, 1);
-	ft_bzero_int(norm_seq);
-	free(norm_seq);
 }

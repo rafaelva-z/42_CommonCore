@@ -1,32 +1,33 @@
-Numlen-Most moves to solve
+amount of numbers - Most moves to solve
 
 2-1
 3-2
 4-5
 5-7
-6-10--435216
+6-10--435216?
 
-useless moves:
-sb/sb
-sa/sa
-ss/ss
-ra/rra
-rra/ra
-rb/rrb
-rrb/rb
-rrr/rrr
-pa/pb
-pb/pa
-
-ineficient moves:
+optimize ineficient moves:
 (sa/sb) > ss
 (ra/rb) > rr
 (rra/rrb) > rrr
 
-Dont try to perform the above moves
-Dont enter the loop if you wont move
+------------------------------------------------------------
 
-
-seq-tries
-
-3214-84.625
+idea:
+Find the biggest ascending sequence of numbers in the stack
+(not necessarily back to back) and just leave them on stack a
+so that you dont waste moves organizing whats left, after pushing
+all the less expensive numbers.
+example:
+9 3 4 1 5 6 0 2
+the sequence would be
+- 3 4 - 5 6 - - 
+so we ignore those numbers, and push all the others in order
+       leaving us with the result below, with increased savings
+|A  B| in moves as the pool of number increases. Although theres
+|----| theres a chance that this won't be used depending on the
+|3  9| original sequence.
+|4  2|
+|5  1|
+|6  0|
+|----|
