@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 16:32:12 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/27 17:24:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,18 @@ static int	best_num(t_list stack_a, t_list *stack_b)
 }
 
 
-static int calculate_cost(t_list stack_a, int stack_a_size, int *moves, int *return_value)
+static int calculate_cost(t_list stack, int stack_size, int *moves, int *return_value)
 {
 	int			cost;
 	static int	best_cost;
 
-	if (moves[0] > stack_a_size / 2)
-		cost = stack_a_size - moves[0] + moves[1] + 1;
+	if (moves[0] > stack_size / 2)
+		cost = stack_size - moves[0] + moves[1] + 1;
 	else
 		cost = moves[0] + moves[1] + 1;
 	if (cost < best_cost || !*return_value)
 	{
-		*return_value = stack_a.nb;
+		*return_value = stack.nb;
 		best_cost = cost;
 	}
 	//printf("Stack_a: %d, COST: %d\n", stack_a.nb, cost);
@@ -240,6 +240,7 @@ static	int lst_biggest_nb_pos(t_list *stack)
 	int		tmp_count;
 
 	tmp_count = 0;
+	count = 0;
 	biggest_nb = stack->nb;
 	while (stack)
 	{
@@ -289,15 +290,14 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
 	pb(stack_a, stack_b, 1);
 	if ((*stack_b)->nb < (*stack_b)->next->nb)
 		sb(stack_b, 1);
-	while (ft_lstsize(*stack_a) > 3)
-	{
-		//print_stacks(*stack_a, *stack_b);
+	while (ft_lstsize(*stack_a) > 0)
 		organized_pb(stack_a, stack_b, find_cheapest(*stack_a, *stack_b));
-	}
-	ps_bruteforce(stack_a, &stack_bb);
+	if(!ps_checker(*stack_a, *stack_b) && *stack_a)
+		ps_bruteforce(stack_a, &stack_bb);
+	//print_stacks(*stack_a, *stack_b);
 	r_bigtotop(stack_b);
-// PUSH BACK TO A
+	while(ft_lstsize(*stack_b))
+		pa(stack_a, stack_b, 1);
 	ft_bzero_int(norm_seq);
 	free(norm_seq);
-	printf("\nwelp\n\n");
 }

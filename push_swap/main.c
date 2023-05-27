@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 16:30:06 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/27 16:58:10 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	if (!ps_input_checker(argv))
 		return (ft_error());
 	push_swap(argc, argv, &stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
+	//print_stacks(stack_a, stack_b);
 
 	ft_lstclear(&stack_a, ft_bzero_int);
 	ft_lstclear(&stack_b, ft_bzero_int);
