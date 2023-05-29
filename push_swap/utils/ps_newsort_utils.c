@@ -6,13 +6,13 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:41:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 20:00:06 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/29 15:00:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	calculate_cost(
+static void	calculate_cost(
 	t_list stack, int stack_size, int *moves, int *return_value)
 {
 	int			cost;
@@ -29,7 +29,7 @@ static int	calculate_cost(
 	}
 }
 
-static int calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
+static void calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
 {
 	int		bestnum;
 	int		stack_b_size;
@@ -70,7 +70,7 @@ int	find_cheapest(t_list *stack_a, t_list *stack_b)
 	return (return_value);
 }
 
-static int	lst_biggest_nb_pos(t_list *stack)
+int	lst_biggest_nb_pos(t_list *stack)
 {
 	int		biggest_nb;
 	int		count;
@@ -92,24 +92,43 @@ static int	lst_biggest_nb_pos(t_list *stack)
 	return (count);
 }
 
-void	r_bigtotop(t_list **stack)
+int	lst_smallest_nb_pos(t_list *stack)
 {
+	int		smallest_nb;
 	int		count;
+	int		tmp_count;
 
-	count = lst_biggest_nb_pos(*stack);
-	if (count >= ft_lstsize(*stack) / 2)
-		count = (ft_lstsize(*stack) - count) * -1;
-	while (count != 0)
+	tmp_count = 0;
+	count = 0;
+	smallest_nb = stack->nb;
+	while (stack)
 	{
-		if (count > 0)
+		if (stack->nb < smallest_nb)
+		{
+			smallest_nb = stack->nb;
+			count = tmp_count;
+		}
+		tmp_count++;
+		stack = stack->next;
+	}
+	return (count);
+}
+
+void	r_totop(t_list **stack, int nb_pos)
+{
+	if (nb_pos >= ft_lstsize(*stack) / 2)
+		nb_pos = (ft_lstsize(*stack) - nb_pos) * -1;
+	while (nb_pos != 0)
+	{
+		if (nb_pos > 0)
 		{
 			rb(stack, 1);
-			count--;
+			nb_pos--;
 		}
-		else if (count < 0)
+		else if (nb_pos < 0)
 		{
 			rrb(stack, 1);
-			count++;
+			nb_pos++;
 		}
 	}
 }

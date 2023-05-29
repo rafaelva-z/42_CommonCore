@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 20:00:57 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/29 14:51:51 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ t_list	*create_stack(char **argv, int argc);
 int		ps_checker(t_list *stack_a, t_list *stack_b);
 int     ps_input_checker(char **input);
 int		find_cheapest(t_list *stack_a, t_list *stack_b);
-void	r_bigtotop(t_list **stack);
+void	r_totop(t_list **stack, int nb_pos);
 int		best_num(t_list stack_a, t_list *stack_b);
+int		lst_biggest_nb_pos(t_list *stack);
+int		lst_smallest_nb_pos(t_list *stack);
 
 // Algorithms
 void	ps_bruteforce(t_list **stack_a, t_list **stack_b);

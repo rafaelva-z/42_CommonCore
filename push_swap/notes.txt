@@ -1,19 +1,40 @@
-amount of numbers - Most moves to solve
 
-2-1
-3-2
-4-5
-5-7
-6-10--435216?
+===ALGORITHMS===============================================
+-BRUTEFORCE
+[using for up to 5 numbers]
 
-optimize ineficient moves:
-(sa/sb) > ss
-(ra/rb) > rr
-(rra/rrb) > rrr
+This one will always find the fewest amount of moves needed to
+sort a push_swap problem, by trying every possible solution
+starting with one move, then two, three, until it finds a
+working combination of moves.
+With more than 5 numbers it may take an unreasonable amout
+of time to solve it. (like 20 minutes)
 
 ------------------------------------------------------------
+will probably make another one for 5-10 numbers
 
-idea:
+------------------------------------------------------------
+-NEWSORT (provisory name)
+[using for >5 numbers]
+
+Starts by pushing the first two numbers to stack_b in descending
+order.
+
+Then calculates the amount of moves nedded (cost) to push each
+number in stack_a to stack_b. Then searches on stack_b for the
+closest number to that number (cheapest to send to stack_b)
+so that when the number is pushed to stack_b,
+the stack is always in descending order.
+Then the number is pushed and repeat the search for the cheapest
+number in stack_a.
+
+when there are 3 numbers left on stack_a we sort them with [BRUTEFORCE]
+and push all the numbers no stack_b back to stack_a, rotating stack_a
+as needed for the numbers to be in their final position when all the numbers
+are pushed.
+------------------------------------------------------------
+
+IDEA:
 Find the biggest ascending sequence of numbers in the stack
 (not necessarily back to back) and just leave them on stack a
 so that you dont waste moves organizing whats left, after pushing
@@ -31,3 +52,19 @@ so we ignore those numbers, and push all the others in order
 |5  1|
 |6  0|
 |----|
+
+===========================================================
+other notes
+
+amount of numbers - Most moves to solve
+
+2-1
+3-2
+4-5
+5-7
+6-10--435216?
+
+optimize ineficient moves:
+(sa/sb) > ss
+(ra/rb) > rr
+(rra/rrb) > rrr

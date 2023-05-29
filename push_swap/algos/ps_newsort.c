@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 20:07:00 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/29 14:54:56 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ static void	rotate_stacks(
 	}
 }
 
-static void	organized_pb(t_list **stack_a, t_list **stack_b, int nb)
+static void	push_desc(t_list **stack_a, t_list **stack_b, int nb)
 {
 	int		bestnum;
 	int		a_moves;
@@ -153,7 +153,7 @@ static void	organized_pb(t_list **stack_a, t_list **stack_b, int nb)
 	stack_a_size = ft_lstsize(*stack_a);
 	tmp = *stack_a;
 
-	while (tmp->nb != nb && tmp)
+	while (tmp && tmp->nb != nb)
 	{
 		a_moves++;
 		tmp = tmp->next;
@@ -162,7 +162,7 @@ static void	organized_pb(t_list **stack_a, t_list **stack_b, int nb)
 	if (a_moves >= (ft_lstsize(*stack_a) / 2))
 		a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
 	tmp = *stack_b;
-	while (tmp->nb != bestnum && tmp)
+	while (tmp && tmp->nb != bestnum)
 	{
 		b_moves++;
 		tmp = tmp->next;
@@ -175,6 +175,42 @@ static void	organized_pb(t_list **stack_a, t_list **stack_b, int nb)
 	pb(stack_a, stack_b, 1);
 }
 
+static void	push_asc(t_list **stack_a, t_list **stack_b, int nb)
+{
+	int		bestnum;
+	int		a_moves;
+	int		b_moves;
+	int		stack_a_size;
+	t_list	*tmp;
+
+	a_moves = 0;
+	b_moves = 0;
+	stack_a_size = ft_lstsize(*stack_a);
+	tmp = *stack_a;
+
+	while (tmp && tmp->nb != nb)
+	{
+		a_moves++;
+		tmp = tmp->next;
+	}
+		bestnum = best_num(*tmp, *stack_b);
+	if (a_moves >= (ft_lstsize(*stack_a) / 2))
+		a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
+	tmp = *stack_b;
+	while (tmp && tmp->nb != bestnum)
+	{
+		b_moves++;
+		tmp = tmp->next;
+	}
+	if (nb > bestnum)
+		b_moves++;
+	if (b_moves >= (ft_lstsize(*stack_b) / 2))
+		b_moves = (ft_lstsize(*stack_b) - b_moves) * -1;
+	rotate_stacks(stack_a, stack_b, a_moves, b_moves);
+	pb(stack_a, stack_b, 1);
+}
+
+
 void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
 {
 	t_list	*aaa;
@@ -185,12 +221,14 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b, int num_size)
 	pb(stack_a, stack_b, 1);
 	if ((*stack_b)->nb < (*stack_b)->next->nb)
 		sb(stack_b, 1);
-	while (ft_lstsize(*stack_a) > 0)
-		organized_pb(stack_a, stack_b, find_cheapest(*stack_a, *stack_b));
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		push_desc(stack_a, stack_b, find_cheapest(*stack_a, *stack_b));
+	}
 	if (!ps_checker(*stack_a, *stack_b) && *stack_a)
 		ps_bruteforce(stack_a, &aaa);
-	//print_stacks(*stack_a, *stack_b);
-	r_bigtotop(stack_b);
+	r_totop(stack_b, lst_biggest_nb_pos(*stack_b));
 	while (ft_lstsize(*stack_b))
-		pa(stack_a, stack_b, 1);
+		push_asc(stack_b, stack_a, find_cheapest(*stack_b, *stack_a));
+	r_totop(stack_a, lst_smallest_nb_pos(*stack_a));
 }
