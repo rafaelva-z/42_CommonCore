@@ -1,4 +1,6 @@
 .vscode
 a.out
 *.h.gch
-push_swap_visualizer
+Push_Swap_Visualizer
+linux_checker
+Push_Swap_Tester

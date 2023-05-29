@@ -14,6 +14,8 @@ SRC = main.c \
 
 OBJ = $(SRC:.c=.o)
 
+ARG = 0
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
