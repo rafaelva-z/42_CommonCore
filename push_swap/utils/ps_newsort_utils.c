@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:41:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/29 15:00:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/30 17:39:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	calculate_cost(
 	}
 }
 
-static void calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
+static void	calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
 {
 	int		bestnum;
 	int		stack_b_size;
@@ -112,23 +112,4 @@ int	lst_smallest_nb_pos(t_list *stack)
 		stack = stack->next;
 	}
 	return (count);
-}
-
-void	r_totop(t_list **stack, int nb_pos)
-{
-	if (nb_pos >= ft_lstsize(*stack) / 2)
-		nb_pos = (ft_lstsize(*stack) - nb_pos) * -1;
-	while (nb_pos != 0)
-	{
-		if (nb_pos > 0)
-		{
-			rb(stack, 1);
-			nb_pos--;
-		}
-		else if (nb_pos < 0)
-		{
-			rrb(stack, 1);
-			nb_pos++;
-		}
-	}
 }

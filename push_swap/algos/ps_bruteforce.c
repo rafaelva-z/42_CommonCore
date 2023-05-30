@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:21:00 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/27 20:03:21 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/05/30 16:16:33 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,35 +68,37 @@ static void	calc_solve(int **s, int i)
 
 static void	operations(t_list **stack_a, t_list **stack_b, int **solve, int i)
 {
-	if ((*solve)[i] == 1 && *stack_a)
-		sa(stack_a, (*solve)[0]);
-	else if ((*solve)[i] == 2 && *stack_b)
-		sb(stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 3 && *stack_a && *stack_b)
-		ss(stack_a, stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 4 && *stack_a)
-		ra(stack_a, (*solve)[0]);
-	else if ((*solve)[i] == 5 && *stack_b)
-		rb(stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 6 && *stack_a && *stack_b)
-		rr(stack_a, stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 7 && *stack_a)
-		rra(stack_a, (*solve)[0]);
-	else if ((*solve)[i] == 8 && *stack_b)
-		rrb(stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 9 && *stack_a && *stack_b)
-		rrr(stack_a, stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 10 && *stack_b)
-		pa(stack_a, stack_b, (*solve)[0]);
-	else if ((*solve)[i] == 11 && *stack_a)
-		pb(stack_a, stack_b, (*solve)[0]);
+	while (--i >= 1)
+	{	
+		if ((*solve)[i] == 1 && *stack_a)
+			sa(stack_a, (*solve)[0]);
+		else if ((*solve)[i] == 2 && *stack_b)
+			sb(stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 3 && *stack_a && *stack_b)
+			ss(stack_a, stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 4 && *stack_a)
+			ra(stack_a, (*solve)[0]);
+		else if ((*solve)[i] == 5 && *stack_b)
+			rb(stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 6 && *stack_a && *stack_b)
+			rr(stack_a, stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 7 && *stack_a)
+			rra(stack_a, (*solve)[0]);
+		else if ((*solve)[i] == 8 && *stack_b)
+			rrb(stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 9 && *stack_a && *stack_b)
+			rrr(stack_a, stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 10 && *stack_b)
+			pa(stack_a, stack_b, (*solve)[0]);
+		else if ((*solve)[i] == 11 && *stack_a)
+			pb(stack_a, stack_b, (*solve)[0]);
+	}
 }
 
 static void	reduplicate_stacks(
 	t_list **stack_a, t_list **stack_b, t_list **stack_ab, t_list **stack_bb)
 {
-	ft_lstclear(stack_a, ft_bzero_int);
-	ft_lstclear(stack_b, ft_bzero_int);
+	free_stacks(stack_a, stack_b);
 	*stack_a = ft_lstdup(*stack_ab);
 	*stack_b = ft_lstdup(*stack_bb);
 }
@@ -109,25 +111,25 @@ void	ps_bruteforce(t_list **stack_a, t_list **stack_b)
 	t_list	*stack_ab;
 	t_list	*stack_bb;
 
-	solve_positions = 9;
-	solve = calloc(sizeof(int), (solve_positions--));
 	stack_ab = ft_lstdup(*stack_a);
 	stack_bb = ft_lstdup(*stack_b);
+	solve_positions = 9;
+	solve = calloc(sizeof(int), (solve_positions--));
 	i = solve_positions + 1;
 	solve[i] = 1;
-	while (!ps_checker(*stack_a, *stack_b) && solve[0] == 0)
+	while (!ps_solve_checker(*stack_a, *stack_b) && solve[0] == 0)
 	{
 		reduplicate_stacks(stack_a, stack_b, &stack_ab, &stack_bb);
-		while (--i >= 1)
-			operations(stack_a, stack_b, &solve, i);
+		operations(stack_a, stack_b, &solve, i);
 		i = solve_positions + 1;
-		if (!ps_checker(*stack_a, *stack_b))
+		if (!ps_solve_checker(*stack_a, *stack_b))
 			calc_solve(&solve, i);
 	}
 	reduplicate_stacks(stack_a, stack_b, &stack_ab, &stack_bb);
 	solve[0] = 1;
-	while (--i >= 1)
-		operations(stack_a, stack_b, &solve, i);
+	operations(stack_a, stack_b, &solve, i);
+	free_stacks(&stack_ab, &stack_bb);
+	free(solve);
 }
 
 
@@ -146,7 +148,7 @@ static	void	perform_bf(t_list **stack_a, t_list **stack_b, int **solve)
 	while (i >= 1 && solve[i] != 0)
 		operations(&stack_ab, &stack_bb, solve, i--);
 	i = 14;
-	if (!ps_checker(stack_ab, stack_bb) && (*solve)[0] == 0)
+	if (!ps_solve_checker(stack_ab, stack_bb) && (*solve)[0] == 0)
 	{
 		//print_stacks(stack_ab, stack_bb);
 		ft_lstclear(&stack_ab, ft_bzero_int);
