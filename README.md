@@ -17,8 +17,8 @@ Rated out of 100 + 25 for bonus points.
 **108** | [born2beroot](./born2beroot) - set up a Debian virtual machine using VirtualBox
 
 ## Rank 02
-WIP | push_swap
+WIP | [push_swap](./push_swap) - Create an algorithm that organizes a list of numbers, using the designated moves
 
-XXX | FdF
+WIP | [FdF](./fdf) - 
 
 XXX | Exam Rank 02
