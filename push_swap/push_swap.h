@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/31 16:59:51 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 16:36:17 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,16 @@ t_list	*ft_lstbeforelast(t_list *lst);
 int		input_checker(char **input);
 t_list	*create_stack(char **argv, int argc);
 int		ps_solve_checker(t_list *stack_a, t_list *stack_b);
-int     ps_input_checker(char **input);
+int		ps_input_checker(char **input);
 int		find_cheapest(t_list *stack_a, t_list *stack_b);
-int		best_num(t_list stack_a, t_list *stack_b);
+int		find_bestnum(t_list stack_a, t_list *stack_b);
 int		lst_biggest_nb_pos(t_list *stack);
 int		lst_smallest_nb_pos(t_list *stack);
 void	free_stacks(t_list **stack_a, t_list **stack_b);
 
 // Algorithms
 void	ps_bruteforce(t_list **stack_a, t_list **stack_b);
-void    ps_newsort(t_list **stack_a, t_list **stack_b);
-
+void	ps_newsort(t_list **stack_a, t_list **stack_b);
 
 // Operations
 void	sa(t_list **stack_a, int print);
@@ -55,10 +54,7 @@ void	rb_totop(t_list **stack_b, int nb_pos);
 void	ra_totop(t_list **stack_a, int nb_pos);
 
 //others (not necessarily used)
-void	heapperm(int *a, int size, int n, t_list **stack_a, t_list **stack_b, int argc);
 t_list	*create_stack_int(int *seq, int argc);
 void	print_stacks(t_list *stack_a, t_list *stack_b);
 void	ft_swap(void *a, void *b, size_t bytes);
-
-
 #endif

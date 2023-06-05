@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:41:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/30 17:39:21 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 15:50:40 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
 	int		stack_b_size;
 
 	stack_b_size = ft_lstsize(stack_b);
-	bestnum = best_num(*stack_a, stack_b);
+	bestnum = find_bestnum(*stack_a, stack_b);
 	while (stack_b && stack_b->nb != bestnum)
 	{
 			(*moves_1)++;

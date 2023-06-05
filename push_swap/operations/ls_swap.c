@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:36:05 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 20:54:00 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 15:28:02 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	swap(t_list **stack)
 
 	if ((*stack)->next)
 	{
-	tmp = (*stack)->next->next;
-	ft_lstadd_front(stack, (*stack)->next);
-	(*stack)->next->next = tmp;
+		tmp = (*stack)->next->next;
+		ft_lstadd_front(stack, (*stack)->next);
+		(*stack)->next->next = tmp;
 	}
 	return ;
 }

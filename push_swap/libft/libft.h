@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:31:58 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:20 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 15:26:42 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 
 //Part 1 - Libc functions
 
-long		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 int		ft_isalnum(unsigned char c);
 int		ft_isalpha(unsigned char c);
 int		ft_isascii(unsigned char c);

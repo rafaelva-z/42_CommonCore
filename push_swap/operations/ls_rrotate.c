@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:36:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 20:54:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	rrotate(t_list **stack)
 
 	if ((*stack)->next)
 	{
-	tmp = ft_lstlast(*stack);
-	ft_lstbeforelast(*stack)->next = NULL;
-	ft_lstadd_front(stack, tmp);
-	*stack = tmp;
+		tmp = ft_lstlast(*stack);
+		ft_lstbeforelast(*stack)->next = NULL;
+		ft_lstadd_front(stack, tmp);
+		*stack = tmp;
 	}
 }
 
@@ -44,5 +44,5 @@ void	rrr(t_list **stack_a, t_list **stack_b, int print)
 	rrotate(stack_a);
 	rrotate(stack_b);
 	if (print)
-	ft_printf("rrr\n");
+		ft_printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:36:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/13 20:54:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:34 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	rotate(t_list **stack)
 
 	if ((*stack)->next)
 	{
-	tmp = (*stack)->next;
-	ft_lstadd_back(stack, *stack);
-	(*stack)->next = NULL;
-	*stack = tmp;
+		tmp = (*stack)->next;
+		ft_lstadd_back(stack, *stack);
+		(*stack)->next = NULL;
+		*stack = tmp;
 	}
 }
 
