@@ -1,7 +1,7 @@
 .vscode/
 a.out
 *.h.gch
-
+.nfs*
 push_swap/linux_checker
 push_swap/Push-Swap-Tester/
 push_swap/Push-Swap-Visualizer/

@@ -7,7 +7,8 @@ MLX = $(MLX_FOLDER)libmlx_Linux.a
 MLX_FOLDER = ./minilibx-linux/
 OTHERFLAG = -L$(MLX_FOLDER) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
 CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
-SRC = main.c \
+SRC =	main.c \
+		hooks.c
 
 all: $(NAME)
 
@@ -28,5 +29,8 @@ fclean: clean
 	
 re: fclean all 
 	@echo "$(NAME) - Recompiling."
+
+run: re
+	@./fdf
 
 .PHONY: all clean fclean re
