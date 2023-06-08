@@ -1,0 +1,10 @@
+FDF
+
+TODO:
+Map reader
+
+__________________________________________
+
+IDEAS:
+Start in a menu where you choose the map
+Background image / animation

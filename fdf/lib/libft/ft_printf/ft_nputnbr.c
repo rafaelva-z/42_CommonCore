@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_nputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/06 21:52:40 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/12 12:43:27 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:37:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_printf.h"
 
-void	close_win(int keycode, t_mlx *mlx)
+size_t	ft_nputnbr(long n)
 {
-	printf("Keypressed >%d\n", keycode);
-	if (keycode == 65307)
+	size_t	count;
+
+	count = 0;
+	if (n < 0)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		close_pgm(mlx);
+		n = -n;
+		count += ft_nputchar('-');
 	}
+	if (n > 9)
+	{
+		count += ft_nputnbr(n / 10);
+		count += ft_nputnbr(n % 10);
+	}
+	else
+		count += ft_nputchar(n + '0');
+	return (count);
 }
-
-void	close_pgm(t_mlx *mlx)
-{
-	exit(0);
-} 

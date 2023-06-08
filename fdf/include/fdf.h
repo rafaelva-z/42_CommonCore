@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/06 20:46:59 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/08 12:43:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 # include <limits.h>
 # include <stdint.h>
 # include <sys/stat.h>
+# include "../lib/minilibx-linux/mlx.h"
+# include "../lib/libft/libft.h"
 
-//To delete
 
+//DELETE THIS************************
 # include <stdio.h>
 
-# include "minilibx-linux/mlx.h"
-
+//STRUCTS
+//	Store MLX and window pointers
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
 }				t_mlx;
 
-//Image
+//	Image
 typedef struct s_img
 {
 	void	*img;
@@ -38,6 +40,8 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+//FUNCTIONS
+//	Program Management
 void	close_win(int keycode, t_mlx *mlx);
 void	close_pgm(t_mlx *mlx);
 

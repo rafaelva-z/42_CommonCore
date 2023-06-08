@@ -2,29 +2,34 @@
 NAME = fdf
 CC = cc
 LIBFT = $(LIBFT_FOLDER)libft.a
-LIBFT_FOLDER = ./libft/ 
+LIBFT_FOLDER = ./lib/libft/ 
 MLX = $(MLX_FOLDER)libmlx_Linux.a
-MLX_FOLDER = ./minilibx-linux/
-OTHERFLAG = -L$(MLX_FOLDER) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
+MLX_FOLDER = ./lib/minilibx-linux/
+OTHERFLAGS = -L$(LIBFT_FOLDER) -lft -L$(MLX_FOLDER) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
 CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
-SRC =	main.c \
-		hooks.c
+SRC =	./src/main.c \
+		./src/hooks.c ./src/map_reader.c
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(SRC)
-	@$(CC) $(CFLAGS) $(SRC) $(OTHERFLAG)
-	@echo "$(NAME) - Done"
+$(NAME): $(MLX) $(LIBFT) $(SRC)
+	@echo "$(NAME) - Making library"
+	@$(CC) $(CFLAGS) $(SRC) $(OTHERFLAGS)
 
-$(MLX): 
+$(MLX):
 	@make -C $(MLX_FOLDER)
+
+$(LIBFT):
+	@make -C $(LIBFT_FOLDER)
 
 clean:
 	@echo "$(NAME) - Cleaning all object files."
 	@make -C $(MLX_FOLDER) clean
+	@make -C $(LIBFT_FOLDER) clean
 
 fclean: clean
-	@echo "$(NAME) - Full clean."  
+	@echo "$(NAME) - Full clean." 
+	@make -C $(LIBFT_FOLDER) fclean 
 	@rm -f $(NAME)
 	
 re: fclean all 
@@ -32,5 +37,6 @@ re: fclean all
 
 run: re
 	@./fdf
+	@make fclean
 
 .PHONY: all clean fclean re
