@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   node_addback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/08 16:34:25 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/08 17:50:06 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/08 18:01:30 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include "../lib/libft/ft_printf/ft_printf.h"
 
-void	close_win(int keycode, t_mlx *mlx)
+void	node_addback(t_node **node, t_node *new_node)
 {
-	ft_printf("Keypressed >%d\n", keycode);
-	if (keycode == 65307)
+	t_node	*last;
+
+	if (!*node)
+		*node = new_node;
+	else
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		close_pgm(mlx);
+		last = node_last(*node);
+		last->next = new_node;
 	}
-}
-
-void	close_pgm(t_mlx *mlx)
-{
-
-	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/08 12:43:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/08 18:03:57 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 //DELETE THIS************************
 # include <stdio.h>
+
+//Screen Resolution
+# define WIN_WIDTH 960
+# define WIN_HEIGHT 480
 
 //STRUCTS
 //	Store MLX and window pointers
@@ -40,9 +44,35 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+typedef struct s_2d_point
+{
+	int	x;
+	int	y;
+}	t_2d_point;
+
+typedef struct s_3d_point
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_3d_point;
+
+typedef struct s_node
+{
+	t_3d_point		pos;
+	struct s_node	*next;
+	struct s_node	*next_line;
+}	t_node;
+
 //FUNCTIONS
 //	Program Management
 void	close_win(int keycode, t_mlx *mlx);
 void	close_pgm(t_mlx *mlx);
 
-#endif
+//	Structs and Node functions
+t_node	**make_map(int fd);
+t_node	*node_new(t_3d_point point);
+void	node_addback(t_node **node, t_node *new_node);
+t_node	*node_last(t_node *node);
+
+#endif 

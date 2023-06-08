@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/08 11:53:50 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/08 17:35:34 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ int	main(void)
 	t_img	img;
 	int		i;
 	int		j;
+	int		fd;
+	t_node	**map;
 
+	fd = open("maps/rvaz/firstmap.fdf", O_RDONLY);
 	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "FdF - by rvaz");
+	mlx.win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "FdF - by rvaz");
 	img.img = mlx_new_image(mlx.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(
 			img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	map = make_map(fd);
 	j = 0;
 	while (j < 1000)
 	{
