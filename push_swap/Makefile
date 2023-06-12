@@ -4,12 +4,12 @@ CC = cc
 LIBFT_FOLDER = ./libft/ 
 LIBFT = $(LIBFT_FOLDER)libft.a
 OTHERFLAG = -L$(LIBFT_FOLDER) -lft -o $(NAME)
-CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 SRC = main.c \
 	./utils/ft_issignal.c ./utils/ft_error.c ./utils/ft_lstbeforelast.c \
-	./utils/ft_swap.c ./utils/heapperm.c ./utils/ft_bzero_int.c ./utils/print_utils.c \
+	./utils/ft_swap.c ./utils/ft_bzero_int.c ./utils/print_utils.c \
 	./utils/ps_checkers.c ./utils/ps_create_stack.c ./utils/ps_newsort_utils.c \
-	./utils/ps_free_utils.c ./utils/ps_find_bestnum.c\
+	./utils/ps_free_utils.c ./utils/ps_find_bestnum.c \
 	./operations/ls_push.c ./operations/ls_rotate.c ./operations/ls_rrotate.c ./operations/ls_swap.c \
 	./operations/ls_totop.c \
 	./algos/ps_bruteforce.c ./algos/ps_newsort.c \
@@ -41,7 +41,6 @@ re: fclean all
 run: re
 	@echo "$(NAME) - running"
 	echo "\n----------TEST START----------"
-	#./push_swap 1 2 3 4 6 5
 	echo "\n10 Numbers"
 	./push_swap 5 10 1 9 2 4 3 7 6 8 | wc -l
 	./push_swap 10 9 8 7 6 5 4 3 2 1 | wc -l

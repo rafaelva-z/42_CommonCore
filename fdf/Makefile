@@ -8,7 +8,7 @@ MLX_FOLDER = ./lib/minilibx-linux/
 OTHERFLAGS = -L$(LIBFT_FOLDER) -lft -L$(MLX_FOLDER) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
 CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
 SRC =	./src/main.c \
-		./src/hooks.c ./src/map_reader.c ./src/node_new.c ./src/node_addback.c \
+		./src/hooks.c ./src/map_reader.c ./src/node_new.c ./src/node_addback.c ./src/node_find.c \
 		./src/node_last.c
 
 all: $(NAME)

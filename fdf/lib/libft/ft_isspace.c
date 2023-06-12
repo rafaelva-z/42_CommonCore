@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 14:42:16 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/12 16:02:02 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/12 16:02:06 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
-#include "../lib/libft/ft_printf/ft_printf.h"
-
-int	close_win(int keycode, t_mlx *mlx)
+int	ft_isspace(char c)
 {
-	ft_printf("Keypressed >%d\n", keycode);
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		return (close_pgm(mlx));
-	}
-	return(0);
-}
-
-int	close_pgm(t_mlx *mlx)
-{
-	exit(0);
-	return (1);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }

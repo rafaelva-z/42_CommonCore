@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:23:48 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/12 12:52:49 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/12 12:06:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,69 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 	}
 	ft_printf("=============rvaz=\n\n");
 }
+
+/*Print bruteforce combination being tried*/
+void	print_solve(int *solve, int argc)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = argc;
+	k = 0;
+	while (j > 0)
+	{
+		if (solve[j--] > 0)
+			k++;
+	}
+	if (k > 0)
+	{
+		i = 1;
+		ft_printf("|solve_comb = ");
+		ft_printf("%d/", solve[0]);
+		while (i < argc)
+			ft_printf("%d.", solve[i++]);
+		ft_printf("%d |\n", solve[i]);
+		ft_printf("Solved in %d moves.\n", k);
+	}
+}
+
+/*
+static int	*normalize_seq(t_list **stack_a, int num_size)
+{
+	int		*norm_seq;
+	t_list	*tmp;
+	int		i;
+
+	norm_seq = calloc(sizeof(int), num_size);
+	if (!norm_seq)
+		return (NULL);
+	tmp = *stack_a;
+	i = -1;
+	while (tmp && i < num_size)
+	{
+		norm_seq[++i] = tmp->nb;
+		tmp = tmp->next;
+	}
+
+	int	j;
+	int	tmpnum;
+	i = 0;
+	while (i < num_size)
+	{
+		j = i + 1;
+		while (j < num_size)
+		{
+			if (norm_seq[i] > norm_seq[j])
+			{
+				tmpnum = norm_seq[j];
+				norm_seq[j] = norm_seq[i];
+				norm_seq[i] = tmpnum; 
+			}
+			j++;
+		}
+		i++;
+	}
+	return (norm_seq);
+}*/

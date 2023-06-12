@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   node_find.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 14:42:16 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/12 18:03:55 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/12 19:59:35 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include "../lib/libft/ft_printf/ft_printf.h"
 
-int	close_win(int keycode, t_mlx *mlx)
+t_node  *node_find(t_node **map, t_2d_point pos)
 {
-	ft_printf("Keypressed >%d\n", keycode);
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		return (close_pgm(mlx));
-	}
-	return(0);
-}
+    t_node  *tmp;
+    int     count;
 
-int	close_pgm(t_mlx *mlx)
-{
-	exit(0);
-	return (1);
+    tmp = *map;
+    while (((tmp->pos.x != pos.x) || (tmp->pos.y != pos.y)))
+    {
+        if (!tmp->next)
+            break;
+        tmp = tmp->next;
+        printf("tmp %d %d %d,\n", tmp->pos.x, tmp->pos.y, tmp->pos.z);
+        if (((tmp->pos.x == pos.x) && (tmp->pos.y == pos.y)))
+            return (tmp);
+    }
+    return (NULL);
 }

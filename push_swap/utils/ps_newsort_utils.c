@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:41:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/05 15:50:40 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/12 12:12:29 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	calculate_moves(t_list *stack_a, t_list *stack_b, int *moves_1)
 	else if ((*stack_a).nb < bestnum && *moves_1 >= (stack_b_size / 2))
 		*moves_1 = stack_b_size - *moves_1 - 1;
 	else if ((*stack_a).nb < bestnum && *moves_1 < (stack_b_size / 2))
-		*moves_1++;
+		(*moves_1)++;
 }
 
 //Need to optizmize when ra + rb to rotate both on one move

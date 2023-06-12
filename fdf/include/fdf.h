@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/08 18:03:57 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/12 19:13:26 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,15 @@ typedef struct s_node
 
 //FUNCTIONS
 //	Program Management
-void	close_win(int keycode, t_mlx *mlx);
-void	close_pgm(t_mlx *mlx);
+int		close_win(int keycode, t_mlx *mlx);
+int		close_pgm(t_mlx *mlx);
+
 
 //	Structs and Node functions
-t_node	**make_map(int fd);
+t_node	*make_map(int fd);
 t_node	*node_new(t_3d_point point);
 void	node_addback(t_node **node, t_node *new_node);
 t_node	*node_last(t_node *node);
+t_node	*node_find(t_node **map, t_2d_point pos);
 
 #endif 

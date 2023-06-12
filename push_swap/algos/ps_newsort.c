@@ -6,24 +6,34 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/05 16:37:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/12 12:53:50 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	lst_maxint(t_list *stack)
+static void	rotate_moves(t_list **stack, int *moves, char stack_name)
 {
-	int	max;
-
-	max = 0;
-	while (stack)
+	if (*moves > 0 && stack_name == 'a')
 	{
-		if (stack->nb > max)
-			max = stack->nb;
-		stack = stack->next;
+		ra(stack, 1);
+		(*moves)--;
 	}
-	return (max);
+	else if (*moves < 0 && stack_name == 'a')
+	{
+		rra(stack, 1);
+		(*moves)++;
+	}
+	if (*moves > 0 && stack_name == 'b')
+	{
+		rb(stack, 1);
+		(*moves)--;
+	}
+	else if (*moves < 0 && stack_name == 'b')
+	{
+		rrb(stack, 1);
+		(*moves)++;
+	}
 }
 
 static void	rotate_stacks(
@@ -45,26 +55,10 @@ static void	rotate_stacks(
 		}
 		else
 		{
-			if (a_moves > 0)
-			{
-				ra(stack_a, 1);
-				a_moves--;
-			}
-			else if (a_moves < 0)
-			{
-				rra(stack_a, 1);
-				a_moves++;
-			}
-			if (b_moves > 0)
-			{
-				rb(stack_b, 1);
-				b_moves--;
-			}
-			else if (b_moves < 0)
-			{
-				rrb(stack_b, 1);
-				b_moves++;
-			}
+			if (a_moves)
+				rotate_moves(stack_a, &a_moves, 'a');
+			else if (b_moves)
+				rotate_moves(stack_b, &b_moves, 'b');
 		}
 	}
 }
@@ -115,7 +109,6 @@ static void	pa_asc(t_list **stack_b, t_list **stack_a, int nb)
 	b_moves = 0;
 	stack_b_size = ft_lstsize(*stack_b);
 	tmp = *stack_b;
-
 	while (tmp && tmp->nb != nb)
 	{
 		b_moves++;
@@ -132,41 +125,18 @@ static void	pa_asc(t_list **stack_b, t_list **stack_a, int nb)
 	}
 	if (nb > bestnum)
 		a_moves++;
-	if (a_moves >= (ft_lstsize(*stack_a) / 2))
-		a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
+	if (nb > bestnum)
+		if (a_moves >= (ft_lstsize(*stack_a) / 2))
+			a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
 	rotate_stacks(stack_a, stack_b, a_moves, b_moves);
 	pa(stack_a, stack_b, 1);
 }
 
-/* static t_list *find_biggest_seq(t_list *stack)
-{
-	t_list *tmp;
-	t_list *return_list;
-	int counter;
-	int last_nb;
-
-	counter = 0;
-	last_nb = INT_MIN;
-	return_list = ft_lstnew();
-	while ()
-	{
-		tmp = stack;
-		while (tmp)
-		{
-			if(tmp->nb > last_nb)
-				
-			tmp = tmp->next;
-		}
-	}
-} */
-
 void	ps_newsort(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*aaa;
-	// t_list	*seq;
-	aaa = NULL;
-	// seq = find_biggest_seq(*stack_a);
+	t_list	*dummy_stack;
 
+	dummy_stack = NULL;
 	pb(stack_a, stack_b, 1);
 	pb(stack_a, stack_b, 1);
 	if ((*stack_b)->nb < (*stack_b)->next->nb)
@@ -174,48 +144,9 @@ void	ps_newsort(t_list **stack_a, t_list **stack_b)
 	while (ft_lstsize(*stack_a) > 3)
 		pb_desc(stack_a, stack_b, find_cheapest(*stack_a, *stack_b));
 	if (!ps_solve_checker(*stack_a, *stack_b) && *stack_a)
-		ps_bruteforce(stack_a, &aaa);
+		ps_bruteforce(stack_a, &dummy_stack);
 	rb_totop(stack_b, lst_biggest_nb_pos(*stack_b));
 	while (ft_lstsize(*stack_b))
 		pa_asc(stack_b, stack_a, find_cheapest(*stack_b, *stack_a));
 	ra_totop(stack_a, lst_smallest_nb_pos(*stack_a));
 }
-
-/*
-static int	*normalize_seq(t_list **stack_a, int num_size)
-{
-	int		*norm_seq;
-	t_list	*tmp;
-	int		i;
-
-	norm_seq = calloc(sizeof(int), num_size);
-	if (!norm_seq)
-		return (NULL);
-	tmp = *stack_a;
-	i = -1;
-	while (tmp && i < num_size)
-	{
-		norm_seq[++i] = tmp->nb;
-		tmp = tmp->next;
-	}
-
-	int	j;
-	int	tmpnum;
-	i = 0;
-	while (i < num_size)
-	{
-		j = i + 1;
-		while (j < num_size)
-		{
-			if (norm_seq[i] > norm_seq[j])
-			{
-				tmpnum = norm_seq[j];
-				norm_seq[j] = norm_seq[i];
-				norm_seq[i] = tmpnum; 
-			}
-			j++;
-		}
-		i++;
-	}
-	return (norm_seq);
-}*/

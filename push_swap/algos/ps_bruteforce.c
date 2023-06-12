@@ -6,37 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:21:00 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:46 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/12 11:27:02 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	print_solve(int *solve, int argc)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = argc;
-	k = 0;
-	while (j > 0)
-	{
-		if (solve[j--] > 0)
-			k++;
-	}
-	if (k > 0)
-	{
-		i = 1;
-		ft_printf("|solve_comb = ");
-		ft_printf("%d/", solve[0]);
-		while (i < argc)
-			ft_printf("%d.", solve[i++]);
-		ft_printf("%d |\n", solve[i]);
-		ft_printf("Solved in %d moves.\n", k);
-	}
-}
 
 static void	calc_solve(int **s, int i)
 {
