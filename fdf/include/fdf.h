@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 19:13:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/13 16:28:42 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@
 //Screen Resolution
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 480
+
+//Keyboard
+# define KEY_ESC 65307
+# define KEY_TAB 65289
+# define KEY_F1 65470
+# define KEY_F2 65471
+# define KEY_F3 65472
+# define KEY_F4 65473
+# define KEY_F5 65474
+# define KEY_F6 65475
+# define KEY_F7 65476
+# define KEY_F8 65477
+# define KEY_F9 65478
+# define KEY_F10 65479
+# define KEY_F11 65480
+# define KEY_F12 65481
+# define KEY_LEFT 65361
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
 
 //STRUCTS
 //	Store MLX and window pointers
@@ -63,6 +83,20 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*next_line;
 }	t_node;
+
+typedef struct s_line
+{
+	t_2d_point	point_a;
+	t_2d_point	point_b;
+}	t_line;
+
+typedef struct s_map
+{
+	t_3d_point		pos;
+	t_node			*first_node;
+	t_2d_point		size;
+	t_img			img;
+}	t_map;
 
 //FUNCTIONS
 //	Program Management

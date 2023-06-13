@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 14:42:16 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/13 18:44:14 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 int	close_win(int keycode, t_mlx *mlx)
 {
 	ft_printf("Keypressed >%d\n", keycode);
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		return (close_pgm(mlx));
 	}
-	return(0);
+	return (0);
 }
 
 int	close_pgm(t_mlx *mlx)

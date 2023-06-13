@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 16:14:43 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/13 18:43:04 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void update()
+void	update(void)
 {
 	t_mlx	mlx;
 	t_img	img;
@@ -70,4 +70,47 @@ int	main(void)
 	fd = open("maps/rvaz/firstmap.fdf", O_RDONLY);
 	map = make_map(fd);
 	update();
+}
+
+static int	absolute(int n)
+{
+	if(n < 0)
+		n = -n;
+	return (n);
+}
+
+void	draw_line(t_2d_point point_a, t_2d_point point_b, t_img img)
+{
+	t_2d_point	diff;
+	t_2d_point	s;
+	t_2d_point	err;
+
+	diff.x = absolute(point_b.x - point_a.x);
+	diff.y = -absolute(point_b.y - point_a.y);
+	err.x = diff.x + diff.y;
+	if (point_a.x < point_b.x)
+		s.x = 1;
+	else
+		s.x = 0;
+	if (point_a.y < point_b.y)
+		s.y = 1;
+	else
+		s.y =-1;	
+	while (1)
+	{
+		my_mlx_pixel_put(&img, point_a.x, point_a.y, 0x00FFaa00);
+		if (point_a.x == point_b.x && point_a.y == point_b.y)
+			break ;
+		err.y = 2 * err.x;
+		if (err.y > diff.y) 
+		{
+			err.x += diff.y;
+			point_a.x += s.x;
+		}
+		if (err.y < diff.x)
+		{
+			err.x += diff.x;
+			point_a.y += s.y;
+		}
+	}
 }
