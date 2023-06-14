@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:25:43 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/05 13:49:25 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:10:43 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	main(int argc, char **argv)
 			if (argc - 1 <= 5)
 				ps_bruteforce(&stack_a, &stack_b);
 			else
-				ps_newsort(&stack_a, &stack_b);
+				ps_radixsort(&stack_a, &stack_b);
+			// else
+			// 	ps_newsort(&stack_a, &stack_b);
 		}
 		free_stacks(&stack_a, &stack_b);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:18:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/05 16:36:17 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:12:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_stacks(t_list **stack_a, t_list **stack_b);
 // Algorithms
 void	ps_bruteforce(t_list **stack_a, t_list **stack_b);
 void	ps_newsort(t_list **stack_a, t_list **stack_b);
+void	ps_radixsort(t_list **stack_a, t_list **stack_b);
 
 // Operations
 void	sa(t_list **stack_a, int print);

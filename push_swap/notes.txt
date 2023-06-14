@@ -11,9 +11,6 @@ With more than 5 numbers it may take an unreasonable amout
 of time to solve it. (like 20 minutes)
 
 ------------------------------------------------------------
-will probably make another one for 5-10 numbers
-
-------------------------------------------------------------
 -NEWSORT (provisory name)
 [using for >5 numbers]
 
