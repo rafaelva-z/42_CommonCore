@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:41:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/14 18:11:33 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/14 21:55:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	ps_radixsort(t_list **stack_a, t_list **stack_b)
 			j++;
 		}
 		print_stacks(*stack_a, *stack_b);
+		if(stack)
 		while (*stack_b)
 			pa(stack_a, stack_b, 1);
 		i++;
