@@ -42,7 +42,7 @@ run: re
 	@echo "$(NAME) - running"
 	echo "\n----------TEST START----------"
 	echo "\n10 Numbers"
-	./push_swap 5 10 1 9 2 4 3 7 6 8 
+	./push_swap 5 10 1 9 2 4 3 7 6 8
 	./push_swap 10 9 8 7 6 5 4 3 2 1
 	./push_swap 10 1 2 3 9 8 7 5 6 4
 	./push_swap 10 9 8 7 6 1 2 3 4 5

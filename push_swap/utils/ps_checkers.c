@@ -6,13 +6,12 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:23:20 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/14 20:25:09 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/15 11:55:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	stack_organized
 int	ps_solve_checker(t_list *stack_a, t_list *stack_b)
 {
 	if (!stack_a || stack_b)
