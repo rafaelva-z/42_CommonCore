@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:23:48 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 12:06:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/16 19:08:41 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,42 +60,3 @@ void	print_solve(int *solve, int argc)
 		ft_printf("Solved in %d moves.\n", k);
 	}
 }
-
-/*
-static int	*normalize_seq(t_list **stack_a, int num_size)
-{
-	int		*norm_seq;
-	t_list	*tmp;
-	int		i;
-
-	norm_seq = calloc(sizeof(int), num_size);
-	if (!norm_seq)
-		return (NULL);
-	tmp = *stack_a;
-	i = -1;
-	while (tmp && i < num_size)
-	{
-		norm_seq[++i] = tmp->nb;
-		tmp = tmp->next;
-	}
-
-	int	j;
-	int	tmpnum;
-	i = 0;
-	while (i < num_size)
-	{
-		j = i + 1;
-		while (j < num_size)
-		{
-			if (norm_seq[i] > norm_seq[j])
-			{
-				tmpnum = norm_seq[j];
-				norm_seq[j] = norm_seq[i];
-				norm_seq[i] = tmpnum; 
-			}
-			j++;
-		}
-		i++;
-	}
-	return (norm_seq);
-}*/

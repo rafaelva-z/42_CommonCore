@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 12:33:18 by rvaz              #+#    #+#             */
-/*   Updated: 2023/05/12 15:55:17 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/16 16:28:13 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/16 17:18:48 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap(void *a, void *b, size_t bytes)
+t_list	*ps_newsort_moves(t_list **lst, int nb, int *moves)
 {
-	char	*tmp;
-	char	*ca;
-	char	*cb;
+	t_list	*tmp;
 
-	if (!a || !b || !bytes)
-		return ;
-	ca = (char *)a;
-	cb = (char *)b;
-	tmp = calloc(sizeof(char), bytes);
-	while (bytes--)
+	tmp = *lst;
+	while (tmp && tmp->nb != nb)
 	{
-		tmp[bytes] = ca[bytes];
-		ca[bytes] = cb[bytes];
-		cb[bytes] = tmp[bytes];
+		(*moves)++;
+		tmp = tmp->next;
 	}
-	free(tmp);
+	return (tmp);
 }

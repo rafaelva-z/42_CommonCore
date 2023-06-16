@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:23:01 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/15 12:31:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/16 17:37:07 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,7 @@ static void	pb_desc(t_list **stack_a, t_list **stack_b, int nb)
 	a_moves = 0;
 	b_moves = 0;
 	stack_a_size = ft_lstsize(*stack_a);
-	tmp = *stack_a;
-	while (tmp && tmp->nb != nb)
-	{
-		a_moves++;
-		tmp = tmp->next;
-	}
+	tmp = ps_newsort_moves(stack_a, nb, &a_moves);
 	if (a_moves >= (ft_lstsize(*stack_a) / 2))
 		a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
 	bestnum = find_bestnum(*tmp, *stack_b);
@@ -108,12 +103,7 @@ static void	pa_asc(t_list **stack_b, t_list **stack_a, int nb)
 	a_moves = 0;
 	b_moves = 0;
 	stack_b_size = ft_lstsize(*stack_b);
-	tmp = *stack_b;
-	while (tmp && tmp->nb != nb)
-	{
-		b_moves++;
-		tmp = tmp->next;
-	}
+	tmp = ps_newsort_moves(stack_b, nb, &b_moves);
 	if (b_moves >= (ft_lstsize(*stack_b) / 2) && b_moves)
 		b_moves = (ft_lstsize(*stack_b) - b_moves) * -1;
 	bestnum = find_bestnum(*tmp, *stack_a);
@@ -125,9 +115,8 @@ static void	pa_asc(t_list **stack_b, t_list **stack_a, int nb)
 	}
 	if (nb > bestnum)
 		a_moves++;
-	if (nb > bestnum)
-		if (a_moves >= (ft_lstsize(*stack_a) / 2))
-			a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
+	if (a_moves >= (ft_lstsize(*stack_a) / 2))
+		a_moves = (ft_lstsize(*stack_a) - a_moves) * -1;
 	rotate_stacks(stack_a, stack_b, a_moves, b_moves);
 	pa(stack_a, stack_b, 1);
 }
