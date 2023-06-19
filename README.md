@@ -2,9 +2,9 @@
 
 Projects of the main course at [42 Lisbon](https://www.42lisboa.com/).
 
-Rated out of 100 + 25 for bonus points.
+Rated out of 100 points + 25 for bonus points.
 
-*My [intra profile](https://profile.intra.42.fr/users/rvaz)* (joined 11th april 2023)
+*My [intra profile](https://profile.intra.42.fr/users/rvaz)* (started 11th april 2023)
 
 
 ## Rank 01
@@ -17,7 +17,7 @@ Rated out of 100 + 25 for bonus points.
 **108** | [born2beroot](./born2beroot) - set up a Debian virtual machine using VirtualBox
 
 ## Rank 02
-WIP | [push_swap](./push_swap) - Create an algorithm that organizes a list of numbers, using the designated moves
+**100** | [push_swap](./push_swap) - Create an algorithm that organizes a list of numbers, using the designated operations
 
 WIP | [FdF](./fdf) - 
 
