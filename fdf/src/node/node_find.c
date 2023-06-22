@@ -6,11 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:03:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 19:59:35 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/22 16:12:20 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 t_node  *node_find(t_node **map, t_2d_point pos)
 {

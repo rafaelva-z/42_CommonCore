@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_new.c                                         :+:      :+:    :+:   */
+/*   node_addback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 22:45:25 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/12 14:53:44 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/08 17:50:06 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/22 16:12:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
-t_node	*node_new(t_3d_point point)
+void	node_addback(t_node **node, t_node *new_node)
 {
-	t_node	*node;
+	t_node	*last;
 
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		return (NULL);
-	node->pos = point;
-	node->next = NULL;
-	node->next_line = NULL;
-	return (node);
+	if (!*node)
+		*node = new_node;
+	else
+	{
+		last = node_last(*node);
+		last->next = new_node;
+	}
 }

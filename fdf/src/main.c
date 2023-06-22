@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/13 18:43:04 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/22 17:05:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 void	update(void)
 {
 	t_mlx	mlx;
+	t_map	map;
 	t_img	img;
 	int		i;
 	int		j;
@@ -65,7 +66,7 @@ void	update(void)
 int	main(void)
 {
 	int		fd;
-	t_node	*map;
+	t_map	*map;
 
 	fd = open("maps/rvaz/firstmap.fdf", O_RDONLY);
 	map = make_map(fd);

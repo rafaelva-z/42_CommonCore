@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   node_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 16:02:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/22 12:48:02 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/18 22:45:25 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/22 16:12:39 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* 
-ASCII REFERENCE
+#include "../../include/fdf.h"
 
-9  = \t
-10 = \n
-11 = \v
-12 = \f
-13 = \r
-32 = SPACE
-*/
-
-int	ft_isspace(char c)
+t_node	*node_new(t_3d_point point)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->pos = point;
+	node->next = NULL;
+	node->below = NULL;
+	return (node);
 }

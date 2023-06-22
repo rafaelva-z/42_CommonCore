@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   node_addbelow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 16:02:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/22 12:48:02 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/08 17:50:06 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/22 16:12:20 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* 
-ASCII REFERENCE
+#include "../../include/fdf.h"
 
-9  = \t
-10 = \n
-11 = \v
-12 = \f
-13 = \r
-32 = SPACE
-*/
-
-int	ft_isspace(char c)
+void	node_addbelow(t_node **node, t_node *new_node)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
+	t_node	*last;
+
+	if (!*node)
+		*node = new_node;
+	else
+	{
+		last = node_lastbelow(*node);
+		last->below = new_node;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/13 18:45:59 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/22 17:48:42 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,36 @@ static void	print_map(t_map map)
 
 	j = 0;
 	node = map.first_node;
-	while (node && j++ < map.size.y)
+	while (node)
 	{
 		i = 0;
 		while (node && i++ < node->pos.x)
 		{
-			ft_printf("%d | ", node->pos.z);
+			ft_printf("%d |", node->pos.z);
 			node = node->next;
 		}
 		ft_printf("\n");
 	}
 }
 
-static void	vertical_ptr(t_map **map, t_2d_point size,)
-{
+// static void	vertical_ptr(t_map **map, t_2d_point size,)
+// {
 
-}
+// }
 
 t_map	*make_map(int fd)
 {
-	t_map		map;
-	t_3d_point	pos;
-	t_node		node;
+	t_map		*map;
 	char		*line;
-	int			check;
 	int			i;
 
+	map = malloc(sizeof(t_map));
+	map->first_node = NULL;
+
+	//Node assign and adding
+	t_3d_point	pos;
+
 	pos = (t_3d_point){1, 1, 1};
-	check = 1;
 	while ((line = get_next_line(fd)))
 	{
 		i = 0;
@@ -56,16 +58,20 @@ t_map	*make_map(int fd)
 		{
 			if (ft_isdigit(line[i]))
 			{
-				pos.z = line[i] - '0';
-				node_addback(&map, node_new(pos));
+				pos.z = ft_atoi(&line[i]);
+				node_addback(&(map->first_node), node_new(pos));
 				pos.x++;
+				while (ft_isdigit(line[i]))
+					i++;
 			}
 			if (line[i] == '\n')
 				pos.y++;
 			i++;
 		}
+		map->size = (t_2d_point){pos.x - 1, pos.y};
 	}
+	printf("%d %d<<<<", map->size.x, map->size.y);
 	free(line);
-	print_map(map);
+	print_map(*map);
 	return (map);
 }
