@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   draw_pixel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 18:19:28 by rvaz             ###   ########.fr       */
+/*   Created: 2023/06/24 18:12:41 by rvaz              #+#    #+#             */
+/*   Updated: 2023/06/24 18:13:15 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include "../lib/libft/ft_printf/ft_printf.h"
 
-int	close_win(int keycode, t_mlx *mlx)
+void	draw_pixel(t_img *img, int x, int y, int color)
 {
-	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		return (close_pgm(mlx));
-	}
-	return (0);
-}
+	char	*dst;
 
-int	close_pgm(t_mlx *mlx)
-{
-	exit(0);
-	return (1);
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

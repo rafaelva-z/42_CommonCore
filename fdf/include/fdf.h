@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 15:44:49 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/24 18:19:58 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ typedef struct s_map
 int		close_win(int keycode, t_mlx *mlx);
 int		close_pgm(t_mlx *mlx);
 
+//	Drawing
+void	draw_pixel(t_img *img, int x, int y, int color);
+void	draw_line(t_2d_point pa, t_2d_point pb, t_img *img);
 
 //	Structs and Node functions
 t_map	*make_map(int fd);
