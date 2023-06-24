@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_find.c                                        :+:      :+:    :+:   */
+/*   ft_issignal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 18:03:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 16:30:20 by rvaz             ###   ########.fr       */
+/*   Created: 2023/05/10 14:07:28 by rvaz              #+#    #+#             */
+/*   Updated: 2023/05/11 00:30:07 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
-
-t_node	*node_find(t_map *map, t_2d_point pos)
+int	ft_issignal(char c)
 {
-	t_node	*tmp;
-	int		count;
-
-	tmp = map->first_node;
-	while (((tmp->pos.x != pos.x) || (tmp->pos.y != pos.y)))
-	{
-		if (!(tmp->next))
-			break ;
-		tmp = tmp->next;
-	}
-	if (((tmp->pos.x == pos.x) && (tmp->pos.y == pos.y)))
-		return (tmp);
-	return (NULL);
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
 }

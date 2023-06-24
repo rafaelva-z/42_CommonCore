@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/22 12:47:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/24 15:44:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_node
 	struct s_map	*map;
 	struct s_node	*next;
 	struct s_node	*below;
+	t_2d_point		end_of_line;
 }	t_node;
 
 typedef struct s_line
@@ -102,8 +103,6 @@ typedef struct s_map
 	t_img			img;
 }	t_map;
 
-
-
 //FUNCTIONS
 //	Program Management
 int		close_win(int keycode, t_mlx *mlx);
@@ -112,9 +111,14 @@ int		close_pgm(t_mlx *mlx);
 
 //	Structs and Node functions
 t_map	*make_map(int fd);
-t_node	*node_new(t_3d_point point);
+t_node	*node_new(t_map *map, t_3d_point point);
 void	node_addback(t_node **node, t_node *new_node);
+void	node_addbelow(t_node **node, t_node *new_node);
 t_node	*node_last(t_node *node);
-t_node	*node_find(t_node **map, t_2d_point pos);
+t_node	*node_find(t_map *map, t_2d_point pos);
+t_node	*node_lastbelow(t_node *node);
+
+
+int		ft_issignal(char c);
 
 #endif 
