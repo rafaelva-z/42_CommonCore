@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 17:08:29 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/30 19:00:18 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ static void	below_ptr_assign(t_map **map, t_2d_point size)
 				node_find(*map, (t_2d_point){pos.x, pos.y}));
 			pos.y++;
 		}
+		node_find(*map, (t_2d_point){pos.x, pos.y - 1})->end_of_line.y = 1;
 		pos.x++;
 	}
 }
@@ -130,6 +131,7 @@ t_map	*make_map(int fd)
 	map_size = get_map_size(map);
 	below_ptr_assign(&map, map_size);
 	print_map(*map);
+	printf("%d, %d", node_find(map, (t_2d_point){1, 4})->end_of_line.y, node_find(map, (t_2d_point){2, 4})->end_of_line.y);
 	free(line);
 	return (map);
 }

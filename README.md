@@ -19,6 +19,8 @@ Rated out of 100 points + 25 for bonus points.
 ## Rank 02
 **100** | [push_swap](./push_swap) - Create an algorithm that organizes a list of numbers, using the designated operations
 
-WIP | [FdF](./fdf) - 
+WIP | [fdf](./fdf) - 
+
+WIP | [minitalk](./minitalk) - 
 
 XXX | Exam Rank 02

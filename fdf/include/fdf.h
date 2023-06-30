@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 18:19:58 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/06/30 20:08:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <stdio.h>
 
 //Screen Resolution
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 //Keyboard
 # define KEY_ESC 65307
@@ -47,14 +47,6 @@
 # define KEY_DOWN 65364
 
 //STRUCTS
-//	Store MLX and window pointers
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-}				t_mlx;
-
-//	Image
 typedef struct s_img
 {
 	void	*img;
@@ -63,6 +55,13 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }				t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_img	*img;
+}				t_mlx;
 
 typedef struct s_2d_point
 {
@@ -77,7 +76,6 @@ typedef struct s_3d_point
 	int	z;
 }	t_3d_point;
 
-//MAP and NODEs
 struct	s_map;
 
 typedef struct s_node
@@ -105,14 +103,15 @@ typedef struct s_map
 
 //FUNCTIONS
 //	Program Management
-int		close_win(int keycode, t_mlx *mlx);
+int		key_reader(int keycode, t_mlx *mlx);
 int		close_pgm(t_mlx *mlx);
 
 //	Drawing
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_line(t_2d_point pa, t_2d_point pb, t_img *img);
+void	draw_fdf(t_map map, t_img *img);
 
-//	Structs and Node functions
+//	Struct and Node functions
 t_map	*make_map(int fd);
 t_node	*node_new(t_map *map, t_3d_point point);
 void	node_addback(t_node **node, t_node *new_node);
