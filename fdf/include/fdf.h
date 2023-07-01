@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/30 20:08:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/01 18:40:54 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,42 @@
 # include <limits.h>
 # include <stdint.h>
 # include <sys/stat.h>
+# include <math.h>
 # include "../lib/minilibx-linux/mlx.h"
 # include "../lib/libft/libft.h"
-
 
 //DELETE THIS************************
 # include <stdio.h>
 
 //Screen Resolution
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 
 //Keyboard
-# define KEY_ESC 65307
-# define KEY_TAB 65289
-# define KEY_F1 65470
-# define KEY_F2 65471
-# define KEY_F3 65472
-# define KEY_F4 65473
-# define KEY_F5 65474
-# define KEY_F6 65475
-# define KEY_F7 65476
-# define KEY_F8 65477
-# define KEY_F9 65478
-# define KEY_F10 65479
-# define KEY_F11 65480
-# define KEY_F12 65481
-# define KEY_LEFT 65361
-# define KEY_UP 65362
-# define KEY_RIGHT 65363
-# define KEY_DOWN 65364
+# define KEY_PLUS	65451
+# define KEY_MINUS	65453
+# define KEY_ESC	65307
+# define KEY_TAB	65289
+# define KEY_F1		65470
+# define KEY_F2		65471
+# define KEY_F3		65472
+# define KEY_F4		65473
+# define KEY_F5		65474
+# define KEY_F6		65475
+# define KEY_F7		65476
+# define KEY_F8		65477
+# define KEY_F9		65478
+# define KEY_F10	65479
+# define KEY_F11	65480
+# define KEY_F12	65481
+# define KEY_LEFT	65361
+# define KEY_UP		65362
+# define KEY_RIGHT	65363
+# define KEY_DOWN	65364
 
 //STRUCTS
+struct	s_map;
+
 typedef struct s_img
 {
 	void	*img;
@@ -58,15 +62,16 @@ typedef struct s_img
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-	t_img	*img;
+	void			*mlx;
+	void			*win;
+	t_img			*img;
+	struct s_map	*map;
 }				t_mlx;
 
 typedef struct s_2d_point
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 }	t_2d_point;
 
 typedef struct s_3d_point
@@ -76,11 +81,10 @@ typedef struct s_3d_point
 	int	z;
 }	t_3d_point;
 
-struct	s_map;
-
 typedef struct s_node
 {
 	t_3d_point		pos;
+	t_2d_point		calc_pos;
 	struct s_map	*map;
 	struct s_node	*next;
 	struct s_node	*below;
@@ -99,6 +103,9 @@ typedef struct s_map
 	t_node			*first_node;
 	t_2d_point		size;
 	t_img			img;
+	float			scale;
+	t_2d_point		offset;
+	t_3d_point		rotation;
 }	t_map;
 
 //FUNCTIONS
@@ -109,7 +116,7 @@ int		close_pgm(t_mlx *mlx);
 //	Drawing
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_line(t_2d_point pa, t_2d_point pb, t_img *img);
-void	draw_fdf(t_map map, t_img *img);
+void	draw_fdf(t_mlx *mlx);
 
 //	Struct and Node functions
 t_map	*make_map(int fd);
@@ -119,7 +126,6 @@ void	node_addbelow(t_node **node, t_node *new_node);
 t_node	*node_last(t_node *node);
 t_node	*node_find(t_map *map, t_2d_point pos);
 t_node	*node_lastbelow(t_node *node);
-
 
 int		ft_issignal(char c);
 

@@ -6,11 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 18:12:41 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:15 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/01 18:25:14 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 void	draw_pixel(t_img *img, int x, int y, int color)
 {

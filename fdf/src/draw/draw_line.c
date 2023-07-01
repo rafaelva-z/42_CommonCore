@@ -6,11 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:45:18 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/24 19:08:47 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/01 18:22:18 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 static void	calculate_next_point(t_2d_point *pa, t_2d_point pb,
 	t_2d_point diff, int *err, int *err2)

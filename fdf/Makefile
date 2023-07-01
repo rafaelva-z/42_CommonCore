@@ -11,7 +11,7 @@ MLX = $(MLX_PATH)libmlx_Linux.a
 
 CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
 OTHERFLAGS = -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
-SRC =	./src/*.c ./src/node/*.c\
+SRC =	./src/*.c ./src/node/*.c ./src/draw/*.c \
 		# ./src/main.c \
 		# ./src/hooks.c ./src/map_reader.c ./src/node/node_new.c ./src/node/node_addback.c ./src/node/node_find.c \
 		# ./src/node/node_last.c ./src/node/node_lastbelow.c

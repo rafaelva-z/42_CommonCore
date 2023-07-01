@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/30 19:00:18 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/01 17:13:09 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,9 @@ t_map	*make_map(int fd)
 	if (!map)
 		return (NULL);
 	map->first_node = NULL;
+	map->scale = 10;
+	map->offset = (t_2d_point){WIN_WIDTH / 2, WIN_HEIGHT / 2};
+	map->rotation = (t_3d_point){0, 0, 0};
 	line = get_next_line(fd);
 	y = 1;
 	while (line)
@@ -130,8 +133,8 @@ t_map	*make_map(int fd)
 	}
 	map_size = get_map_size(map);
 	below_ptr_assign(&map, map_size);
-	print_map(*map);
-	printf("%d, %d", node_find(map, (t_2d_point){1, 4})->end_of_line.y, node_find(map, (t_2d_point){2, 4})->end_of_line.y);
+	//print_map(*map);
+	printf("====fdf====MAP=PARSED====\n");
 	free(line);
 	return (map);
 }
