@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/01 18:43:35 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/03 15:39:44 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,21 @@
 
 int	key_reader(int keycode, t_mlx *mlx)
 {
-	printf("Keycode %d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		return (close_pgm(mlx));
 	}
-	else if (keycode == KEY_UP)
-		mlx->map->offset.y -= 10;
-	else if (keycode == KEY_DOWN)
-		mlx->map->offset.y += 10;
-	else if (keycode == KEY_LEFT)
-		mlx->map->offset.x -= 10;
-	else if (keycode == KEY_RIGHT)
-		mlx->map->offset.x += 10;
-	else if (keycode == KEY_MINUS)
-		mlx->map->scale -= 1;
-	else if (keycode == KEY_PLUS)
-		mlx->map->scale += 1;
-	else if (keycode == KEY_F1)
-	printf("OffsetX %f, OffsetY%f\n", mlx->map->offset.x, mlx->map->offset.y);
-	ft_bzero(mlx->img->addr, WIN_WIDTH * WIN_HEIGHT * sizeof(mlx->img->bits_per_pixel));
+	else if (keycode == KEY_UP || keycode == KEY_DOWN || keycode == KEY_LEFT 
+		|| keycode == KEY_RIGHT || keycode == KEY_W || keycode == KEY_S
+		|| keycode == KEY_A || keycode == KEY_D)
+		offset(mlx->map, keycode);
+	else if (keycode == KEY_MINUS || keycode == KEY_PLUS)
+		zoom(mlx->map, keycode);
+	else if (keycode == KEY_Q || keycode == KEY_E)
+		rotate(mlx->map, keycode);
+	ft_bzero(mlx->img->addr, (WIN_WIDTH * WIN_HEIGHT)
+		* sizeof(mlx->img->bits_per_pixel));
 	draw_fdf(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	return (0);

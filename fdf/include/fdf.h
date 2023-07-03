@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/01 18:40:54 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/03 14:15:53 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@
 # define KEY_UP		65362
 # define KEY_RIGHT	65363
 # define KEY_DOWN	65364
+# define KEY_A		97
+# define KEY_D		100
+# define KEY_E		101
+# define KEY_Q		113
+# define KEY_S		115
+# define KEY_W		119
+# define KEY_X		120
+# define KEY_Z		122
 
 //STRUCTS
 struct	s_map;
@@ -76,9 +84,9 @@ typedef struct s_2d_point
 
 typedef struct s_3d_point
 {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 }	t_3d_point;
 
 typedef struct s_node
@@ -106,6 +114,7 @@ typedef struct s_map
 	float			scale;
 	t_2d_point		offset;
 	t_3d_point		rotation;
+	t_2d_point		angle_z;
 }	t_map;
 
 //FUNCTIONS
@@ -117,6 +126,12 @@ int		close_pgm(t_mlx *mlx);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_line(t_2d_point pa, t_2d_point pb, t_img *img);
 void	draw_fdf(t_mlx *mlx);
+
+// Map Movement
+void	offset(t_map *map, int keycode);
+void	zoom(t_map *map, int keycode);
+void	rotate(t_map *map, int keycode);
+//oid	rotation_z(t_map *map, int keycode);
 
 //	Struct and Node functions
 t_map	*make_map(int fd);

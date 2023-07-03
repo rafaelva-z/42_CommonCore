@@ -6,13 +6,13 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/01 17:13:09 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/03 15:40:31 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static void	print_map(t_map map)
+/* static void	print_map(t_map map)
 {
 	t_node	*node;
 	int		i;
@@ -25,12 +25,12 @@ static void	print_map(t_map map)
 		i = 0;
 		while (node && i++ < node->pos.x)
 		{
-			ft_printf("%d |", node->pos.z);
+			printf("0%f |", node->pos.z);
 			node = node->next;
 		}
 		ft_printf("\n");
 	}
-}
+} */
 
 static void	map_addline(t_map **map, char *line, int y)
 {
@@ -110,11 +110,24 @@ static void	below_ptr_assign(t_map **map, t_2d_point size)
 	}
 }
 
+//	Relocates the points so that the closest point to the center is {0,0}	
+void	center_map(t_map *map)
+{
+	t_node	*node;
+
+	node = map->first_node;
+	while (node)
+	{
+		node->pos.x -= map->size.x / 2;
+		node->pos.y -= map->size.y / 2; 
+		node = node->next;
+	}
+}
+
 t_map	*make_map(int fd)
 {
 	t_map		*map;
 	char		*line;
-	t_2d_point	map_size;
 	int			y;
 
 	map = malloc(sizeof(t_map));
@@ -124,6 +137,7 @@ t_map	*make_map(int fd)
 	map->scale = 10;
 	map->offset = (t_2d_point){WIN_WIDTH / 2, WIN_HEIGHT / 2};
 	map->rotation = (t_3d_point){0, 0, 0};
+	map->angle_z = (t_2d_point){cos(map->rotation.z), sin(map->rotation.z)};
 	line = get_next_line(fd);
 	y = 1;
 	while (line)
@@ -131,10 +145,9 @@ t_map	*make_map(int fd)
 		map_addline(&map, line, y++);
 		line = get_next_line(fd);
 	}
-	map_size = get_map_size(map);
-	below_ptr_assign(&map, map_size);
-	//print_map(*map);
-	printf("====fdf====MAP=PARSED====\n");
+	map->size = get_map_size(map);
+	below_ptr_assign(&map, map->size);
+	center_map(map);
 	free(line);
 	return (map);
 }

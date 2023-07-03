@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/01 18:29:23 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/03 15:35:30 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	start(t_map map)
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img->img, 0, 0);
 	mlx_key_hook(mlx.win, key_reader, &mlx);
 	mlx_hook(mlx.win, 17, 0L, close_pgm, &mlx);
+	printf("Press ESC to exit\n");
 	mlx_loop(mlx.mlx);
 }
 
@@ -35,7 +36,12 @@ int	main(void)
 	int		fd;
 	t_map	*map;
 
-	fd = open("maps/rvaz/firstmap.fdf", O_RDONLY);
-	map = make_map(fd);
-	start(*map);
+	fd = open("maps/rvaz/spike.fdf", O_RDONLY);
+	if (fd > 0)
+	{
+		map = make_map(fd);
+		start(*map);
+	}
+	else
+		printf("[fdf] ERROR - Invalid map path\n");
 }
