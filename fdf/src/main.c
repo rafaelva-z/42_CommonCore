@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/03 15:35:30 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/05 19:20:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 	int		fd;
 	t_map	*map;
 
-	fd = open("maps/rvaz/spike.fdf", O_RDONLY);
+	fd = open("maps/42Maps/t1.fdf", O_RDONLY);
 	if (fd > 0)
 	{
 		map = make_map(fd);

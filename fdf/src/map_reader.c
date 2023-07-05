@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/03 15:40:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/05 19:06:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	map_addline(t_map **map, char *line, int y)
 		}
 		if (ft_isdigit(line[i]) || ft_issignal(line[i]))
 		{
-			pos.z = ft_atoi(&line[i]);
+			pos.z = -ft_atoi(&line[i]) / 3;
 			node_addback(&((*map)->first_node), node_new(*map, pos));
 			pos.x++;
 			while (ft_issignal(line[i]) || ft_isdigit(line[i]))
@@ -134,7 +134,7 @@ t_map	*make_map(int fd)
 	if (!map)
 		return (NULL);
 	map->first_node = NULL;
-	map->scale = 10;
+	map->scale = 25;
 	map->offset = (t_2d_point){WIN_WIDTH / 2, WIN_HEIGHT / 2};
 	map->rotation = (t_3d_point){0, 0, 0};
 	map->angle_z = (t_2d_point){cos(map->rotation.z), sin(map->rotation.z)};
