@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_find.c                                        :+:      :+:    :+:   */
+/*   node_freemap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 18:03:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:19:52 by rvaz             ###   ########.fr       */
+/*   Created: 2023/07/06 14:15:45 by rvaz              #+#    #+#             */
+/*   Updated: 2023/07/06 15:23:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-t_node	*node_find(t_map *map, t_2d_point pos)
+void	node_freemap(t_map *map)
 {
 	t_node	*tmp;
 
-	tmp = map->first_node;
-	while (((tmp->pos.x != pos.x) || (tmp->pos.y != pos.y)))
+	while (map->first_node)
 	{
-		if (!(tmp->next))
-			break ;
-		tmp = tmp->next;
+		tmp = map->first_node;
+		map->first_node = map->first_node->next;
+		free(tmp);
 	}
-	if (((tmp->pos.x == pos.x) && (tmp->pos.y == pos.y)))
-		return (tmp);
-	return (NULL);
+	free(map);
 }

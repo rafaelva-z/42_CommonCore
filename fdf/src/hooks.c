@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/03 15:39:44 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/06 15:07:19 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	key_reader(int keycode, t_mlx *mlx)
 
 int	close_pgm(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->mlx, mlx->img->img);
+	free(mlx->img);
+	node_freemap(mlx->map);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
 	exit(0);
 	return (1);
 }

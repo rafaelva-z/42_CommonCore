@@ -9,8 +9,8 @@ LIBFT = $(LIBFT_PATH)libft.a
 MLX_PATH = ./lib/minilibx-linux/
 MLX = $(MLX_PATH)libmlx_Linux.a
 
-CFLAGS = #-g -fsanitize=address #-Wall -Wextra -Werror
-OTHERFLAGS = -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
+OTHERFLAGS = -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
 SRC =	./src/*.c ./src/node/*.c ./src/draw/*.c \
 		# ./src/main.c \
 		# ./src/hooks.c ./src/map_reader.c ./src/node/node_new.c ./src/node/node_addback.c ./src/node/node_find.c \
@@ -58,7 +58,7 @@ re: fclean all
 	@echo "$(TAG) Recompiling."
 
 run: re
-	@./fdf
+	@./fdf maps/42Maps/100-6.fdf
 	@make fclean
 
 .PHONY: all clean fclean re run

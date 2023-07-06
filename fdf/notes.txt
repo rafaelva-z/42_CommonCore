@@ -1,4 +1,4 @@
 FDF
 
-Parsing maps with colors
-Argument parser
+Check exceptional cases on map parsing
+empty map file = seg fault

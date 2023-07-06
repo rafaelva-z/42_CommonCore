@@ -6,37 +6,16 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/05 19:06:45 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/06 16:03:32 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-/* static void	print_map(t_map map)
-{
-	t_node	*node;
-	int		i;
-	int		j;
-
-	j = 0;
-	node = map.first_node;
-	while (node)
-	{
-		i = 0;
-		while (node && i++ < node->pos.x)
-		{
-			printf("0%f |", node->pos.z);
-			node = node->next;
-		}
-		ft_printf("\n");
-	}
-} */
-
-static void	map_addline(t_map **map, char *line, int y)
+static int	map_addline(t_map **map, char *line, int y)
 {
 	int			i;
 	t_3d_point	pos;
-	int			eol;
 
 	i = 0;
 	pos = (t_3d_point){1, y, -1};
@@ -59,6 +38,9 @@ static void	map_addline(t_map **map, char *line, int y)
 				i++;
 		}
 	}
+	if (ft_isprint(line[i]) && !ft_isdigit(line[i]))
+		return (-1);
+	return (0);
 }
 
 static t_2d_point	get_map_size(t_map *map)
@@ -129,7 +111,7 @@ t_map	*make_map(int fd)
 	t_map		*map;
 	char		*line;
 	int			y;
-
+	
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
@@ -142,12 +124,16 @@ t_map	*make_map(int fd)
 	y = 1;
 	while (line)
 	{
-		map_addline(&map, line, y++);
-		line = get_next_line(fd);
+		if (!map_addline(&map, line, y++))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		else
+			return (NULL);
 	}
 	map->size = get_map_size(map);
 	below_ptr_assign(&map, map->size);
 	center_map(map);
-	free(line);
 	return (map);
 }

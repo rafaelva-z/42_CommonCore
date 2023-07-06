@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/05 18:35:35 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/06 15:15:20 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,6 @@
 # define KEY_PLUS	65451
 # define KEY_MINUS	65453
 # define KEY_ESC	65307
-# define KEY_TAB	65289
-# define KEY_F1		65470
-# define KEY_F2		65471
-# define KEY_F3		65472
-# define KEY_F4		65473
-# define KEY_F5		65474
-# define KEY_F6		65475
-# define KEY_F7		65476
-# define KEY_F8		65477
-# define KEY_F9		65478
-# define KEY_F10	65479
-# define KEY_F11	65480
-# define KEY_F12	65481
 # define KEY_LEFT	65361
 # define KEY_UP		65362
 # define KEY_RIGHT	65363
@@ -137,7 +124,6 @@ void	draw_fdf(t_mlx *mlx);
 void	offset(t_map *map, int keycode);
 void	zoom(t_map *map, int keycode);
 void	rotate(t_map *map, int keycode);
-//oid	rotation_z(t_map *map, int keycode);
 
 //	Struct and Node functions
 t_map	*make_map(int fd);
@@ -147,6 +133,7 @@ void	node_addbelow(t_node **node, t_node *new_node);
 t_node	*node_last(t_node *node);
 t_node	*node_find(t_map *map, t_2d_point pos);
 t_node	*node_lastbelow(t_node *node);
+void	node_freemap(t_map *map);
 
 int		ft_issignal(char c);
 
