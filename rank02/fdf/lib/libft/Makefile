@@ -19,21 +19,35 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	./get_next_line/get_next_line_utils.c ./get_next_line/get_next_line.c
 OBJ = $(SRC:.c=.o)
 
+#=== COLORS ===#
+
+RED = \033[0;31m
+GREEN = \033[0;92m
+YELLOW = \033[93m
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[96m
+RESET = \033[0m
+
+TAG = $(CYAN)[libft]$(RESET)
+
+#=== RULES ===#
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(NAME) - Making library"
+	@echo "$(TAG) - Making library"
 	@ar rs $(NAME) $(OBJ)
 
 clean:
-	@echo "$(NAME) - Cleaning all object files."
+	@echo "$(TAG) - Cleaning all object files."
 	@rm -f $(OBJ)
 
 fclean: clean
-	@echo "$(NAME) - Full clean."  
+	@echo "$(TAG) - Full clean."  
 	@rm -f $(NAME)
 
 re: fclean all
-	@echo "$(NAME) - Recompiling."  
+	@echo "$(TAG) - Recompiling."  
 
 .PHONY: all clean fclean re

@@ -35,10 +35,3 @@ int	ft_atoi(const char *nptr)
 		result = (result * 10) + (nptr[i++] - '0');
 	return ((int)result * signal);
 }
-/* 
-#include <stdio.h>
-int	main(void)
-{
-	printf("ft_atoi: %i\n", ft_atoi(""));
-	printf("   atoi: %i\n", atoi(""));
-} */

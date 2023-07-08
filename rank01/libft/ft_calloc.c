@@ -22,30 +22,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
-
-/*
-#include<stdio.h>
-int main()
-{
-    //change bzero to memset with a letter to test
-    int i = 0;
-    char	*phrase1;
-    char	*phrase2;
-    int	nmemb = 5;
-    
-    phrase1 = ft_calloc(nmemb, 0);
-    phrase2 = calloc(nmemb, 0);
-    while (i < nmemb + 1)
-    {
-        //printf("Phrase 1 Byte%d: %c\n", i, phrase1[i]);
-        i++;
-    }
-    i = 0;
-    while (i < nmemb + 1)
-    {
-        //printf("Phrase 2 Byte%d: %c\n", i, phrase2[i]);
-        i++;
-    }
-	printf("");
-}
-*/

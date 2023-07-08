@@ -18,25 +18,39 @@ SRC_BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
+#=== COLORS ===#
+
+RED = \033[0;31m
+GREEN = \033[0;92m
+YELLOW = \033[93m
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[96m
+RESET = \033[0m
+
+TAG = $(CYAN)[libft]$(RESET)
+
+#=== RULES ===#
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(NAME) - Making library"
+	@echo "$(TAG) Making library"
 	@ar rs $(NAME) $(OBJ)
 
 bonus: $(OBJ_BONUS)
-	@echo "$(NAME) - Making library (Bonus)"
+	@echo "$(TAG) Making library (Bonus)"
 	@ar rs $(NAME) $(OBJ_BONUS)
 
 clean:
-	@echo "$(NAME) - Cleaning all object files."
+	@echo "$(TAG) Cleaning all object files."
 	@rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	@echo "$(NAME) - Full clean."  
+	@echo "$(TAG) Full clean."  
 	@rm -f $(NAME)
 
 re: fclean all
-	@echo "$(NAME) - Recompiling."  
+	@echo "$(TAG) Recompiling."  
 
 .PHONY: all bonus clean fclean re

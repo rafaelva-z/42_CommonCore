@@ -16,8 +16,6 @@ SRC =	./src/*.c ./src/node/*.c ./src/draw/*.c \
 		# ./src/hooks.c ./src/map_reader.c ./src/node/node_new.c ./src/node/node_addback.c ./src/node/node_find.c \
 		# ./src/node/node_last.c ./src/node/node_lastbelow.c
 
-
-
 #=== COLORS ===#
 
 RED = \033[0;31m
@@ -52,7 +50,7 @@ clean:
 fclean: clean
 	@echo "$(TAG) Full clean." 
 	@make -C $(LIBFT_PATH) fclean 
-	@rm -f $(TAG)
+	@rm -f $(NAME)
 	
 re: fclean all 
 	@echo "$(TAG) Recompiling."
