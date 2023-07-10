@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:15:20 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/10 15:03:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define KEY_W		119
 # define KEY_X		120
 # define KEY_Z		122
+# define KEY_R		114
+# define KEY_F		102
 
 //STRUCTS
 struct	s_map;
@@ -107,34 +109,38 @@ typedef struct s_map
 	float			scale;
 	t_2d_point		offset;
 	t_3d_point		rotation;
+	t_2d_point		angle_x;
+	t_2d_point		angle_y;
 	t_2d_point		angle_z;
 }	t_map;
 
 //FUNCTIONS
 //	Program Management
-int		key_reader(int keycode, t_mlx *mlx);
-int		close_pgm(t_mlx *mlx);
+int			key_reader(int keycode, t_mlx *mlx);
+int			close_pgm(t_mlx *mlx);
 
 //	Drawing
-void	draw_pixel(t_img *img, int x, int y, int color);
-void	draw_line(t_2d_line line, t_img *img);
-void	draw_fdf(t_mlx *mlx);
+void		draw_pixel(t_img *img, int x, int y, int color);
+void		draw_line(t_2d_line line, t_img *img);
+void		draw_fdf(t_mlx *mlx);
 
 // Map Movement
-void	offset(t_map *map, int keycode);
-void	zoom(t_map *map, int keycode);
-void	rotate(t_map *map, int keycode);
+void		offset(t_map *map, int keycode);
+void		zoom(t_map *map, int keycode);
+void		rotate(t_map *map, int keycode);
 
 //	Struct and Node functions
-t_map	*make_map(int fd);
-t_node	*node_new(t_map *map, t_3d_point point);
-void	node_addback(t_node **node, t_node *new_node);
-void	node_addbelow(t_node **node, t_node *new_node);
-t_node	*node_last(t_node *node);
-t_node	*node_find(t_map *map, t_2d_point pos);
-t_node	*node_lastbelow(t_node *node);
-void	node_freemap(t_map *map);
+t_map		*make_map(int fd);
+int			map_addline(t_map **map, char *line, int y);
+t_2d_point	map_getsize(t_map *map);
+void		map_free(t_map *map);
+t_node		*node_new(t_map *map, t_3d_point point);
+void		node_addback(t_node **node, t_node *new_node);
+void		node_addbelow(t_node **node, t_node *new_node);
+t_node		*node_find(t_map *map, t_2d_point pos);
+t_node		*node_last(t_node *node);
+t_node		*node_lastbelow(t_node *node);
 
-int		ft_issignal(char c);
+int			ft_issignal(char c);
 
 #endif 

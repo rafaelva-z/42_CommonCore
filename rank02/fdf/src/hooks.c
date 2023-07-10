@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:07:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/10 22:00:51 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	key_reader(int keycode, t_mlx *mlx)
 {
+	printf(">>>%d<<<\n", keycode);
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
 		return (close_pgm(mlx));
 	}
 	else if (keycode == KEY_UP || keycode == KEY_DOWN || keycode == KEY_LEFT 
@@ -26,7 +26,7 @@ int	key_reader(int keycode, t_mlx *mlx)
 		offset(mlx->map, keycode);
 	else if (keycode == KEY_MINUS || keycode == KEY_PLUS)
 		zoom(mlx->map, keycode);
-	else if (keycode == KEY_Q || keycode == KEY_E)
+	else if (keycode == KEY_Q || keycode == KEY_E || keycode == KEY_R || keycode == KEY_F)
 		rotate(mlx->map, keycode);
 	ft_bzero(mlx->img->addr, (WIN_WIDTH * WIN_HEIGHT)
 		* sizeof(mlx->img->bits_per_pixel));
@@ -38,8 +38,9 @@ int	key_reader(int keycode, t_mlx *mlx)
 int	close_pgm(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img->img);
+	mlx_destroy_window(mlx->mlx, mlx->win);
 	free(mlx->img);
-	node_freemap(mlx->map);
+	map_free(mlx->map);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	exit(0);

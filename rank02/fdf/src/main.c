@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:53:03 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/10 17:59:10 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ static void	mlx_start(t_mlx *mlx, t_map *map)
 			&(mlx->img->endian));
 }
 
+static void	print_instructions(void)
+{
+	ft_printf("┌─────────────────────────────────┐\n");
+	ft_printf("│          Fdf - by rvaz          │\n");
+	ft_printf("├──────┬──────────────────────────┤\n");
+	ft_printf("│'ESC' │ exit                     │\n");
+	ft_printf("│'+'   │ zoom in                  │\n");
+	ft_printf("│'-'   │ zoom out                 │\n");
+	ft_printf("│'w'   │ move up                  │\n");
+	ft_printf("│'s'   │ move down                │\n");
+	ft_printf("│'a'   │ move left                │\n");
+	ft_printf("│'d'   │ move right               │\n");
+	ft_printf("│'q'   │ rotate counterclockwise  │\n");
+	ft_printf("│'e'   │ rotate clockwise         │\n");
+	ft_printf("└──────┴──────────────────────────┘\n");
+}
+
 void	start(t_map *map)
 {
 	t_mlx	mlx;
@@ -35,7 +52,7 @@ void	start(t_map *map)
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img->img, 0, 0);
 	mlx_key_hook(mlx.win, key_reader, &mlx);
 	mlx_hook(mlx.win, 17, 0L, close_pgm, &mlx);
-	printf("Press ESC to exit\n");
+	print_instructions();
 	mlx_loop(mlx.mlx);
 }
 

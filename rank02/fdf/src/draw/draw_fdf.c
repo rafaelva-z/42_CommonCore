@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:41:47 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:29:28 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/10 22:06:19 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,26 @@ void	calc_2d_pos(t_map *map)
 {
 	t_node	*node;
 
+	float rotated_x;
+	float rotated_y;
+
 	node = map->first_node;
+	// rotated_z = node->pos.x * sin(map->rotation.x) + node->pos.z * cos(map->rotation.x);
+	// rotated_x = node->pos.x * cos(map->rotation.x) - node->pos.z * sin(map->rotation.x);
+
 	while (1)
 	{
-		node->calc_pos.x = roundf((node->pos.x * map->angle_z.x - node->pos.y
-					* map->angle_z.y) * map->scale + map->offset.x);
-		node->calc_pos.y = roundf((node->pos.z + node->pos.x
-					* map->angle_z.y + node->pos.y * map->angle_z.x)
-				* map->scale + map->offset.y);
+		rotated_x = node->pos.x ;
+		rotated_y = node->pos.y * map->angle_y.x + node->pos.z * map->angle_y.x;
+		node->calc_pos.x = roundf((rotated_x * map->angle_z.x - rotated_y * map->angle_z.y) * map->scale + map->offset.x);
+		node->calc_pos.y = roundf((map->pos.z + rotated_x * map->angle_z.y + rotated_y * map->angle_z.x) * map->scale + map->offset.y);
 		if (node->next)
 			node = node->next;
 		else
 			break ;
 	}
 }
-
+ 
 void	draw_fdf(t_mlx *mlx)
 {
 	t_node	*node;

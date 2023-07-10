@@ -6,70 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 16:03:32 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/10 19:55:16 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
-
-static int	map_addline(t_map **map, char *line, int y)
-{
-	int			i;
-	t_3d_point	pos;
-
-	i = 0;
-	pos = (t_3d_point){1, y, -1};
-	while (ft_isdigit(line[i]) || ft_issignal(line[i]) || ft_isspace(line[i]))
-	{
-		while (ft_isspace(line[i]))
-		{
-			if (line[i++] == '\n' && (*map)->first_node)
-			{
-				node_last((*map)->first_node)->end_of_line.x = 1;
-				pos.y++;
-			}
-		}
-		if (ft_isdigit(line[i]) || ft_issignal(line[i]))
-		{
-			pos.z = -ft_atoi(&line[i]) / 3;
-			node_addback(&((*map)->first_node), node_new(*map, pos));
-			pos.x++;
-			while (ft_issignal(line[i]) || ft_isdigit(line[i]))
-				i++;
-		}
-	}
-	if (ft_isprint(line[i]) && !ft_isdigit(line[i]))
-		return (-1);
-	return (0);
-}
-
-static t_2d_point	get_map_size(t_map *map)
-{
-	t_2d_point	map_size;
-	t_node		*tmp;
-	int			x_size;
-
-	if (!map)
-		return ((t_2d_point){-1, -1});
-	map_size = (t_2d_point){0, 0};
-	x_size = 0;
-	tmp = map->first_node;
-	while (tmp)
-	{
-		while (tmp && !tmp->end_of_line.x)
-		{
-			if (!map_size.x)
-				x_size++;
-			tmp = tmp->next;
-		}
-		if (!map_size.x)
-			map_size.x = x_size + 1;
-		map_size.y++;
-		if (tmp)
-			tmp = tmp->next;
-	}
-	return (map_size);
-}
+#include "../../include/fdf.h"
 
 static void	below_ptr_assign(t_map **map, t_2d_point size)
 {
@@ -83,8 +24,8 @@ static void	below_ptr_assign(t_map **map, t_2d_point size)
 			pos.y++;
 		while (pos.y <= size.y)
 		{
-			node_addbelow(&((*map)->first_node),
-				node_find(*map, (t_2d_point){pos.x, pos.y}));
+				node_addbelow(&((*map)->first_node),
+					node_find(*map, (t_2d_point){pos.x, pos.y}));
 			pos.y++;
 		}
 		node_find(*map, (t_2d_point){pos.x, pos.y - 1})->end_of_line.y = 1;
@@ -93,7 +34,7 @@ static void	below_ptr_assign(t_map **map, t_2d_point size)
 }
 
 //	Relocates the points so that the closest point to the center is {0,0}	
-void	center_map(t_map *map)
+static void	map_center(t_map *map)
 {
 	t_node	*node;
 
@@ -106,12 +47,8 @@ void	center_map(t_map *map)
 	}
 }
 
-t_map	*make_map(int fd)
+static t_map	*start_map(t_map *map)
 {
-	t_map		*map;
-	char		*line;
-	int			y;
-	
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
@@ -119,8 +56,20 @@ t_map	*make_map(int fd)
 	map->scale = 25;
 	map->offset = (t_2d_point){WIN_WIDTH / 2, WIN_HEIGHT / 2};
 	map->rotation = (t_3d_point){0, 0, 0};
+	map->angle_x = (t_2d_point){cos(map->rotation.x), sin(map->rotation.x)};
+	map->angle_y = (t_2d_point){cos(map->rotation.y), sin(map->rotation.y)};
 	map->angle_z = (t_2d_point){cos(map->rotation.z), sin(map->rotation.z)};
+	return (map);
+}
+
+static int	read_mapfile(t_map *map, int fd)
+{
+	char		*line;
+	int			y;
+
 	line = get_next_line(fd);
+	if (!line)
+		return (-1);
 	y = 1;
 	while (line)
 	{
@@ -130,10 +79,30 @@ t_map	*make_map(int fd)
 			line = get_next_line(fd);
 		}
 		else
-			return (NULL);
+		{
+			free(line);
+			return (-1);
+		}
 	}
-	map->size = get_map_size(map);
-	below_ptr_assign(&map, map->size);
-	center_map(map);
+	map->size = map_getsize(map);
+	return (0);
+}
+
+t_map	*make_map(int fd)
+{
+	t_map		*map;
+
+	map = NULL;
+	map = start_map(map);
+	if (!map)
+		return (NULL);
+	if (read_mapfile(map, fd))
+	{
+		map_free(map);
+		return (NULL);
+	}
+	if (map->size.y > 1)
+		below_ptr_assign(&map, map->size);
+	map_center(map);
 	return (map);
 }

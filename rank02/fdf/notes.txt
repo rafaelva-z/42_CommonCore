@@ -1,4 +1,4 @@
 FDF
 
-Check exceptional cases on map parsing
-empty map file = seg fault
+last character missing on map = segfault
+number maior que MAXINT. Inserir limite
