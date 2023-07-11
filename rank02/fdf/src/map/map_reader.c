@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:50:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/10 19:55:16 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 17:57:15 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,25 @@ static void	below_ptr_assign(t_map **map, t_2d_point size)
 	t_2d_point	pos;
 
 	pos.x = 1;
-	while (pos.x <= size.x)
+	pos.y = 1;
+	while (node_find(*map, (t_2d_point){pos.x, pos.y}) && pos.x <= size.x)
 	{
-		pos.y = 1;
 		if (pos.x == 1)
 			pos.y++;
-		while (pos.y <= size.y)
+		while (node_find(*map, (t_2d_point){pos.x, pos.y}) && pos.y <= size.y)
 		{
-				node_addbelow(&((*map)->first_node),
-					node_find(*map, (t_2d_point){pos.x, pos.y}));
+			node_addbelow(&((*map)->first_node),
+				node_find(*map, (t_2d_point){pos.x, pos.y}));
 			pos.y++;
 		}
 		node_find(*map, (t_2d_point){pos.x, pos.y - 1})->end_of_line.y = 1;
+		pos.y = 1;
 		pos.x++;
 	}
 }
 
-//	Relocates the points so that the closest point to the center is {0,0}	
+/*	Changes the x/y values so that the closest node 
+	to the center of the map becomes {0,0} */
 static void	map_center(t_map *map)
 {
 	t_node	*node;
@@ -73,7 +75,7 @@ static int	read_mapfile(t_map *map, int fd)
 	y = 1;
 	while (line)
 	{
-		if (!map_addline(&map, line, y++))
+		if (map_addline(&map, line, y++) >= 0)
 		{
 			free(line);
 			line = get_next_line(fd);
@@ -85,6 +87,8 @@ static int	read_mapfile(t_map *map, int fd)
 		}
 	}
 	map->size = map_getsize(map);
+	if (map->size.x <= 0)
+		return (-1);
 	return (0);
 }
 
@@ -96,7 +100,7 @@ t_map	*make_map(int fd)
 	map = start_map(map);
 	if (!map)
 		return (NULL);
-	if (read_mapfile(map, fd))
+	if (read_mapfile(map, fd) < 0)
 	{
 		map_free(map);
 		return (NULL);

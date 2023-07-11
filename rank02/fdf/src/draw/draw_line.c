@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:45:18 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/06 15:24:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 15:03:41 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	draw_line(t_2d_line line, t_img *img)
 	t_2d_point	diff;
 	t_2d_point	err;
 
-	diff = (t_2d_point){fabsf(line.point_b.x - line.point_a.x),
-		-fabsf(line.point_b.y - line.point_a.y)};
+	diff = (t_2d_point){fabs(line.point_b.x - line.point_a.x),
+		-fabs(line.point_b.y - line.point_a.y)};
 	err.x = diff.x + diff.y;
 	while (line.point_a.x != line.point_b.x || line.point_a.y != line.point_b.y)
 	{

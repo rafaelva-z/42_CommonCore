@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:44:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/10 22:00:51 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 17:39:19 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 int	key_reader(int keycode, t_mlx *mlx)
 {
-	printf(">>>%d<<<\n", keycode);
 	if (keycode == KEY_ESC)
-	{
-		return (close_pgm(mlx));
-	}
-	else if (keycode == KEY_UP || keycode == KEY_DOWN || keycode == KEY_LEFT 
-		|| keycode == KEY_RIGHT || keycode == KEY_W || keycode == KEY_S
-		|| keycode == KEY_A || keycode == KEY_D)
+		close_pgm(mlx);
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT 
+		|| keycode == RIGHT)
 		offset(mlx->map, keycode);
-	else if (keycode == KEY_MINUS || keycode == KEY_PLUS)
+	else if (keycode == ZOOM_OUT || keycode == ZOOM_IN)
 		zoom(mlx->map, keycode);
-	else if (keycode == KEY_Q || keycode == KEY_E || keycode == KEY_R || keycode == KEY_F)
+	else if (keycode == ROT_X || keycode == RROT_X || keycode == ROT_Y 
+		|| keycode == RROT_Y || keycode == ROT_Z || keycode == RROT_Z)
 		rotate(mlx->map, keycode);
+	else if (keycode == CENTER || keycode == FRONT)
+		reset_view(mlx->map, keycode);
 	ft_bzero(mlx->img->addr, (WIN_WIDTH * WIN_HEIGHT)
 		* sizeof(mlx->img->bits_per_pixel));
 	draw_fdf(mlx);
@@ -44,5 +43,4 @@ int	close_pgm(t_mlx *mlx)
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	exit(0);
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:13:37 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/19 15:13:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 18:05:43 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*calculate(char *str, long int num, int numlen)
 	{
 		num = -num;
 		str[0] = '-';
-	}		
+	}
 	while (num > 0)
 	{
 		str[numlen--] = num % 10 + 48;

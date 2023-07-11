@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:13:52 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/10 17:59:10 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 18:18:25 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,22 @@ static void	print_instructions(void)
 	ft_printf("│'ESC' │ exit                     │\n");
 	ft_printf("│'+'   │ zoom in                  │\n");
 	ft_printf("│'-'   │ zoom out                 │\n");
-	ft_printf("│'w'   │ move up                  │\n");
-	ft_printf("│'s'   │ move down                │\n");
-	ft_printf("│'a'   │ move left                │\n");
-	ft_printf("│'d'   │ move right               │\n");
-	ft_printf("│'q'   │ rotate counterclockwise  │\n");
-	ft_printf("│'e'   │ rotate clockwise         │\n");
+	ft_printf("│'W'   │ move up                  │\n");
+	ft_printf("│'A'   │ move left                │\n");
+	ft_printf("│'S'   │ move down                │\n");
+	ft_printf("│'D'   │ move right               │\n");
+	ft_printf("│'R'   │ X axis rotate c          │\n");
+	ft_printf("│'F'   │ X axis rotate cc         │\n");
+	ft_printf("│'Z'   │ Y axis rotate c          │\n");
+	ft_printf("│'X'   │ Y axis rotate cc         │\n");
+	ft_printf("│'Q'   │ Z axis rotate c          │\n");
+	ft_printf("│'E'   │ Z axis rotate cc         │\n");
+	ft_printf("│'C'   │ center map               │\n");
+	ft_printf("│'V'   │ front view               │\n");
 	ft_printf("└──────┴──────────────────────────┘\n");
 }
 
-void	start(t_map *map)
+static void	start(t_map *map)
 {
 	t_mlx	mlx;
 
@@ -70,7 +76,7 @@ static void	arg_check(int argc, char **argv)
 		ft_printf("./fdf \"MAP PATH\"");
 		exit(0);
 	}
-	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".fdf", 4))
+	else if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".fdf", 4))
 	{
 		ft_printf("[fdf] ERROR - Invalid file extension | Usage: ");
 		ft_printf("./fdf \"MAP PATH\"");

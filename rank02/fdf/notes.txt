@@ -1,4 +1,0 @@
-FDF
-
-last character missing on map = segfault
-number maior que MAXINT. Inserir limite

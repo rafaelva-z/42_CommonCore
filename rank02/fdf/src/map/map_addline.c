@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:33:03 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/07 18:43:34 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 17:53:03 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	map_charcheck(char *str)
 	return (1);
 }
 
+// Check if it's the last number in the line
 static void	map_linespace(t_map **map, char *line, t_3d_point *pos, int *i)
 {
 	while (ft_isspace(line[*i]))
@@ -42,11 +43,15 @@ static void	map_linespace(t_map **map, char *line, t_3d_point *pos, int *i)
 	}
 }
 
-static void	map_digitsignal(t_map **map, char *line, t_3d_point *pos, int *i)
+static void	map_addnumber(t_map **map, char *line, t_3d_point *pos, int *i)
 {
 	if (ft_isdigit(line[*i]) || ft_issignal(line[*i]))
 	{
-		pos->z = -ft_atoi(&line[*i]) / 3;
+		pos->z = -ft_atoi(&line[*i]);
+		if (pos->z > 10000)
+			pos->z = 10000;
+		else if (pos->z < -10000)
+			pos->z = -10000;
 		node_addback(&((*map)->first_node), node_new(*map, *pos));
 		pos->x++;
 		while (ft_issignal(line[*i]) || ft_isdigit(line[*i]))
@@ -66,7 +71,7 @@ int	map_addline(t_map **map, char *line, int y)
 	while (line[i])
 	{
 		map_linespace(map, line, &pos, &i);
-		map_digitsignal(map, line, &pos, &i);
+		map_addnumber(map, line, &pos, &i);
 	}
 	return (0);
 }

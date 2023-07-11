@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:40:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/07 18:40:54 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/11 14:52:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ t_2d_point	map_getsize(t_map *map)
 	if (!map)
 		return ((t_2d_point){-1, -1});
 	map_size = (t_2d_point){0, 0};
-	x_size = 0;
 	tmp = map->first_node;
 	while (tmp)
 	{
+		x_size = 0;
 		while (tmp && !tmp->end_of_line.x)
 		{
-			if (!map_size.x)
-				x_size++;
+			x_size++;
 			tmp = tmp->next;
 		}
 		if (!map_size.x)
