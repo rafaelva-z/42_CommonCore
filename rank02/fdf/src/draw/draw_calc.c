@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:42:13 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/11 17:59:10 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/12 12:21:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
         rotated.x,y,z = position after rotation
         
         X axis rotation
-		rotated.y = y * cos(angle) + z * sin(angle);
+		rot_y = y * cos(angle) + z * sin(angle);
 		rot_z = -y * sin(angle) + z * cos(angle);
 		Y axis rotation
 		rot_x = x * cos(angle) + z * sin(angle);

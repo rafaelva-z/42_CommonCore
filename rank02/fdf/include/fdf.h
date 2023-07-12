@@ -6,15 +6,12 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:45:26 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/11 17:42:58 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/12 12:19:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include <limits.h>
-# include <stdint.h>
-# include <sys/stat.h>
 # include <math.h>
 # include "../lib/minilibx-linux/mlx.h"
 # include "../lib/libft/libft.h"

@@ -15,7 +15,7 @@ SRC =	./src/ft_issignal.c ./src/hooks.c ./src/main.c ./src/move_map.c ./src/move
 		./src/draw/draw_calc.c ./src/draw/draw_fdf.c ./src/draw/draw_line.c ./src/draw/draw_pixel.c \
 		./src/node/node_addback.c ./src/node/node_find.c ./src/node/node_last.c \
 		./src/node/node_addbelow.c ./src/node/node_lastbelow.c ./src/node/node_new.c \
-		./src/map/map_addline.c  ./src/map/map_free.c  ./src/map/map_getsize.c  ./src/map/map_reader.c \
+		./src/map/map_addline.c ./src/map/map_free.c ./src/map/map_getsize.c ./src/map/map_reader.c \
 
 #=== COLORS ===#
 
@@ -44,7 +44,6 @@ $(LIBFT):
 	@make -C $(LIBFT_PATH)
 
 clean:
-	@echo "$(TAG) Cleaning all object files."
 	@make -C $(MLX_PATH) clean
 	@make -C $(LIBFT_PATH) clean
 
