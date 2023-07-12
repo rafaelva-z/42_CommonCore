@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_nputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 20:45:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/06/18 21:29:28 by rvaz             ###   ########.fr       */
+/*   Created: 2023/04/12 12:43:27 by rvaz              #+#    #+#             */
+/*   Updated: 2023/04/27 16:37:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
+#include "ft_printf.h"
 
-int	main(void)
+size_t	ft_nputnbr(long n)
 {
-	int	pid;
+	size_t	count;
 
-	pid = getpid();
-	printf("PID: %d", pid);
-	kill(pid, 0);
-	exit(0);
+	count = 0;
+	if (n < 0)
+	{
+		n = -n;
+		count += ft_nputchar('-');
+	}
+	if (n > 9)
+	{
+		count += ft_nputnbr(n / 10);
+		count += ft_nputnbr(n % 10);
+	}
+	else
+		count += ft_nputchar(n + '0');
+	return (count);
 }
