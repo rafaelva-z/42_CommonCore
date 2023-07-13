@@ -6,19 +6,19 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 20:45:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/12 18:42:32 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/13 14:49:40 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-static void sighandler(int signal)
+static void	sighandler(int signal)
 {
 	static int	bits;
-	static int	c;
-	
+	static char	c;
+
 	if (signal == SIGUSR1)
-		c |= (0x01 << bits);
+		c |= (1 << bits);
 	bits++;
 	if (bits == 8)
 	{
@@ -30,7 +30,6 @@ static void sighandler(int signal)
 
 int	main(void)
 {
-	struct sigaction ssig;
 	int	pid;
 
 	pid = getpid();
@@ -39,7 +38,6 @@ int	main(void)
 	{
 		signal(SIGUSR1, sighandler);
 		signal(SIGUSR2, sighandler);
-		sigaction(SIGUSR1, NULL, &ssig);
 		pause();
 	}
 }

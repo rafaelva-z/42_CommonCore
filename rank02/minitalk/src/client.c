@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:10:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/12 18:33:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/13 14:49:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	send_char(int pid, char c)
 	bits = 0;
 	while (bits < 8)
 	{
-		if ((c & (0x01 << bits)) != 0)
+		if ((c & (1 << bits)) != 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
@@ -30,8 +30,8 @@ static void	send_char(int pid, char c)
 
 static void	arg_check(int argc, char **argv)
 {
-	int i;
-	
+	int	i;
+
 	if (argc > 3)
 	{
 		ft_printf("[minitalk] ERROR - Too many arguments | Usage: ");
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	arg_check(argc, argv);
 	i = 0;
 	pid = ft_atoi(argv[1]);
-	if(argv[2][0])
+	if (argv[2][0])
 	{
 		while (argv[2][i])
 		{
