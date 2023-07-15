@@ -57,6 +57,15 @@ static void	arg_check(int argc, char **argv)
 	}
 }
 
+void	sighandler(int signal)
+{
+	if (signal == SIGUSR1)
+	{
+		ft_printf("\033[96m[minitalk]\033[0m Message received by server");
+		exit(0);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
@@ -67,11 +76,14 @@ int	main(int argc, char **argv)
 	pid = ft_atoi(argv[1]);
 	if (argv[2][0])
 	{
+		signal(SIGUSR1, sighandler);
 		while (argv[2][i])
 		{
 			send_char(pid, argv[2][i]);
 			i++;
 		}
-		send_char(pid, '\n');
+		send_char(pid, '\0');
+		while (1)
+			;
 	}
 }

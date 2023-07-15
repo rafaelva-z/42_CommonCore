@@ -12,17 +12,24 @@
 
 #include "../include/minitalk.h"
 
-static void	sighandler(int signal)
+static void	sighandler(int signal, siginfo_t *info, void *context)
 {
 	static int	bits;
 	static char	c;
 
+	(void)context;
 	if (signal == SIGUSR1)
 		c |= (1 << bits);
 	bits++;
 	if (bits == 8)
 	{
-		ft_printf("%c", c);
+		if (c == '\0')
+		{
+			ft_printf("\n");
+			kill(info->si_pid, SIGUSR1);
+		}
+		else
+			write(1, &c, 1);
 		bits = 0;
 		c = 0;
 	}
@@ -30,14 +37,19 @@ static void	sighandler(int signal)
 
 int	main(void)
 {
-	int	pid;
+	struct sigaction	sa_signal;
+	sigset_t			block_mask;
 
-	pid = getpid();
-	ft_printf("\033[96m[minitalk]\033[0m Server PID: %d\n", pid);
+	sigemptyset(&block_mask);
+	sigaddset(&block_mask, SIGINT);
+	sigaddset(&block_mask, SIGQUIT);
+	sa_signal.sa_handler = 0;
+	sa_signal.sa_flags = SA_SIGINFO;
+	sa_signal.sa_mask = block_mask;
+	sa_signal.sa_sigaction = sighandler;
+	ft_printf("\033[96m[minitalk]\033[0m Server PID: %d\n", getpid());
+	sigaction(SIGUSR1, &sa_signal, NULL);
+	sigaction(SIGUSR2, &sa_signal, NULL);
 	while (1)
-	{
-		signal(SIGUSR1, sighandler);
-		signal(SIGUSR2, sighandler);
-		pause();
-	}
+		;
 }
