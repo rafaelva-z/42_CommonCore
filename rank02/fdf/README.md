@@ -9,9 +9,13 @@ This program recieves as input a map, that will be displayed in a 3D enviroment 
 The map is a ".fdf" file that looks like this:
 
 -5 0 0 0 -5
+
 0 1 1 1 0
+
 0 1 5 1 0
+
 0 1 1 1 0
+
 -5 0 0 0 -5
 
 Each number represents a 3D point, where the horizontal position corresponds to the X value, the vertical position represents the Y value and the number itself represents the Z value. You can see the program running with tihs map on the image below:
