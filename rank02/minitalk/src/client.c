@@ -12,6 +12,7 @@
 
 #include "../include/minitalk.h"
 
+//minimum usleep tested time is 10
 static void	send_char(int pid, char c)
 {
 	int	bits;
@@ -23,7 +24,7 @@ static void	send_char(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(500);
+		usleep(100);
 		bits++;
 	}
 }
@@ -61,7 +62,7 @@ void	sighandler(int signal)
 {
 	if (signal == SIGUSR1)
 	{
-		ft_printf("\033[96m[minitalk]\033[0m Message received by server");
+		ft_printf("\033[96m[minitalk]\033[0m Message received by server\n");
 		exit(0);
 	}
 }

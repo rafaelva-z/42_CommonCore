@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 16:10:51 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/12 17:01:10 by rvaz             ###   ########.fr       */
+/*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
+/*   Updated: 2023/07/19 21:54:04 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <sys/types.h>
-# include <signal.h>
-# include "../lib/libft/libft.h"
+#ifndef PHILO_H
+# define PHILO_H
 
-#endif
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+# include <sys/time.h>
+# include <semaphore.h>
+
+int	ft_atoi(const char *nptr);
+int	ft_isdigit(int c);
+
+# endif
