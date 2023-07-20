@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-/* Check functionality about int arrays */
-
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;

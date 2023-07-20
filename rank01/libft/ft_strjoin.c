@@ -6,25 +6,11 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:11:31 by rvaz              #+#    #+#             */
-/*   Updated: 2023/04/08 20:33:29 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/20 14:12:16 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*remove this (strlen)
-#include <stdlib.h>
-#include <stdio.h>
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -51,6 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
 /*
 int	main(void)
 {
