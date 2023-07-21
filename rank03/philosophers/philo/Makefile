@@ -40,7 +40,7 @@ re: fclean all
 run: re
 	@echo "$(TAG) Running program."
 	@echo "--PHILOSOPHERS--rvaz------START-\n"
-	@./$(NAME) 4 410 200 200 1
+	@./$(NAME) 1 100000 200 200 1
 	@echo "\n--PHILOSOPHERS--rvaz------END-"
 	@make clean
 

@@ -2,7 +2,7 @@
 
 Projects of the main course at [42 Lisbon](https://www.42lisboa.com/).\
 Rated out of 100 points, some have extra 25 for bonus points.\
-*My [intra profile](https://profile.intra.42.fr/users/rvaz)* (started 11th april 2023)\
+*My [intra profile](https://profile.intra.42.fr/users/rvaz)* (started 11th april 2023)
 
 
 ## Rank 01
@@ -15,8 +15,8 @@ Rated out of 100 points, some have extra 25 for bonus points.\
 **100** | [push_swap](./rank02/push_swap) - an algorithm that organizes a list of numbers, using the designated operations\
 **125** | [fdf](./rank02/fdf) - a program that displays in 3D, a map file, that contains a grid with points at different heights\
 **125** | [minitalk](./rank02/minitalk) - a client and server program that send and recieve messages respectively\
-**100** | Exam Rank 02\
+**100** | Exam Rank 02
 
 ## Rank 03
 WIP | philosophers - \
---- | minishell - \
+--- | minishell - 
