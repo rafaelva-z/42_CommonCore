@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:08:24 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/22 15:16:08 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/22 16:25:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ void	arg_parse(t_program *program, int argc, char **argv)
 {
 	arg_check(argc, argv);
 	program->phil_amt = ft_atoi(argv[1]);
-	program->phil_created = 0;
+	program->phil_alive = 0;
 	program->time_die = ft_atoi(argv[2]);
 	program->time_eat = ft_atoi(argv[3]);
 	program->time_sleep = ft_atoi(argv[4]);
 	program->eat_amt = ft_atoi(argv[5]);
 	program->threads = malloc(sizeof(pthread_t) * program->phil_amt);
+	program->forks = malloc(sizeof(sem_t) * program->phil_amt);
 }
+

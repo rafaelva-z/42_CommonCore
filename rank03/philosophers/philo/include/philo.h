@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/22 14:32:05 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/22 16:26:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_program
 {
 	pthread_t		*threads;
 	int				phil_amt;
-	int				phil_created;
+	int				phil_alive;
 	long int		time_die;
 	long int		time_eat;
 	long int		time_sleep;
@@ -37,6 +37,7 @@ typedef struct s_program
 	struct timeval	start_time;
 	struct timeval	curr_time;
 	pthread_mutex_t	mutex;
+	int				*forks;
 	/*sem_t			*print;
 	sem_t			*eat; */
 }	t_program;
@@ -47,7 +48,6 @@ typedef struct s_philo
 	int				id;
 	int				state;
 	struct timeval	last_eat;
-	sem_t			forks;
 
 }	t_philo;
 

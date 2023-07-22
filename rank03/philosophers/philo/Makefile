@@ -2,7 +2,7 @@
 
 NAME =		philo
 CC =		cc
-CFLAGS =	-Wall -Wextra -Werror -pthread #-g -fsanitize=address 
+CFLAGS =	-pthread #-Wall -Wextra -Werror  #-g -fsanitize=address 
 SRC =		./src/*.c#./src/arg.c ./src/ft_atoi.c ./src/main.c ./src/time.c ./src/ft_isdigit.c
 #OBJ = 		$(SRC:.c=.o)
 
