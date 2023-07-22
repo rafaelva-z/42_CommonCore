@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/21 21:20:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/22 14:32:05 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@
 # include <sys/time.h>
 # include <semaphore.h>
 
-# define EAT	1;
-# define THINK	2;
-# define SLEEP	3;
+# define DEAD	0
+# define EAT	1
+# define THINK	2
+# define SLEEP	3
 
 typedef struct s_program
 {
 	pthread_t		*threads;
 	int				phil_amt;
 	int				phil_created;
-	int				time_die;
-	int				time_eat;
-	int				time_sleep;
+	long int		time_die;
+	long int		time_eat;
+	long int		time_sleep;
 	int				eat_amt;
 	struct timeval	start_time;
 	struct timeval	curr_time;
@@ -46,13 +47,16 @@ typedef struct s_philo
 	int				id;
 	int				state;
 	struct timeval	last_eat;
-	int				isdead;
 	sem_t			forks;
 
 }	t_philo;
 
-void	arg_parse(t_program *program, int argc, char **argv);
-int		ft_atoi(const char *nptr);
-int		ft_isdigit(int c);
+void		arg_parse(t_program *program, int argc, char **argv);
+int			ft_atoi(const char *nptr);
+int			ft_isdigit(int c);
+long int	time_from_start(t_program program);
+long int	time_diff(struct timeval time1, struct timeval time2);
+void		update_time(struct timeval *time);
+long int	update_curr_time(t_program *program);
 
 #endif

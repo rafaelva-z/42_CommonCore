@@ -3,8 +3,8 @@
 NAME =		philo
 CC =		cc
 CFLAGS =	-Wall -Wextra -Werror -pthread #-g -fsanitize=address 
-SRC =		./src/*.c
-OBJ = 		$(SRC:.c=.o)
+SRC =		./src/*.c#./src/arg.c ./src/ft_atoi.c ./src/main.c ./src/time.c ./src/ft_isdigit.c
+#OBJ = 		$(SRC:.c=.o)
 
 #=== COLORS ===#
 
@@ -22,7 +22,7 @@ TAG =	$(CYAN)[$(NAME)]$(RESET)
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(OBJ)
+$(NAME): $(SRC) #$(OBJ)
 	@echo "$(TAG) Making Program"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
@@ -40,8 +40,9 @@ re: fclean all
 run: re
 	@echo "$(TAG) Running program."
 	@echo "--PHILOSOPHERS--rvaz------START-\n"
-	@./$(NAME) 1 100000 200 200 1
+	#./philo  philo_nb	time_die	time_eat  time_sleep	times_must_eat
+	@./$(NAME) 2 		500			 200		 200			 1
 	@echo "\n--PHILOSOPHERS--rvaz------END-"
-	@make clean
+	@make fclean
 
 .PHONY: all clean fclean re

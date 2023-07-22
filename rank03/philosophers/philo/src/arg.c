@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:08:24 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/21 16:14:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/22 15:16:08 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,17 @@ static void	arg_check(int argc, char **argv)
 			printf("[philo] ERROR - Not enough arguments\n");
 		exit(0);
 	}
-	i = -1;
 	j = 0;
-	while (argv[++j][++i])
+	while (argv[++j])
 	{
-		if (!ft_isdigit(argv[j][i]))
+		i = -1;
+		while(argv[j][++i])
 		{
-			printf("[philo] ERROR - invalid charcter in args\n");
-			exit(0);
+			if (!ft_isdigit(argv[j][i]))
+			{
+				printf("[philo] ERROR - invalid charcter (arg%d, char%d)\n", j, i);
+				exit(0);
+			}
 		}
 	}
 }
