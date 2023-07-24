@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:49:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/23 21:13:06 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/24 12:25:35 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ int	main(int argc, char **argv)
 	pthread_mutex_destroy(&program.mutex);
 	free(program.threads);
 	free(program.philo);
-	printf("All philosophers are full\n");
 }

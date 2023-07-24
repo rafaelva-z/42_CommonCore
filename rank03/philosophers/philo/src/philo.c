@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:02:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/23 21:02:47 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/24 12:38:25 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	timeout(long int time, t_program *program, t_philo *philo)
 
 int	grab_forks(t_program *program, t_philo *philo)
 {
+	if (program->philo_amt == 1)
+		return (0);
 	if (philo->id > 0)
 	{
 		pthread_mutex_lock(&philo->mutex);

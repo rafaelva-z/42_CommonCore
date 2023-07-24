@@ -41,7 +41,7 @@ run: re
 	@echo "$(TAG) Running program."
 	@echo "--PHILOSOPHERS--rvaz------START-\n"
 	#./philo  philo_nb	time_die	time_eat  time_sleep	times_must_eat
-	@./$(NAME)   2		200			 200		 200			 1
+	@./$(NAME)   1		800			 200		 200			 1
 	@echo "\n--PHILOSOPHERS--rvaz------END-"
 	@make fclean
 
