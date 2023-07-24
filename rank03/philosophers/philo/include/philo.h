@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/24 12:24:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/24 17:00:12 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_program
 	struct timeval	start_time;
 	struct timeval	curr_time;
 	pthread_mutex_t	mutex;
+	int				end_of_sim;
 }	t_program;
 
 struct s_philo
@@ -82,7 +83,7 @@ void		*philo_th(void *arg);
 void		print_msg(t_program *program, int id, char *str);
 void		print_death_msg(t_program *program, int id, int state);
 //	Philo
-void		start_philo(t_philo *philo, t_program *program);
+void		start_philos(t_program *program);
 int			death_check(t_philo	*philo, t_program *program);
 void		timeout(long int time, t_program *program, t_philo *philo);
 int			grab_forks(t_program *program, t_philo *philo);

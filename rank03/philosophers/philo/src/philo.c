@@ -6,25 +6,31 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:02:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/24 12:38:25 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/24 17:41:40 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	start_philo(t_philo *philo, t_program *program)
+void	start_philos(t_program *program)
 {
-	pthread_mutex_init(&philo->mutex, NULL);
-	philo->program = program;
-	philo->state = THINK;
-	philo->fork = 1;
-	pthread_mutex_lock(&program->mutex);
-	program->philo[program->philo_alive] = philo;
-	philo->id = program->philo_alive++;
-	pthread_mutex_unlock(&program->mutex);
-	usleep(100000);
-	update_time(&philo->last_eat);
-	print_msg(program, philo->id, MSG_BORN);
+	int	i;
+
+	i = 0;
+	while(i < program->philo_amt)
+	{
+		pthread_mutex_init(&program->philo[i]->mutex, NULL);
+		program->philo[i]->id = i;
+		program->philo[i]->program = program;
+		program->philo[i]->state = THINK;
+		program->philo[i++]->fork = 1;
+	}
+	i = 0;
+	while (i < program->philo_amt)
+	{
+		update_time(&program->philo[i]->last_eat);
+		print_msg(program, program->philo[i++]->id, MSG_BORN);
+	}
 }
 
 int	death_check(t_philo	*philo, t_program *program)
@@ -33,6 +39,10 @@ int	death_check(t_philo	*philo, t_program *program)
 	{
 		print_death_msg(program, philo->id, philo->state);
 		philo->state = DEAD;
+		pthread_mutex_lock(&program->mutex);
+		program->philo_alive -= 1;
+		program->end_of_sim = 1;
+		pthread_mutex_unlock(&program->mutex);
 		return (1);
 	}
 	return (0);
@@ -63,6 +73,8 @@ int	grab_forks(t_program *program, t_philo *philo)
 		pthread_mutex_lock(&philo->mutex);
 		pthread_mutex_lock(&program->philo[philo->id - 1]->mutex);
 		usleep(100);
+		//printf("%ldss %d shoulda stay or shouda go?  \n", update_curr_time(program), philo->id);
+
 		if (philo->fork && program->philo[philo->id - 1]->fork)
 		{
 			philo->fork--;
@@ -74,11 +86,14 @@ int	grab_forks(t_program *program, t_philo *philo)
 		}
 		pthread_mutex_unlock(&philo->mutex);
 		pthread_mutex_unlock(&program->philo[philo->id - 1]->mutex);
+		//printf("%ldss %d nah im out bruv\n", update_curr_time(program), philo->id);
+
 	}
 	else
 	{
 		pthread_mutex_lock(&program->philo[program->philo_amt - 1]->mutex);
 		pthread_mutex_lock(&philo->mutex);
+		usleep(100);
 		if (philo->fork && program->philo[program->philo_amt - 1]->fork)
 		{
 			philo->fork--;
@@ -109,12 +124,57 @@ void	release_forks(t_program *program, t_philo *philo)
 	}
 	else
 	{
+		printf("%ldms %d  shoulda give this back? %d \n", update_curr_time(program),philo->id, program->philo_amt - 1);
 		pthread_mutex_lock(&program->philo[program->philo_amt - 1]->mutex);
+		printf("%ldms %d  this guys mutex is faain\n",  update_curr_time(program), philo->id);
 		pthread_mutex_lock(&philo->mutex);
+		printf("%ldms %d  YO WHO TOUCH MY MUTEX?\n",  update_curr_time(program), philo->id);
 		philo->fork++;
 		program->philo[program->philo_amt - 1]->fork++;
 		pthread_mutex_unlock(&program->philo[program->philo_amt - 1]->mutex);
 		pthread_mutex_unlock(&philo->mutex);
 		print_msg(program, philo->id, MSG_PUT_FORK);
 	}
+}
+
+void	*philo_th(void *arg)
+{
+	t_program	*program;
+	t_philo		*philo;
+
+	program = (t_program *)arg;
+	pthread_mutex_lock(&program->mutex);
+	philo = program->philo[program->philo_alive++];
+	pthread_mutex_unlock(&program->mutex);
+	while (!program->end_of_sim)
+	{
+		update_curr_time(program);
+		if (death_check(philo, program))
+			break ;
+		if (philo->state == THINK)
+		{
+			printf("%ldms %d a guys gotta eat\n",  update_curr_time(program), philo->id);
+			if (grab_forks(program, philo))
+			{
+				philo->state = EAT;
+				update_time(&philo->last_eat);
+				print_msg(program, philo->id, MSG_EAT);
+				timeout(program->time_eat, program, philo);
+				print_msg(program, philo->id, "YO DONE EATING");
+				release_forks(program, philo);
+			}
+		}
+		else if(philo->state == EAT)
+		{
+			philo->state = SLEEP;
+			print_msg(program, philo->id, MSG_SLEEP);
+			timeout(program->time_sleep, program, philo);
+		}
+		else if (philo->state == SLEEP)
+		{
+			philo->state = THINK;
+			print_msg(program, philo->id, MSG_THINK);
+		}
+	}
+	return (NULL);
 }
