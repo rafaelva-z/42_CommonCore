@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/24 17:00:12 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/25 16:29:09 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_program
 	pthread_t		*threads;
 	t_philo			**philo;
 	int				philo_amt;
-	int				philo_alive;
 	long int		time_die;
 	long int		time_eat;
 	long int		time_sleep;
@@ -65,15 +64,15 @@ struct s_philo
 	struct timeval	last_eat;
 	int				fork;
 	pthread_mutex_t	mutex;
+	int				left_buddy;
 };
 
 //	Time
 long int	time_from_start(t_program program);
 long int	time_diff(struct timeval time1, struct timeval time2);
-void		update_time(struct timeval *time);
+void	update_time(struct timeval *time);
 long int	update_curr_time(t_program *program);
 //	Utils
-void		arg_parse(t_program *program, int argc, char **argv);
 int			ft_atoi(const char *nptr);
 int			ft_isdigit(int c);
 //	Threads
@@ -82,11 +81,17 @@ void		*philo_th(void *arg);
 //	Print
 void		print_msg(t_program *program, int id, char *str);
 void		print_death_msg(t_program *program, int id, int state);
+//	Program
+void		start_program(t_program *program, int argc, char **argv);
+void		end_program(t_program *program);
 //	Philo
 void		start_philos(t_program *program);
 int			death_check(t_philo	*philo, t_program *program);
-void		timeout(long int time, t_program *program, t_philo *philo);
+void		philo_action(long int time, t_program *program, t_philo *philo);
 int			grab_forks(t_program *program, t_philo *philo);
 void		release_forks(t_program *program, t_philo *philo);
+//	Memory
+void		alloc_philos(t_program *program);
+void		free_philos(t_program *program);
 
 #endif

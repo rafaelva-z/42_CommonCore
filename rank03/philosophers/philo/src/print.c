@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:00:22 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/23 21:01:42 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/25 13:30:19 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 // Prints a message with the format "(time in ms) (philo id) (message) (str)"
 void	print_msg(t_program *program, int id, char *str)
 {
+	id++;
+	if (program->end_of_sim)
+		return ;
 	if (str)
 		printf("%ldms %d %s\n", update_curr_time(program), id, str);
 	else
@@ -24,11 +27,11 @@ void	print_msg(t_program *program, int id, char *str)
 void	print_death_msg(t_program *program, int id, int state)
 {
 	if (state == EAT)
-		printf("%ldms %d %s\n", update_curr_time(program), id, MSG_DEAD_EAT);
+		print_msg(program, id, MSG_DEAD_EAT);
 	else if (state == SLEEP)
-		printf("%ldms %d %s\n", update_curr_time(program), id, MSG_DEAD_SLEEP);
+		print_msg(program, id, MSG_DEAD_SLEEP);
 	else if (state == THINK)
-		printf("%ldms %d %s\n", update_curr_time(program), id, MSG_DEAD_THINK);
+		print_msg(program, id, MSG_DEAD_THINK);
 	else
-		printf("%ldms %d %s\n", update_curr_time(program), id, MSG_DEAD);
+		print_msg(program, id, MSG_DEAD);
 }
