@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 13:39:34 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/25 16:28:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/26 14:58:26 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	update_time(struct timeval *time)
 
 //updates time to current time and returns time since start in ms
 long int	update_curr_time(t_program *program)
-{	
+{
 	gettimeofday(&program->curr_time, NULL);
 	return (time_from_start(*program));
 }

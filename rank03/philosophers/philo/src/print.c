@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:00:22 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/25 13:30:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/26 15:31:31 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@
 void	print_msg(t_program *program, int id, char *str)
 {
 	id++;
+	pthread_mutex_lock(&program->mutex);
 	if (program->end_of_sim)
+	{
+		pthread_mutex_unlock(&program->mutex);
 		return ;
+	}
 	if (str)
 		printf("%ldms %d %s\n", update_curr_time(program), id, str);
 	else
 		printf("%ldms %d\n", update_curr_time(program), id);
+	pthread_mutex_unlock(&program->mutex);
 }
 
 void	print_death_msg(t_program *program, int id, int state)
