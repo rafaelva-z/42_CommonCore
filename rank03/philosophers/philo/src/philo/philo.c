@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:02:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/26 15:39:14 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/28 22:27:28 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	*philo_routine(void *arg)
 	program = philo->program;
 	assign_left(program, philo);
 	update_time(&philo->last_eat);
-	while (!program->end_of_sim)
+	if (!(philo->id % 2))
+		usleep(150);
+	while (1)
 	{
 		if (death_check(program, philo))
 			break ;

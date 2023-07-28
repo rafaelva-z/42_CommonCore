@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/26 13:36:35 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/28 20:41:27 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ typedef struct s_program
 	int				times_must_eat;
 	struct timeval	start_time;
 	struct timeval	curr_time;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	print;
+	pthread_mutex_t	endsim;
+	pthread_mutex_t	eatcount;
+	int				done_eating;
 	int				end_of_sim;
 }	t_program;
 
@@ -91,7 +94,7 @@ void		*philo_routine(void *arg);
 void		print_msg(t_program *program, int id, char *str);
 void		print_death_msg(t_program *program, int id, int state);
 // checks
-void		check_eat_counts(t_program *program);
+void		check_eat_count(t_program *program, t_philo *philo);
 int			death_check(t_program *program, t_philo	*philo);
 //	Memory
 void		alloc_philos(t_program *program);

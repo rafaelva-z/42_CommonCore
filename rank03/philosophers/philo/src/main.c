@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:49:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/26 14:59:34 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/28 19:49:18 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	end_program(t_program *program)
 {
 	free_philos(program);
-	pthread_mutex_destroy(&program->mutex);
+	pthread_mutex_destroy(&program->print);
+	pthread_mutex_destroy(&program->endsim);
+	pthread_mutex_destroy(&program->eatcount);
 }
 
 void	join_threads(t_program *program)
