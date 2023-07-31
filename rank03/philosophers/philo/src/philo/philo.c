@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:02:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 22:27:28 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 14:37:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	program = philo->program;
 	assign_left(program, philo);
-	update_time(&philo->last_eat);
+	update_time(&philo->last_eat, NULL);
 	if (!(philo->id % 2))
 		usleep(150);
 	while (1)

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:14:42 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 20:50:49 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 18:54:34 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,27 @@ void	philo_action(long int time, t_program *program, t_philo *philo)
 {
 	struct timeval	start_time;
 
-	update_time(&start_time);
-	update_time(&program->curr_time);
+	update_time(&start_time, NULL);
+	update_time(&program->curr_time, &program->m_time);
 	while (time_diff(program->curr_time, start_time) < time)
 	{
 		if (death_check(program, philo))
 			return ;
+		update_time(&program->curr_time, &program->m_time);
 	}
-	usleep(150);
 }
 
 void	philo_think(t_program *program, t_philo *philo)
 {
 	philo->state = THINK;
 	print_msg(program, philo->id, MSG_THINK);
-	usleep(500);
 }
 
 void	philo_eat(t_program *program, t_philo *philo)
 {
 	if (grab_forks(program, philo))
 	{
-		update_time(&philo->last_eat);
+		update_time(&philo->last_eat, NULL);
 		philo->state = EAT;
 		print_msg(program, philo->id, MSG_EAT);
 		philo->times_eaten++;
@@ -47,8 +46,6 @@ void	philo_eat(t_program *program, t_philo *philo)
 		philo_action(program->time_eat, program, philo);
 		release_forks(program, philo);
 	}
-	else
-		usleep(100);
 }
 
 void	philo_sleep(t_program *program, t_philo *philo)

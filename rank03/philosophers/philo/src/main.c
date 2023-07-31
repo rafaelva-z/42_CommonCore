@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:49:02 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 19:49:18 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 19:00:50 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void	end_program(t_program *program)
 {
 	free_philos(program);
-	pthread_mutex_destroy(&program->print);
-	pthread_mutex_destroy(&program->endsim);
-	pthread_mutex_destroy(&program->eatcount);
+	pthread_mutex_destroy(&program->m_print);
+	pthread_mutex_destroy(&program->m_endsim);
+	pthread_mutex_destroy(&program->m_eatcount);
+	pthread_mutex_destroy(&program->m_time);
 }
 
 void	join_threads(t_program *program)
@@ -36,8 +37,7 @@ void	create_threads(t_program *program)
 	i = 0;
 	while (i < program->philo_amt)
 	{
-		if (pthread_create(&program->threads[i], NULL,
-				philo_routine, program->philo[i]) != 0)
+		if (pthread_create(&program->threads[i], NULL, philo_routine, program->philo[i]) != 0)
 			err_man(1, i, program);
 		i++;
 	}
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 
 	start_program(&program, argc, argv);
 	start_philos(&program);
-	update_time(&program.start_time);
+	update_time(&program.start_time, NULL);
 	create_threads(&program);
 	join_threads(&program);
 	end_program(&program);

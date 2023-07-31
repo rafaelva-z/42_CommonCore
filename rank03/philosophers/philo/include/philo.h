@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 20:41:27 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 17:49:48 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ typedef struct s_program
 	int				times_must_eat;
 	struct timeval	start_time;
 	struct timeval	curr_time;
-	pthread_mutex_t	print;
-	pthread_mutex_t	endsim;
-	pthread_mutex_t	eatcount;
+	pthread_mutex_t	m_print;
+	pthread_mutex_t	m_endsim;
+	pthread_mutex_t	m_eatcount;
+	pthread_mutex_t	m_time;
 	int				done_eating;
 	int				end_of_sim;
 }	t_program;
@@ -85,7 +86,7 @@ void		philo_sleep(t_program *program, t_philo *philo);
 //	Time
 long int	time_from_start(t_program program);
 long int	time_diff(struct timeval time1, struct timeval time2);
-void		update_time(struct timeval *time);
+void		update_time(struct timeval *time, pthread_mutex_t *mutex);
 long int	update_curr_time(t_program *program);
 //	Threads
 void		create_threads(t_program *program);

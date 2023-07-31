@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:08:24 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 19:00:29 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 19:12:08 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@ static void	arg_parse(t_program *program, int argc, char **argv)
 		program->times_must_eat = ft_atoi(argv[5]);
 	else
 		program->times_must_eat = 0;
+	program->end_of_sim = 0;
 }
 
 void	start_program(t_program *program, int argc, char **argv)
 {
 	arg_check(argc, argv);
 	arg_parse(program, argc, argv);
-	program->end_of_sim = 0;
 	alloc_philos(program);
-	pthread_mutex_init(&program->print, NULL);
-	pthread_mutex_init(&program->endsim, NULL);
-	pthread_mutex_init(&program->eatcount, NULL);
+	pthread_mutex_init(&program->m_print, NULL);
+	pthread_mutex_init(&program->m_endsim, NULL);
+	pthread_mutex_init(&program->m_eatcount, NULL);
+	pthread_mutex_init(&program->m_time, NULL);
 }

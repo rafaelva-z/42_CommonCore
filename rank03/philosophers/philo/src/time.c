@@ -6,43 +6,39 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 13:39:34 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 16:10:51 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 19:21:22 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//returns time since start in ms
-long int	time_from_start(t_program program)
-{
-	long int	sec;
-	long int	ms;
-
-	sec = program.curr_time.tv_sec - program.start_time.tv_sec;
-	ms = program.curr_time.tv_usec - program.start_time.tv_usec;
-	return ((sec * 1000) + (ms / 1000));
-}
-
-//time difference between time1 and time2
 long int	time_diff(struct timeval time1, struct timeval time2)
 {
-	long int	sec;
-	long int	ms;
+	long int	t1;
+	long int	t2;
 
-	sec = time1.tv_sec - time2.tv_sec;
-	ms = time1.tv_usec - time2.tv_usec;
-	return ((sec * 1000) + (ms / 1000));
+	t1 = (time1.tv_sec * 1000) + (time1.tv_usec / 1000);
+	t2 = (time2.tv_sec * 1000) + (time2.tv_usec / 1000);
+	
+	return (t1 - t2);
 }
 
 //updates time to the current time
-void	update_time(struct timeval *time)
+void	update_time(struct timeval *time, pthread_mutex_t *mutex)
 {
-	gettimeofday(time, NULL);
+	if (mutex)
+	{
+		pthread_mutex_lock(mutex);
+		gettimeofday(time, NULL);
+		pthread_mutex_unlock(mutex);
+	}
+	else
+		gettimeofday(time, NULL);
 }
 
 //updates time to current time and returns time since start in ms
 long int	update_curr_time(t_program *program)
 {
-	gettimeofday(&program->curr_time, NULL);
-	return (time_from_start(*program));
+	update_time(&program->curr_time, &program->m_time);
+	return (time_diff(program->curr_time, program->start_time));
 }

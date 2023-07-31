@@ -2,9 +2,12 @@
 
 NAME =		philo
 CC =		cc
-CFLAGS =	-pthread -Wall -Wextra -Werror -g -fsanitize=thread 
-SRC =		./src/*.c ./src/philo/*.c ./src/program/*.c ./src/utils/*.c #./src/arg.c ./src/ft_atoi.c ./src/main.c ./src/time.c ./src/ft_isdigit.c
-#OBJ = 		$(SRC:.c=.o)
+CFLAGS =	-pthread -Wall -Wextra -Werror #-g -fsanitize=thread 
+SRC =		./src/*.c ./src/philo/*.c ./src/program/*.c ./src/utils/*.c
+# \SRC =		./src/main.c ./src/print.c ./src/time.c \
+# 			./src/philo/checks.c ./src/philo/fork_actions.c ./src/philo/philo_actions.c \
+# 			./src/program/error_man.c ./src/program/memory_man.c ./src/program/start_prog.c \
+# 			./src/utils/ft_atoi.c ./src/utils/ft_isdigit.c
 
 #=== COLORS ===#
 
@@ -22,7 +25,7 @@ TAG =	$(CYAN)[$(NAME)]$(RESET)
 
 all: $(NAME)
 
-$(NAME): $(SRC) #$(OBJ)
+$(NAME): $(SRC)
 	@echo "$(TAG) Making Program"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 

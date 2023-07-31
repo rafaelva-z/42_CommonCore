@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:00:22 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/28 22:47:30 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/31 17:48:16 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ void	print_msg(t_program *program, int id, char *str)
 	long int	time;
 
 	id++;
-	pthread_mutex_lock(&program->endsim);
+	pthread_mutex_lock(&program->m_endsim);
 	if (program->end_of_sim)
 	{
-		pthread_mutex_unlock(&program->endsim);
+		pthread_mutex_unlock(&program->m_endsim);
 		return ;
 	}
-	pthread_mutex_unlock(&program->endsim);
-	pthread_mutex_lock(&program->print);
+	pthread_mutex_unlock(&program->m_endsim);
+	pthread_mutex_lock(&program->m_print);
 	time = update_curr_time(program);
 	if (str)
 		printf("%ldms %d %s\n", time, id, str);
 	else
 		printf("%ldms %d\n", time, id);
-	pthread_mutex_unlock(&program->print);
+	pthread_mutex_unlock(&program->m_print);
 }
 
 void	print_death_msg(t_program *program, int id, int state)
