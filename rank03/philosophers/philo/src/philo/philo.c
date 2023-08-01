@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:02:08 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 14:37:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 13:52:36 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	start_philos(t_program *program)
 	}
 }
 
-void	assign_left(t_program *program, t_philo *philo)
+static void	assign_left_philo(t_program *program, t_philo *philo)
 {
 	if (philo->id == 0)
-		philo->left_buddy = program->philo[program->philo_amt - 1]->id;
+		philo->left_philo_id = program->philo[program->philo_amt - 1]->id;
 	else
-		philo->left_buddy = program->philo[philo->id - 1]->id;
+		philo->left_philo_id = program->philo[philo->id - 1]->id;
 }
 
 void	*philo_routine(void *arg)
@@ -43,10 +43,10 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	program = philo->program;
-	assign_left(program, philo);
+	assign_left_philo(program, philo);
 	update_time(&philo->last_eat, NULL);
 	if (!(philo->id % 2))
-		usleep(150);
+		usleep(100);
 	while (1)
 	{
 		if (death_check(program, philo))

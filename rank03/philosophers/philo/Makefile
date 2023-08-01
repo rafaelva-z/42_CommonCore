@@ -1,13 +1,14 @@
-.SILENT:
+#.SILENT:
 
 NAME =		philo
 CC =		cc
-CFLAGS =	-pthread -Wall -Wextra -Werror #-g -fsanitize=thread 
-SRC =		./src/*.c ./src/philo/*.c ./src/program/*.c ./src/utils/*.c
-# \SRC =		./src/main.c ./src/print.c ./src/time.c \
-# 			./src/philo/checks.c ./src/philo/fork_actions.c ./src/philo/philo_actions.c \
-# 			./src/program/error_man.c ./src/program/memory_man.c ./src/program/start_prog.c \
-# 			./src/utils/ft_atoi.c ./src/utils/ft_isdigit.c
+CFLAGS =	-Wall -Wextra -Werror -pthread #-g -fsanitize=thread 
+SRC =		./src/main.c ./src/print.c ./src/time.c \
+			./src/philo/checks.c ./src/philo/fork_actions.c \
+			./src/philo/philo_actions.c ./src/philo/philo.c \
+			./src/program/error_man.c ./src/program/memory_man.c \
+			./src/program/start_prog.c \
+			./src/utils/ft_atoi.c ./src/utils/ft_isdigit.c
 
 #=== COLORS ===#
 
@@ -43,9 +44,9 @@ re: fclean all
 run: re
 	@echo "$(TAG) Running program."
 	@echo "--PHILOSOPHERS--rvaz------START-\n"
-	#./philo  philo_nb	time_die	time_eat  time_sleep	times_must_eat
+#	./philo  philo_nb	time_die	time_eat  time_sleep	times_must_eat
 	@./$(NAME)	 5		800			 200		 200			 
 	@echo "\n--PHILOSOPHERS--rvaz------END-"
 	@make fclean
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run

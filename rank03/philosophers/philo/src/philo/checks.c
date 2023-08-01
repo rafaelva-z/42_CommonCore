@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:39:55 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 17:48:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 13:32:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	death_check(t_program *program, t_philo	*philo)
 
 void	check_eat_count(t_program *program, t_philo *philo)
 {
-	int	i;
-
-	i = 0;
 	if (philo->times_eaten != program->times_must_eat)
 		return ;
 	pthread_mutex_lock(&program->m_eatcount);

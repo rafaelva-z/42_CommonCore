@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 13:39:34 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 19:21:22 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 14:18:56 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ long int	time_diff(struct timeval time1, struct timeval time2)
 
 	t1 = (time1.tv_sec * 1000) + (time1.tv_usec / 1000);
 	t2 = (time2.tv_sec * 1000) + (time2.tv_usec / 1000);
-	
 	return (t1 - t2);
 }
 

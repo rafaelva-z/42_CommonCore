@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 21:00:22 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 17:48:16 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 14:19:15 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ void	print_msg(t_program *program, int id, char *str)
 	long int	time;
 
 	id++;
+	pthread_mutex_lock(&program->m_print);
 	pthread_mutex_lock(&program->m_endsim);
 	if (program->end_of_sim)
 	{
 		pthread_mutex_unlock(&program->m_endsim);
+		pthread_mutex_unlock(&program->m_print);
 		return ;
 	}
 	pthread_mutex_unlock(&program->m_endsim);
-	pthread_mutex_lock(&program->m_print);
 	time = update_curr_time(program);
 	if (str)
 		printf("%ldms %d %s\n", time, id, str);

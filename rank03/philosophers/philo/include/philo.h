@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 17:49:48 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 13:44:33 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ struct s_philo
 	struct timeval	last_eat;
 	int				fork;
 	pthread_mutex_t	mutex;
-	int				left_buddy;
+	int				left_philo_id;
 	int				times_eaten;
 };
 
