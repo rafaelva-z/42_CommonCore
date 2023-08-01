@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_calc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:42:13 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/12 12:21:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/07/24 19:47:51 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ static void	calc_rot_z(t_map *map, t_3d_point *rotated)
 
 static void	calc_2d_pos(t_map *map, t_node *node, t_3d_point rotated)
 {
-	node->calc_pos.x = roundf((rotated.x - rotated.y)
-			* map->scale + map->offset.x);
-	node->calc_pos.y = roundf((rotated.z + rotated.x + rotated.y)
-			* map->scale + map->offset.y);
+	node->calc_pos.x = roundf((rotated.x - rotated.y) * map->scale + map->offset.x);
+	node->calc_pos.y = roundf((rotated.z + rotated.x + rotated.y) * map->scale + map->offset.y);
 }
 
 void	calc_node_pos(t_map *map)
