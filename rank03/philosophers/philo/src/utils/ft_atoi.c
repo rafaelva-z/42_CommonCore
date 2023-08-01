@@ -19,7 +19,7 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+long int	ft_atoi(const char *nptr)
 {
 	long int	result;
 	int			i;
@@ -33,5 +33,5 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	while (nptr[i] && ft_isdigit(nptr[i]))
 		result = (result * 10) + (nptr[i++] - '0');
-	return ((int)result * signal);
+	return ((long int)result * signal);
 }

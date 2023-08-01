@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:08:24 by rvaz              #+#    #+#             */
-/*   Updated: 2023/07/31 19:12:08 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 16:03:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 static void	values_check(int argc, char **argv)
 {
-	if (ft_atoi(argv[1]) < 1)
+	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[1]) > 1000)
 	{
 		printf("[philo] The philosophers didn't show up\n");
+		printf("or inserted number is too big\n");
 		exit(1);
 	}
-	if (argc == 6 && ft_atoi(argv[5]) < 1)
+	if (ft_atoi(argv[2]) > MAX_INT || ft_atoi(argv[3]) > MAX_INT
+		|| ft_atoi(argv[4]) > MAX_INT
+		|| ft_atoi(argv[2]) < 0 || ft_atoi(argv[3]) < 0
+		|| ft_atoi(argv[4]) < 0)
+	{
+		printf("[philo] invalid time in arguments\n");
+		exit(1);
+	}
+	if (argc == 6 && (ft_atoi(argv[5]) < 1 || ft_atoi(argv[5]) > MAX_INT))
 	{
 		printf("[philo] The philosophers aren't hungry at the moment\n");
+		printf("or inserted number is too big\n");
 		exit(1);
 	}
 }

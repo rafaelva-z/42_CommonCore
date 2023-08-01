@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:42:07 by rvaz              #+#    #+#             */
-/*   Updated: 2023/08/01 13:44:33 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/08/01 16:01:05 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <sys/time.h>
 # include <semaphore.h>
 
+# define MAX_INT 2147483647
+
 // Philosopher states
 # define DEAD	0
 # define EAT	1
@@ -30,7 +32,7 @@
 # define MSG_EAT		"is eating"
 # define MSG_SLEEP		"is sleeping"
 # define MSG_THINK		"is thinking"
-# define MSG_TAKE_FORK	"has taken the forks"
+# define MSG_TAKE_FORK	"has taken a fork"
 # define MSG_PUT_FORK	"has put down the forks"
 # define MSG_BORN		"is born"
 # define MSG_DEAD		"died"
@@ -101,7 +103,8 @@ int			death_check(t_program *program, t_philo	*philo);
 void		alloc_philos(t_program *program);
 void		free_philos(t_program *program);
 //	Utils
-int			ft_atoi(const char *nptr);
+long int	ft_atoi(const char *nptr);
 int			ft_isdigit(int c);
+int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
 
 #endif
