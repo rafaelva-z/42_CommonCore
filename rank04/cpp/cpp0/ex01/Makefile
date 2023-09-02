@@ -3,7 +3,7 @@ NAME = phonebook
 CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = ./main.cpp
+SRC = ./src/main.cpp ./src/phonebook.cpp ./src/contact.cpp ./src/utils.cpp ./src/console.cpp
 
 #=== COLORS ===#
 
