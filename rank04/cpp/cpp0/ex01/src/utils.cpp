@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:05:05 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/02 19:53:32 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/04 17:53:26 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,20 @@ void	getInput(const std::string& prompt, std::string& input)
 std::string	itos(int i)
 {
     std::stringstream ss;
+    std::string s;
+
     ss << i;
-    std::string s = ss.str();
+    s = ss.str();
 	return (s);
+}
+
+int ft_stoi(std::string input)
+{
+    int id;
+
+    std::stringstream ss;
+	ss << input;
+	std::string hey;
+	ss >> id;
+    return (id);
 }

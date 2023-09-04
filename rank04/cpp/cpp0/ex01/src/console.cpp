@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:52:42 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/02 20:05:51 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/04 17:12:51 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ void printWelcome()
 void	displayField(const std::string& text, int fieldWidth)
 {
 	std::cout << alignRight(text, (long unsigned int)fieldWidth);
+}
+
+void	tag(void)
+{
+	std::cout << "MyPhoneBook>";
 }

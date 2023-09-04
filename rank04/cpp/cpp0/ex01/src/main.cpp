@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 16:26:23 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/02 19:57:18 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/04 17:40:56 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,24 @@ int	main()
 	while (1)
 	{
 		printWelcome();
-		std::cout << "MyPhoneBook>";
-		std::getline(std::cin, inpt);
-		if (inpt.empty())
-        	continue;
-		else if (inpt == "ADD")
-			MAPB.add_contact();
-		else if (inpt == "SEARCH")
-			MAPB.display_contacts();
-		else if (inpt == "EXIT")
+		while (1)
+		{
+			tag();
+			std::getline(std::cin, inpt);
+			if (inpt.empty())
+				continue;
+			else if (inpt == "ADD")
+				MAPB.add_contact();
+			else if (inpt == "SEARCH")
+			{
+				MAPB.display_contact_list();
+				MAPB.select_contact();
+			}
+			else if (inpt != "EXIT")
+				continue;
+			break;
+		}
+		if (inpt == "EXIT")
 			break;
 	}
 	std::cout << "Thank you for using My Awesome PhoneBook!" << std::endl;
