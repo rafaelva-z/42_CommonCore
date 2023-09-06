@@ -1,9 +1,9 @@
 .SILENT:
-NAME = phonebook
-CC = g++
-
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = ./src/main.cpp ./src/phonebook.cpp ./src/contact.cpp ./src/utils.cpp ./src/console.cpp
+NAME =		phonebook
+CC =		g++
+CFLAGS =	-Wall -Wextra -Werror -std=c++98
+SRC =		/src/main.cpp ./src/phonebook.cpp ./src/contact.cpp ./src/utils.cpp \
+			./src/console.cpp
 
 #=== COLORS ===#
 
@@ -15,7 +15,7 @@ MAGENTA =	\033[0;35m
 CYAN =		\033[96m
 RESET =		\033[0m
 
-TAG =	$(CYAN)[$(NAME)]$(RESET)
+TAG =		$(CYAN)[$(NAME)]$(RESET)
 
 #=== RULES ===#
 

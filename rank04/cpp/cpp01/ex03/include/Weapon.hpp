@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 19:39:30 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/06 13:40:25 by rvaz             ###   ########.fr       */
+/*   Created: 2023/09/06 14:02:19 by rvaz              #+#    #+#             */
+/*   Updated: 2023/09/06 15:36:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int	main()
+# include <iostream>
+# include <string>
+
+class Weapon
 {
-	Zombie* zombie;
+	private:
+	std::string type;
 	
-	zombie = newZombie("Gandalf");
-	zombie->announce();
-	randomChump("Carl");
-	delete zombie;
-}
+	public:
+	Weapon();
+	Weapon(std::string type);
+	~Weapon();
+	void		setType(std::string type);
+	std::string	getType() const;
+};
+
+#endif

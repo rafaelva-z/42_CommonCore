@@ -1,8 +1,8 @@
 .SILENT:
-NAME =		brainz
+NAME =		hi_this_is_brain
 CC =		g++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./src/main.cpp ./src/Zombie.cpp ./src/newZombie.cpp ./src/randomChump.cpp
+SRC =		main.cpp
 
 #=== COLORS ===#
 

@@ -1,8 +1,8 @@
 .SILENT:
-NAME =		brainz
+NAME =		unnecessary_violence
 CC =		g++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./src/main.cpp ./src/Zombie.cpp ./src/newZombie.cpp ./src/randomChump.cpp
+SRC =		./src/main.cpp ./src/HumanA.cpp ./src/HumanB.cpp ./src/Weapon.cpp
 
 #=== COLORS ===#
 

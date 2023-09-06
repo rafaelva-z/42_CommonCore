@@ -1,9 +1,8 @@
 .SILENT:
-NAME = megaphone
-CC = g++
-
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = ./megaphone.cpp
+NAME =		megaphone
+CC =		g++
+CFLAGS =	-Wall -Wextra -Werror -std=c++98
+SRC =		./megaphone.cpp
 
 #=== COLORS ===#
 
@@ -15,7 +14,7 @@ MAGENTA =	\033[0;35m
 CYAN =		\033[96m
 RESET =		\033[0m
 
-TAG =	$(CYAN)[$(NAME)]$(RESET)
+TAG =		$(CYAN)[$(NAME)]$(RESET)
 
 #=== RULES ===#
 

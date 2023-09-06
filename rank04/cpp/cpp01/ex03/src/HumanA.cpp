@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 19:39:30 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/06 13:40:25 by rvaz             ###   ########.fr       */
+/*   Created: 2023/09/06 14:02:21 by rvaz              #+#    #+#             */
+/*   Updated: 2023/09/06 15:26:25 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Zombie.hpp"
+#include "../include/HumanA.hpp"
 
-int	main()
+HumanA::HumanA(std::string name, Weapon weapon)
 {
-	Zombie* zombie;
-	
-	zombie = newZombie("Gandalf");
-	zombie->announce();
-	randomChump("Carl");
-	delete zombie;
+	this->name = name;
+	this->weapon = weapon; 
+}
+
+HumanA::~HumanA()
+{
+
+}
+
+void	HumanA::attack()
+{
+	std::cout << this->name << " attacks with their ";
+	std::cout << this->weapon.getType() << std::endl;
+}
+void	HumanA::setWeapon(Weapon weapon)
+{
+	this->weapon = weapon;
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:39:30 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/06 13:40:25 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/06 13:40:02 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int	main()
 {
-	Zombie* zombie;
-	
-	zombie = newZombie("Gandalf");
-	zombie->announce();
-	randomChump("Carl");
-	delete zombie;
+	int hordeSize;
+
+	hordeSize = 5;
+	Zombie* horde;
+
+	horde = zombieHorde(hordeSize, "Zombie Guy");
+	for (int i = 0; i < hordeSize; i++)
+	{
+		horde[i].announce();	
+	}
+	delete[] horde;
 }
