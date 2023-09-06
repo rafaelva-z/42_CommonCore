@@ -1,8 +1,9 @@
 .SILENT:
-NAME =  BraiiiiiiinnnzzzZ
-CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = ./src/main.cpp ./src/Zombie.cpp ./src/newZombie.cpp
+NAME =		brains
+CC =		g++
+CFLAGS =	-Wall -Wextra -Werror -std=c++98
+SRC =		./src/main.cpp ./src/Zombie.cpp ./src/newZombie.cpp ./src/randomChump.cpp
+
 #=== COLORS ===#
 
 RED =		\033[0;31m
@@ -13,7 +14,7 @@ MAGENTA =	\033[0;35m
 CYAN =		\033[96m
 RESET =		\033[0m
 
-TAG =	$(CYAN)[$(NAME)]$(RESET)
+TAG =		$(CYAN)[$(NAME)]$(RESET)
 
 #=== RULES ===#
 

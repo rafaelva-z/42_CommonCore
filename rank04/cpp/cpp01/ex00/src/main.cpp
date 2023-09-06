@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:39:30 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/04 20:19:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/06 12:51:35 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	main()
 {
-	Zombie zombie;
+	Zombie* zombie;
 	
-	zombie = zombie.newZombie("Gandalf");
+	zombie = newZombie("Gandalf");
 	zombie->announce();
+	randomChump("Carl");
+
 	delete zombie;
 }
