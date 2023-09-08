@@ -6,17 +6,12 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:48:17 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/06 17:06:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/07 12:47:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
-
-//PROBLEMS
-//null char at the start of replace file
-//doesnt work with multiple chars on argument to check
-//maybe try more modular aproach
 
 int	main(int argc, char** argv)
 {
@@ -28,8 +23,6 @@ int	main(int argc, char** argv)
 	std::string		phrase;
 	std::string		to_subs(argv[2]);
 
-	i = 0;
-	c = 0;
 	if (argc != 4)
 		return 0;
 	filename = argv[1];
@@ -40,18 +33,21 @@ int	main(int argc, char** argv)
 		return 0;
 	}
 	w_file.open((filename + ".replace").c_str());
+	i = 0;
+	c = 0;
 	while (c != -1)
 	{
+		c = r_file.get();
 		if (c != argv[2][i])
 		{
-			std::cerr << "phrase size: " << phrase.size() << std::endl;
 			if (phrase.size())
 			{
 				w_file << phrase;
 				phrase = "";
 				i = 0;
 			}
-			w_file << c;
+			if (c > 0)
+				w_file << c;
 		}
 		else
 		{
@@ -64,7 +60,7 @@ int	main(int argc, char** argv)
 			else
 				i++;
 		}
-		c = r_file.get();
+		
 	}
 	//if finds argv[2], instead put argv[3]
 	if (w_file.is_open())
