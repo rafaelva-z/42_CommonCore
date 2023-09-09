@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:02:27 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/06 15:42:04 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/09 20:52:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ Weapon::Weapon(std::string type)
 	this->type = type;
 }
 
-Weapon::Weapon()
+Weapon::Weapon(void)
 {
-
 }
 
-Weapon::~Weapon()
+Weapon::~Weapon(void)
 {
 }
 
@@ -31,7 +30,7 @@ void	Weapon::setType(std::string type)
 	this->type = type;
 }
 
-std::string	Weapon::getType() const
+const std::string &Weapon::getType(void)
 {
 	return (type);
 }

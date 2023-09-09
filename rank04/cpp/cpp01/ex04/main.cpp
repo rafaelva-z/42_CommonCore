@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:48:17 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/07 12:47:52 by rvaz             ###   ########.fr       */
+/*   Updated: 2023/09/09 20:40:31 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char** argv)
 	std::string		phrase;
 	std::string		to_subs(argv[2]);
 
-	if (argc != 4)
+	if (argc != 4 || !argv[2][0])
 		return 0;
 	filename = argv[1];
 	r_file.open(filename.c_str());
@@ -62,7 +62,6 @@ int	main(int argc, char** argv)
 		}
 		
 	}
-	//if finds argv[2], instead put argv[3]
 	if (w_file.is_open())
 		w_file.close();
 	if (r_file.is_open())
