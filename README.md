@@ -19,4 +19,4 @@ Rated out of 100 points, some have extra 25 for bonus points.\
 ## Rank 03
 **100** | [philosophers](./rank03/philosophers) - every philosopher is a thread and they must think, eat and sleep.\
 --- | minishell (group project) - create a shell like bash, replicating some commands.\
---- | Exam Rank 03
+**100** | Exam Rank 03
