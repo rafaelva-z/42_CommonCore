@@ -25,4 +25,4 @@ Rated out of 100 points, some have extra 25 for bonus points.\
 --- | cpp \
 --- | netpractice \
 --- | cub3d \
---- | Exam Rank 04 \
+--- | Exam Rank 04
