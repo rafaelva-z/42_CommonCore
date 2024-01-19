@@ -18,7 +18,7 @@ Rated out of 100 points, some have extra 25 for bonus points.\
 
 ## Rank 03
 **100** | [philosophers](./rank03/philosophers) - every philosopher is a thread and they must think, eat and sleep.\
-**99** | [minishell](https://github.com/rafaelva-z/minishell) (group project with [Francisco Inácio](https://github.com/FInacio97) - a shell like bash, that replicates the pipeline system, redirections, some built-in commands.\
+**99** | [minishell](https://github.com/rafaelva-z/minishell) (group project made with [Francisco Inácio](https://github.com/FInacio97)) - a shell like bash, that replicates the pipeline system, redirections, some built-in commands.\
 **100** | Exam Rank 03
 
 ## Rank 04
