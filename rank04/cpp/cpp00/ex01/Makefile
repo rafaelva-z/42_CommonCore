@@ -1,8 +1,8 @@
 .SILENT:
 NAME =		phonebook
-CC =		g++
+CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		/src/main.cpp ./src/phonebook.cpp ./src/contact.cpp ./src/utils.cpp \
+SRC =		./src/main.cpp ./src/phonebook.cpp ./src/contact.cpp ./src/utils.cpp \
 			./src/console.cpp
 
 #=== COLORS ===#

@@ -1,0 +1,3 @@
+[submodule "rank03/42_minishell"]
+	path = rank03/42_minishell
+	url = git@github.com:rafaelva-z/42_minishell.git
