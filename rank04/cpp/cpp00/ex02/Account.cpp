@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:03:41 by rvaz              #+#    #+#             */
-/*   Updated: 2024/02/06 13:28:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/06 13:33:54 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ bool	Account::makeWithdrawal(int withdrawal)
 	return (1);
 }
 
-
-
 int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
@@ -135,9 +133,6 @@ int	Account::getNbWithdrawals(void)
 {
 	return (_totalNbWithdrawals);
 }
-
-
-
 
 int		Account::checkAmount(void) const
 {
