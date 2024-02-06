@@ -6,6 +6,11 @@ SRC =		./megaphone.cpp
 
 #=== COLORS ===#
 
+RED =		\033[0;31m
+GREEN =		\033[0;92m
+YELLOW =	\033[93m
+BLUE =		\033[0;34m
+MAGENTA =	\033[0;35m
 CYAN =		\033[96m
 RESET =		\033[0m
 

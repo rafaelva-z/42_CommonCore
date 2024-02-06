@@ -1,6 +1,6 @@
 .SILENT:
 NAME =		moar_brainz
-CC =		g++
+CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 SRC =		./src/main.cpp ./src/Zombie.cpp ./src/zombieHorde.cpp
 

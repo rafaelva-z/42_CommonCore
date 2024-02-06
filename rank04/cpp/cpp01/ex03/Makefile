@@ -1,6 +1,6 @@
 .SILENT:
 NAME =		unnecessary_violence
-CC =		g++
+CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 SRC =		./src/main.cpp ./src/HumanA.cpp ./src/HumanB.cpp ./src/Weapon.cpp
 

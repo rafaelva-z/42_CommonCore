@@ -1,8 +1,8 @@
 .SILENT:
-NAME =		"OPEN!"
+NAME =		Accounts
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./main.cpp ./ClapTrap.cpp
+SRC =		Account.cpp tests.cpp
 
 #=== COLORS ===#
 
