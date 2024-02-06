@@ -2,7 +2,7 @@
 NAME =		Accounts
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		Account.cpp tests.cpp
+SRC =		./Account.cpp ./tests.cpp
 
 #=== COLORS ===#
 
