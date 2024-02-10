@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:02:21 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/09 20:40:40 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/10 15:45:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/HumanA.hpp"
+#include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon weapon)
+HumanA::HumanA(std::string name, Weapon &weapon) // : _weapon(myWeapon) what is this?
 {
 	this->name = name;
 	this->weapon = weapon; 
@@ -27,7 +27,7 @@ void	HumanA::attack()
 	std::cout << this->name << " attacks with their ";
 	std::cout << this->weapon.getType() << std::endl;
 }
-void	HumanA::setWeapon(Weapon weapon)
+void	HumanA::setWeapon(Weapon &weapon)
 {
 	this->weapon = weapon;
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:02:27 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/09 20:52:59 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/10 13:30:05 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Weapon.hpp"
+#include "Weapon.hpp"
 
 Weapon::Weapon(std::string type)
 {
