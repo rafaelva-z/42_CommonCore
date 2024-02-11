@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:02:17 by rvaz              #+#    #+#             */
-/*   Updated: 2024/02/10 15:41:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/11 19:11:47 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 class HumanB
 {
 	private:
-	std::string	name;
-	Weapon		*weapon;
+	std::string	_name;
+	Weapon		*_weapon;
 	
 	public:
 	HumanB(const std::string name);

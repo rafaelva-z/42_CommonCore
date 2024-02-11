@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:48:17 by rvaz              #+#    #+#             */
-/*   Updated: 2024/02/10 15:08:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/11 19:46:20 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int	display_error(std::string msg, short exit_status)
 {
+	std::cerr << "\033[0;31m[sed_is_for_losers]\033[0m ";
 	std::cerr << msg << std::endl;
 	return (exit_status);
 }
@@ -75,17 +76,19 @@ int	main(int argc, char** argv)
 	filename = argv[1];
 	r_file.open(filename.c_str());
 	if (!r_file.is_open())
-		return (display_error("Can't open file: " + filename, 2));
+		return (display_error("Can't open file: \"" + filename + "\"", 2));
 	w_file.open((filename + ".replace").c_str());
 	if (!w_file.is_open())
 	{
 		r_file.close();
-		return (display_error("Can't write to file: " + filename, 2));
+		return (display_error("Can't write to file: \"" + filename + ".replace\"", 2));
 	}
 	replace_text(w_file, r_file, argv);
 	if (w_file.is_open())
 		w_file.close();
 	if (r_file.is_open())
 		r_file.close();
+	std::cout << "\033[96m[sed_is_for_losers]\033[0m ";
+	std::cout << "Output written to \"" + filename + ".replace\"" << std::endl;
 	return (0);
 }
