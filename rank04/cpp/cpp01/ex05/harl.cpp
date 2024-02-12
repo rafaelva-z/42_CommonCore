@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:39:16 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/09 20:39:17 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/12 12:08:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Harl::~Harl(void)
 void	Harl::debug(void)
 {
 	std::cout	<< "I love having extra bacon for my " 
-				<< "7XL-double-cheese-triple-pickle-special-ketchup burger."
+				<< "7XL-double-cheese-triple-pickle-special-ketchup burger. "
 				<< "I really do!" << std::endl;
 }
 void	Harl::info(void)
@@ -58,3 +58,4 @@ void	Harl::complain(std::string level)
 		if (level == f_name[i])
 			(this->*f[i])();
 }
+	

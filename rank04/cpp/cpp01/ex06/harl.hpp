@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:15:34 by rvaz              #+#    #+#             */
-/*   Updated: 2023/09/09 20:58:20 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/02/12 11:39:54 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@
 class Harl
 {
 	private:
-	void	(Harl::*f[4])(void);
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
+	void		(Harl::*_fLevel[4])(void);
+	std::string _level[4];
+	int			_filter;
+	void		debug(void);
+	void		info(void);
+	void		warning(void);
+	void		error(void);
 
 	public:
 	Harl(void);
 	~Harl(void);
-	std::string f_name[4];
-	void		complain(std::string level);
-	int			filter;
+	void		complain(std::string const &level);
+	void		set_filter(std::string const &level);
 };
 
 #endif
