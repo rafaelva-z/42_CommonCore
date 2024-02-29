@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 // ex03
 
@@ -6,56 +7,56 @@
 bool	Fixed::operator>(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '>'" << std::endl;
-	return (this->_fixedPointValue > f._fixedPointValue);
+	return (_fixedPointValue > f._fixedPointValue);
 }
 
 bool	Fixed::operator<(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '<'" << std::endl;
-	return (this->_fixedPointValue < f._fixedPointValue);
+	return (_fixedPointValue < f._fixedPointValue);
 }
 
 bool	Fixed::operator>=(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '>='" << std::endl;
-	return (this->_fixedPointValue >= f._fixedPointValue);
+	return (_fixedPointValue >= f._fixedPointValue);
 }
 
 bool	Fixed::operator<=(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '<='" << std::endl;
-	return (this->_fixedPointValue <= f._fixedPointValue);
+	return (_fixedPointValue <= f._fixedPointValue);
 }
 
 bool	Fixed::operator==(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '=='" << std::endl;
-	return (this->_fixedPointValue == f._fixedPointValue);
+	return (_fixedPointValue == f._fixedPointValue);
 }
 
 bool	Fixed::operator!=(const Fixed &f) const
 {
 	std::cout << "Comparison operator called '!='" << std::endl;
-	return (this->_fixedPointValue != f._fixedPointValue);
+	return (_fixedPointValue != f._fixedPointValue);
 }
 
 //	Arithmetic operators
 Fixed	Fixed::operator+(const Fixed &f) const
 {
 	std::cout << "Arithmetic operator called '+'" << std::endl;
-	return (Fixed(this->toFloat() + f.toFloat()));
+	return (Fixed(toFloat() + f.toFloat()));
 }
 
 Fixed	Fixed::operator-(const Fixed &f) const
 {
 	std::cout << "Arithmetic operator called '-'" << std::endl;
-	return (Fixed(this->toFloat() - f.toFloat()));
+	return (Fixed(toFloat() - f.toFloat()));
 }
 
 Fixed	Fixed::operator*(const Fixed &f) const
 {
 	std::cout << "Arithmetic operator called '*'" << std::endl;
-	return (Fixed(this->toFloat() * f.toFloat()));
+	return (Fixed(toFloat() * f.toFloat()));
 }
 
 Fixed	Fixed::operator/(const Fixed &f) const
@@ -102,7 +103,7 @@ Fixed	Fixed::operator++(int)
 {
 	std::cout << "Increment operator called 'this++'" << std::endl;
 	Fixed tmp(*this);
-	operator++();
+	_fixedPointValue++;
 	return (tmp);
 }
 
@@ -117,13 +118,13 @@ Fixed	Fixed::operator--(int)
 {
 	std::cout << "Decrement operator called 'this--'" << std::endl;
 	Fixed tmp(*this);
-	operator--();
+	_fixedPointValue--;
 	return (tmp);
 }
 
 // ex02
 
-#include <cmath>
+
 
 Fixed::Fixed(const int &n)
 {
@@ -162,13 +163,13 @@ Fixed::Fixed(void) : _fixedPointValue(0)
 Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
+	_fixedPointValue = copy._fixedPointValue;
 }
 
 Fixed &Fixed::operator=(const Fixed &copy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedPointValue = copy.getRawBits();
+	_fixedPointValue = copy._fixedPointValue;
 	return (*this);
 }
 
