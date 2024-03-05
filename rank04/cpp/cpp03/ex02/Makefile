@@ -1,8 +1,9 @@
 .SILENT:
-NAME =		OPEN!
+NAME =		RepetitiveWork
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./main.cpp ./ClapTrap.cpp
+SRC =		./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp
+
 
 #=== COLORS ===#
 
