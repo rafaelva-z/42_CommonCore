@@ -24,5 +24,5 @@ Rated out of 100 points, some have extra 25 for bonus points.\
 ## Rank 04
 --- | cpp \
 --- | netpractice \
---- | cub3d \
+**125** | [cub3d](https://github.com/rafaelva-z/cub3d) (group project made with [Francisco Inácio](https://github.com/FInacio97)) - a game using the raycasting algorithm \
 --- | Exam Rank 04
