@@ -1,3 +1,6 @@
 [submodule "rank03/42_minishell"]
 	path = rank03/42_minishell
 	url = git@github.com:rafaelva-z/42_minishell.git
+[submodule "rank04/cub3d"]
+	path = rank04/cub3d
+	url = git@github.com:rafaelva-z/cub3d.git
