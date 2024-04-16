@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:58:27 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:43:09 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/16 15:58:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGANIMAL_HPP
 # define WRONGANIMAL_HPP
 
-#include <iostream>
+# include <iostream>
 
 class WrongAnimal
 {

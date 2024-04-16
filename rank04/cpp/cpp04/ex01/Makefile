@@ -1,7 +1,7 @@
 .SILENT:
 NAME =			Fire
 CC =			c++
-CFLAGS =		-Wall -Wextra -Werror -std=c++98
+CFLAGS =		-Wall -Wextra -Werror -std=c++98 -g
 SRC =			./src/main.cpp ./src/Animal.cpp ./src/Dog.cpp ./src/Cat.cpp \
 				./src/WrongCat.cpp ./src/WrongAnimal.cpp ./src/Brain.cpp
 INCLUDE_DIR =	./include/

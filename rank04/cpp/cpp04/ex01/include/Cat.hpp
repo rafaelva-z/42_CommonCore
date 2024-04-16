@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 19:59:32 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/16 16:11:15 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Cat : public Animal
 	Cat&	operator=(const Cat& other);
 	~Cat();
 	//	Functions
-	void	makeSound() const;
+	void			makeSound() const;
+	Brain&	getBrain() const;
 };
 
 #endif

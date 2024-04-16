@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:22:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 20:02:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/16 16:44:41 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Cat&	Cat::operator=(const Cat& other)
 {
 	std::cout << "Cat Copy Assignment operator called." << std::endl;
 	type = other.type;
-	brain = other.brain;
+	*brain = *other.brain;
 	return (*this);
 }
 
@@ -44,4 +44,9 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << "Meow!" << std::endl;
+}
+
+Brain& Cat::getBrain() const
+{
+	return (*brain);
 }

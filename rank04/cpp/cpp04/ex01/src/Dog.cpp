@@ -13,7 +13,7 @@
 #include "Dog.hpp"
 
 //	Orthodox Canonical Form
-Dog::Dog() : Animal(), brain(new Brain)
+Dog::Dog() : Animal(), brain(new Brain())
 {
 	std::cout << "Dog Default constructor called." << std::endl;
 	type = "Dog";
@@ -31,7 +31,7 @@ Dog&	Dog::operator=(const Dog& other)
 {
 	std::cout << "Dog Copy Assignment operator called." << std::endl;
 	type = other.type;
-	brain = other.brain;
+	*brain = *other.brain;
 	return (*this);
 }
 
@@ -46,12 +46,7 @@ void Dog::makeSound() const
 	std::cout << "Woof Woof!" << std::endl;
 }
 
-const std::string&	Dog::getIdea(int index) const
+Brain& Dog::getBrain() const
 {
-	return (brain->getIdea(index));
-}
-
-void	Dog::setIdea(int index, const std::string &new_idea)
-{
-	brain->setIdea(index, new_idea);
+	return (*brain);
 }

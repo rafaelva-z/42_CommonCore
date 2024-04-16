@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:57:12 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 19:41:28 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/16 16:24:54 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 class Brain
 {
+	private:
+	std::string _ideas[IDEAS_SIZE];
+	
 	public:
 	Brain();
 	~Brain();
@@ -29,8 +32,6 @@ class Brain
 	const std::string&	getIdea(int index) const;
 	void				setIdea(int index, const std::string &new_idea);
 
-	private:
-	std::string _ideas[IDEAS_SIZE];
 };
 
 #endif

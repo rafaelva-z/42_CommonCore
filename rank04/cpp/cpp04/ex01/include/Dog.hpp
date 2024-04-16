@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 20:10:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/16 16:10:11 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ class Dog : public Animal
 	Dog&	operator=(const Dog& other);
 	~Dog();
 	//	Functions
-	void				makeSound() const;
-	const std::string&	getIdea(int index) const;
-	void				setIdea(int index, const std::string &new_idea);
+	void			makeSound() const;
+	Brain&	getBrain() const;
 };
 
 #endif
