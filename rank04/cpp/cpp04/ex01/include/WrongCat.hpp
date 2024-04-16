@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:49:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/15 18:44:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
 	//	Orthodox Canonical Form
-	Dog();
-	Dog(const Dog &other);
-	Dog&	operator=(const Dog& other);
-	~Dog();
+	WrongCat();
+	WrongCat(const WrongCat &other);
+	WrongCat&	operator=(const WrongCat& other);
+	~WrongCat();
 	//	Functions
 	void	makeSound() const;
 };

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:49:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/15 19:59:32 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class Dog : public Animal
+class Cat : public Animal
 {
+	private:
+	Brain	*brain;
+
 	public:
 	//	Orthodox Canonical Form
-	Dog();
-	Dog(const Dog &other);
-	Dog&	operator=(const Dog& other);
-	~Dog();
+	Cat();
+	Cat(const Cat &other);
+	Cat&	operator=(const Cat& other);
+	~Cat();
 	//	Functions
 	void	makeSound() const;
 };

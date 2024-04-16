@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:49:37 by rvaz             ###   ########.fr       */
+/*   Created: 2024/03/14 16:58:27 by rvaz              #+#    #+#             */
+/*   Updated: 2024/04/15 18:43:09 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-# include "Animal.hpp"
+#include <iostream>
 
-class Dog : public Animal
+class WrongAnimal
 {
+	protected:
+	std::string		type;
+	
 	public:
-	//	Orthodox Canonical Form
-	Dog();
-	Dog(const Dog &other);
-	Dog&	operator=(const Dog& other);
-	~Dog();
-	//	Functions
-	void	makeSound() const;
+	// Orthodox Canonical Form
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal &other);
+	WrongAnimal&	operator=(const WrongAnimal& other);
+	virtual ~WrongAnimal();
+	//	Getters
+	const std::string&	getType(void) const;
+	// Other Functions
+	virtual void makeSound() const;
 };
 
 #endif

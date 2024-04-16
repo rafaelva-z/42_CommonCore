@@ -1,8 +1,10 @@
 .SILENT:
-NAME =		SetTheWorldOnFire
-CC =		c++
-CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp
+NAME =			Fire
+CC =			c++
+CFLAGS =		-Wall -Wextra -Werror -std=c++98
+SRC =			./src/main.cpp ./src/Animal.cpp ./src/Dog.cpp ./src/Cat.cpp \
+				./src/WrongCat.cpp ./src/WrongAnimal.cpp ./src/Brain.cpp
+INCLUDE_DIR =	./include/
 
 
 #=== COLORS ===#
@@ -23,7 +25,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(TAG) Making Program"
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(INCLUDE_DIR)
 
 clean:
 

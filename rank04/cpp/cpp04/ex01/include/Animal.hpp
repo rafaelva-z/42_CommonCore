@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:49:37 by rvaz             ###   ########.fr       */
+/*   Created: 2024/03/14 16:58:27 by rvaz              #+#    #+#             */
+/*   Updated: 2024/04/15 19:58:56 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-# include "Animal.hpp"
+# include <iostream>
 
-class Dog : public Animal
+class Animal
 {
+	protected:
+	std::string		type;
+	
 	public:
-	//	Orthodox Canonical Form
-	Dog();
-	Dog(const Dog &other);
-	Dog&	operator=(const Dog& other);
-	~Dog();
-	//	Functions
-	void	makeSound() const;
+	// Orthodox Canonical Form
+	Animal();
+	Animal(const Animal &other);
+	Animal&	operator=(const Animal& other);
+	virtual	~Animal();
+	//	Getters
+	const std::string&	getType(void) const;
+	//	Other Functions
+	virtual void makeSound() const;
 };
 
 #endif

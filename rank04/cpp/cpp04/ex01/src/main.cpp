@@ -6,13 +6,15 @@
 /*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:49:02 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/15 20:05:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+
+# define GROUP_SIZE 10
 
 int main()
 {
@@ -23,28 +25,22 @@ int main()
 	std::string reset = "\033[0m";
 
 	std::cout << cyan + "-Constructors-" + reset << std::endl;
-	const Animal* NormalAnimal = new Animal();
-	const Animal* CoolCat = new Cat();
-	const Animal* CoolDog = new Dog();
-	const WrongAnimal* WrongAnimal = new WrongCat();
+	Animal* AnimalGroup[GROUP_SIZE];
 	
-	std::cout << cyan + "-Types-" + reset << std::endl;
-	std::cout << NormalAnimal->getType() << " " << std::endl;
-	std::cout << CoolCat->getType() << " " << std::endl;
-	std::cout << CoolDog->getType() << " " << std::endl;
-	std::cout << WrongAnimal->getType() << " " << std::endl;
-	
-	std::cout << cyan + "-Animal Sounds-" + reset << std::endl;
-	NormalAnimal->makeSound();
-	CoolCat->makeSound();
-	CoolDog->makeSound();
-	WrongAnimal->makeSound();
+	for (int i = 0; i < GROUP_SIZE; i++)
+	{
+		std::cout << blue << "Animal [" << i << "]" << reset << std::endl;
+		if (i < GROUP_SIZE / 2)
+			AnimalGroup[i] = new Cat();
+		else
+			AnimalGroup[i] = new Dog();
+	}
 
 	std::cout << cyan + "-Destructors-" + reset << std::endl;
-	delete NormalAnimal;
-	delete CoolCat;
-	delete CoolDog;
-	delete WrongAnimal;
-	
+	for (int i = 0; i < GROUP_SIZE; i++)
+	{
+		std::cout << blue << "Animal [" << i << "]" << reset << std::endl;
+		delete AnimalGroup[i];
+	}
 	return (0);
 }
