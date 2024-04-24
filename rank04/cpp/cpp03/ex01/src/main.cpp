@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:59 by rvaz              #+#    #+#             */
-/*   Updated: 2024/03/05 23:05:04 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(void)
 {
 	ScavTrap	bob("Bob");
 	ClapTrap	harry("Harry");
+	std::cout << "garry" << std::endl;
+	ScavTrap	garry;
 	
 	std::cout << "Atack Tests" << std::endl;
 	harry.printStats();

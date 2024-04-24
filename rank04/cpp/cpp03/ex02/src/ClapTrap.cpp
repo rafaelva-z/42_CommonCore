@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/03/05 20:45:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/24 19:26:28 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 //	Orthodox Canonical Form
 ClapTrap::ClapTrap()
+	: _name("Default Name")
+	, _hitPoints(10)
+	, _energyPoints(10)
+	, _attackDamage(0)
 {
-	ClapTrap("Default Name");
+	std::cout << "ClapTrap Default constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string &name) 
@@ -24,7 +28,7 @@ ClapTrap::ClapTrap(const std::string &name)
 	, _energyPoints(10)
 	, _attackDamage(0)
 {
-	std::cout << "ClapTrap Default constructor called." << std::endl;
+	std::cout << "ClapTrap Name constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
