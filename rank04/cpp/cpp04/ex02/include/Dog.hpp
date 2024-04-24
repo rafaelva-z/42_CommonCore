@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/16 16:10:11 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/24 18:04:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Dog : public Animal
 	Dog&	operator=(const Dog& other);
 	~Dog();
 	//	Functions
-	void			makeSound() const;
+	void	makeSound() const;
 	Brain&	getBrain() const;
 };
 

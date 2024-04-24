@@ -1,8 +1,9 @@
 .SILENT:
-NAME =		InterfaceRecap
-CC =		c++
-CFLAGS =	-Wall -Wextra -Werror -std=c++98
-SRC =		./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp
+NAME =			InterfaceRecap
+CC =			c++
+CFLAGS =		-Wall -Wextra -Werror -std=c++98
+SRC =			please add
+INCLUDE_DIR =	./include/
 
 
 #=== COLORS ===#
@@ -23,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(TAG) Making Program"
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(INCLUDE_DIR)
 
 clean:
 

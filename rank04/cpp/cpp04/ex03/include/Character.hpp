@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 18:04:18 by rvaz             ###   ########.fr       */
+/*   Created: 2024/04/24 17:14:21 by rvaz              #+#    #+#             */
+/*   Updated: 2024/04/24 18:40:53 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+# include <iostream>
+# include <string.h>
+# include "ICharacter.hpp"
+# include "AMateria.hpp"
 
-class Cat : public Animal
+class Character : public ICharacter
 {
-	private:
-	Brain	*brain;
 
-	public:
-	//	Orthodox Canonical Form
-	Cat();
-	Cat(const Cat &other);
-	Cat&	operator=(const Cat& other);
-	~Cat();
-	//	Functions
-	void	makeSound() const;
-	Brain&	getBrain() const;
 };
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:59:45 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/19 14:58:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/24 17:29:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
 //	Orthodox Canonical Form
-Animal::Animal() : type("Animal")
+Animal::Animal()
 {
 	std::cout << "Animal Default constructor called." << std::endl;
 }

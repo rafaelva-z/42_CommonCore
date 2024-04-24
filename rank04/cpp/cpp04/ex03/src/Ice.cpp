@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 18:04:18 by rvaz             ###   ########.fr       */
+/*   Created: 2024/04/24 19:02:25 by rvaz              #+#    #+#             */
+/*   Updated: 2024/04/24 19:12:12 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#include "Ice.hpp"
+#include "AMateria.hpp"
 
-# include "Animal.hpp"
-# include "Brain.hpp"
-
-class Cat : public Animal
+AMateria* Ice::clone() const
 {
-	private:
-	Brain	*brain;
+	Ice *newMateria = new Ice();
+	return (newMateria);
+}
 
-	public:
-	//	Orthodox Canonical Form
-	Cat();
-	Cat(const Cat &other);
-	Cat&	operator=(const Cat& other);
-	~Cat();
-	//	Functions
-	void	makeSound() const;
-	Brain&	getBrain() const;
-};
-
-#endif
+void Ice::use(ICharacter& target)
+{
+	
+}

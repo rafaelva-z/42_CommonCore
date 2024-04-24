@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:17:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 18:04:18 by rvaz             ###   ########.fr       */
+/*   Created: 2024/04/24 18:49:43 by rvaz              #+#    #+#             */
+/*   Updated: 2024/04/24 18:59:19 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#include "MateriaSource.hpp"
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+MateriaSource::MateriaSource() {};
+MateriaSource::~MateriaSource() {};
 
-class Cat : public Animal
+void MateriaSource::learnMateria(AMateria *materia)
 {
-	private:
-	Brain	*brain;
-
-	public:
-	//	Orthodox Canonical Form
-	Cat();
-	Cat(const Cat &other);
-	Cat&	operator=(const Cat& other);
-	~Cat();
-	//	Functions
-	void	makeSound() const;
-	Brain&	getBrain() const;
-};
-
-#endif
+	
+}
+AMateria* createMateria(std::string const & type) = 0;
