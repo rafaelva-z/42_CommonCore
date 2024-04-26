@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:00:16 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 19:01:40 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/25 15:30:44 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 
-class Cure
+class Cure : public AMateria
 {
-	AMateria* clone() const;
+	public:
+	Cure();
+	Cure(const Cure &copy);
+	Cure &operator=(const Cure &other);
+	~Cure();
+	
+	Cure* clone() const;
 	void use(ICharacter& target);
 };
 

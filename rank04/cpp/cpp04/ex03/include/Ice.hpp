@@ -18,9 +18,15 @@
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 
-class Ice
+class Ice : public AMateria
 {
-	AMateria* clone() const;
+	public:
+	Ice();
+	Ice(const Ice &copy);
+	Ice &operator=(const Ice &other);
+	~Ice();
+
+	Ice* clone() const;
 	void use(ICharacter& target);
 };
 

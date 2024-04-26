@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:44:44 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 18:53:37 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/25 16:12:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 # include "AMateria.hpp"
 # include "IMateriaSource.hpp"
 
+# define MATERIA_TEMPLATE_SLOTS 4
+
 class MateriaSource : public IMateriaSource
 {
+	private:
+	AMateria *materia_template_inventory[4];
+	
 	public:
 	~MateriaSource() {}
 	void learnMateria(AMateria*);

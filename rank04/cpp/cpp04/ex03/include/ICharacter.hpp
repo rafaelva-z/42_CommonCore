@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:38:03 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 18:40:01 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/25 15:14:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "AMateria.hpp"
 
 class ICharacter
-{
+{	
 	public:
 	virtual ~ICharacter() {}
 	virtual std::string const & getName() const = 0;

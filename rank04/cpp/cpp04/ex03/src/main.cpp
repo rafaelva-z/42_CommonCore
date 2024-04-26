@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:47:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 17:22:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/25 15:30:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 
 
 int main()
