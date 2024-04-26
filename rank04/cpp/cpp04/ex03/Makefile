@@ -2,7 +2,8 @@
 NAME =			InterfaceRecap
 CC =			c++
 CFLAGS =		-Wall -Wextra -Werror -std=c++98
-SRC =			please add
+SRC =			./src/AMateria.cpp ./src/Character.cpp ./src/Cure.cpp ./src/Ice.cpp \
+				./src/main.cpp ./src/MateriaSource.cpp
 INCLUDE_DIR =	./include/
 
 

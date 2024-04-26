@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:25 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/25 14:52:15 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/26 18:14:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ Ice::Ice() : AMateria("ice")
 	std::cout << "Ice Default Constructor" << std::endl;
 }
 
-Ice::Ice(const Ice &copy) : AMateria(copy)
+Ice::Ice(const Ice &other) : AMateria(other)
 {
 	std::cout << "Ice Copy Constructor" << std::endl;
-
+	if (this == &other)
+		return ;
+	*this = other;
 }
 
 Ice& Ice::operator=(const Ice &other)
 {
 	if (this == &other)
-		return ;
+		return (*this);
 	type = other.type;
+	return (*this);
 }
 
 Ice::~Ice()

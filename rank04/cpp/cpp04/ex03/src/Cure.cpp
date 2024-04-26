@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:52:37 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/25 16:11:53 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/26 18:16:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ Cure::Cure() : AMateria("cure")
 	std::cout << "Cure Default Constructor" << std::endl;
 }
 
-Cure::Cure(const Cure &copy) : AMateria(copy)
+Cure::Cure(const Cure &other) : AMateria(other)
 {
 	std::cout << "Cure Copy Constructor" << std::endl;
-
+	if (this == &other)
+		return ;
+	*this = other;
 }
 
 Cure& Cure::operator=(const Cure &other)
 {
 	if (this == &other)
-		return ;
+		return (*this);
 	type = other.type;
+	return (*this);
 }
 
 Cure::~Cure()

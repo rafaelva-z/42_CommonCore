@@ -3,30 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:11:11 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/25 15:42:58 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/26 18:39:12 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() 
+Character::Character() : name("CharName")
 {
 	std::cout << name << " Character Default Constructor" << std::endl;
+	for (int i = 0; i < MATERIA_SLOTS; i++)
+		materia_inventory[i] = 0;
 }
 
-Character::Character(const Character &copy) 
+Character::Character(const Character &other)
 {
-	std::cout << name << " Character Copy Constructor" << std::endl;
-	
+	std::cout << other.name << " Character Copy Constructor" << std::endl;
+	if (this == &other)
+		return ;
+	*this = other;
+}
+
+Character::Character(const std::string &param_name) : name(param_name)
+{
+	std::cout << param_name << " Character Name Constructor" << std::endl;
+	for (int i = 0; i < MATERIA_SLOTS; i++)
+		materia_inventory[i] = 0;
 }
 
 Character &Character::operator=(const Character &other) 
 {
 	std::cout << name << " Character Assignment operator" << std::endl;
-	
+	if (this == &other)
+		return (*this);
+	for (int i = 0; i < MATERIA_SLOTS; i++)
+	{
+		if (materia_inventory[i])
+		{
+			delete (materia_inventory[i]);
+			materia_inventory[i] = 0;
+		}
+		if (other.materia_inventory[i])
+			materia_inventory[i] = other.materia_inventory[i]->clone();
+	}
+	name = other.name;
+	return (*this);
 }
 
 Character::~Character() 
@@ -36,7 +60,6 @@ Character::~Character()
 		if (this->materia_inventory[i])
 			delete materia_inventory[i];
 }
-
 
 std::string const & Character::getName() const 
 {
@@ -70,7 +93,7 @@ void Character::unequip(int idx)
 		std::cout << name << ": cannot unequip" << std::endl;
 		return ;
 	}
-	materia_inventory[idx] = NULL;
+	materia_inventory[idx] = 0;
 }
 
 void Character::use(int idx, ICharacter& target) 

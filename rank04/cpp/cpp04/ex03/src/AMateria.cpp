@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:47:19 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 17:58:40 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/26 17:35:23 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ AMateria&	AMateria::operator=(const AMateria& other)
 {
 	std::cout << "AMateria Copy constructor called." << std::endl;
 	if (this == &other)
-		return ;
+		return (*this);
 	type = other.type;
 	return (*this);
 }
@@ -40,7 +40,7 @@ AMateria::~AMateria()
 	std::cout << "AMateria Default destructor called." << std::endl;
 }
 
-AMateria::AMateria(std::string const & type)
+AMateria::AMateria(std::string const & type) : type(type)
 {
 	std::cout << "AMateria Type constructor called." << std::endl;
 }
