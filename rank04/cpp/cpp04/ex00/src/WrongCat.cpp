@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:22:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:47:14 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 21:13:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 WrongCat&	WrongCat::operator=(const WrongCat& other)
 {
 	std::cout << "WrongCat Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	type = other.type;
 	return (*this);
 }

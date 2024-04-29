@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:22:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/16 16:44:41 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 13:07:11 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ Cat::Cat(const Cat &other) : Animal(other)
 Cat&	Cat::operator=(const Cat& other)
 {
 	std::cout << "Cat Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	type = other.type;
 	*brain = *other.brain;
 	return (*this);

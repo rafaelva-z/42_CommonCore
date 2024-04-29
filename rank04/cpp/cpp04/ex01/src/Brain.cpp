@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:57:18 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 20:06:44 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 23:19:31 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,29 @@ Brain::Brain(const Brain &other)
 Brain&	Brain::operator=(const Brain &other)
 {
 	std::cout << "Brain Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	for (int i = 0; i < IDEAS_SIZE; i++)
 		_ideas[i] = other._ideas[i];
 	return (*this);
 }
 
 // Other functions
-const std::string&	Brain::getIdea(int index) const
+const std::string	&Brain::getIdea(int index) const
 {
-	if (index < 0 || index >= IDEAS_SIZE)
-		throw std::out_of_range("Invalid index");
+	if (index > 99)
+		return (_ideas[99]);
+	if (index < 0)
+		return (_ideas[0]);
 	return (_ideas[index]);
 }
 
 void	Brain::setIdea(int index, const std::string &new_idea)
 {
 	if (index < 0 || index >= IDEAS_SIZE)
-		throw std::out_of_range("Invalid index");
+	{
+		std::cout << "My brain can't handle that information" << std::endl;
+		return ;
+	}
 	_ideas[index] = new_idea;
 }

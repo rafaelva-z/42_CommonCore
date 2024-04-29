@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/16 17:03:10 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 23:20:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,5 @@ int main()
 	std::cout << "..." << std::endl;
 	for (int i = 95; i < IDEAS_SIZE; i++)
 		std::cout << blue << "[Idea " << i << "]" << reset << CopyDog.getBrain().getIdea(i) << std::endl;
-
-
 	std::cout << std::endl << cyan + "-Destructors-" + reset << std::endl;
 }

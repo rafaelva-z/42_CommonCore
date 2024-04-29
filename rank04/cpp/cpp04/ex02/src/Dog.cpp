@@ -19,7 +19,7 @@ Dog::Dog() : Animal(), brain(new Brain())
 	type = "Dog";
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : Animal(other), brain(new Brain(other.getBrain()))
 {
 	std::cout << "Dog Copy constructor called." << std::endl;
 	if (this == &other)
@@ -30,7 +30,13 @@ Dog::Dog(const Dog &other) : Animal(other)
 Dog&	Dog::operator=(const Dog& other)
 {
 	std::cout << "Dog Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
+	this->Animal::operator=(other);
+	if (brain)
+		delete brain;
 	type = other.type;
+	brain = new Brain();
 	*brain = *other.brain;
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:07:17 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/26 17:47:53 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 23:00:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class ICharacter;
 
 class AMateria
 {
+	
 	protected:
 	std::string	type;
 

@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:57:12 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/16 16:24:54 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 23:14:23 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Brain
 	Brain(const Brain &other);
 	Brain& operator=(const Brain &other);
 
-	const std::string&	getIdea(int index) const;
+	const std::string	&getIdea(int index) const;
 	void				setIdea(int index, const std::string &new_idea);
 
 };

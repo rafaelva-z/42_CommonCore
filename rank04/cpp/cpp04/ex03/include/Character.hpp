@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:14:21 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/26 17:46:39 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 22:54:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Character : public ICharacter
 
 	Character(const std::string &name);
 	std::string const & getName() const;
-	virtual void equip(AMateria* m);
+	void equip(AMateria* m);
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
 };

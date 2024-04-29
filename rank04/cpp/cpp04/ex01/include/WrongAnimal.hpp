@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:58:27 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/16 15:58:00 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 21:16:10 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class WrongAnimal
 	//	Getters
 	const std::string&	getType(void) const;
 	// Other Functions
-	virtual void makeSound() const;
+	void	makeSound() const;
 };
 
 #endif

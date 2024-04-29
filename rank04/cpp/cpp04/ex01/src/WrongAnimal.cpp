@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:59:45 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/15 18:42:59 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 21:14:59 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::WrongAnimal(const WrongAnimal &other)
 {
 	std::cout << "WrongAnimal Copy constructor called." << std::endl;
+	if (this == &other)
+		return ;
 	*this = other;
 }
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& other)
 {
 	std::cout << "WrongAnimal Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	type = other.type;
 	return (*this);
 }

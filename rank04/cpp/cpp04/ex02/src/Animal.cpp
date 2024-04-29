@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:59:45 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 17:29:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 13:07:48 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ Animal::Animal(const Animal &other)
 Animal&	Animal::operator=(const Animal& other)
 {
 	std::cout << "Animal Copy Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	type = other.type;
 	return (*this);
 }
