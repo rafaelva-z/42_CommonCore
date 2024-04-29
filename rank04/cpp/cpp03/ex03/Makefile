@@ -1,5 +1,5 @@
 .SILENT:
-NAME =		RepetitiveWork
+NAME =		DiamondTrap
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 SRC =		./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp ./src/DiamondTrap.cpp

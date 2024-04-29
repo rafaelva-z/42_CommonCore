@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:15:43 by rvaz              #+#    #+#             */
-/*   Updated: 2024/03/05 23:26:04 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 17:11:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class ScavTrap : public virtual ClapTrap
 {
+	protected:
+	static const int scavHP;
+	static const int scavAD;
+
 	public:
 		ScavTrap();
 		ScavTrap(const std::string& name);

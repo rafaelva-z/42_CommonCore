@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvaz <rvaz@student.42lisboa.com>           +#+  +:+       +#+        */
+/*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:15:43 by rvaz              #+#    #+#             */
-/*   Updated: 2024/03/05 23:25:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 16:27:49 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class FragTrap : virtual public ClapTrap
+class FragTrap : public virtual ClapTrap
 {
 	public:
 		FragTrap();

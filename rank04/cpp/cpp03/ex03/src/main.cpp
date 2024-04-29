@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:59 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 19:28:57 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 17:19:34 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 #include "../include/FragTrap.hpp"
 #include "../include/DiamondTrap.hpp"
 
+
 int	main(void)
 {
-	DiamondTrap dtrp;
-	// ScavTrap	bob("Bob");
-	// ClapTrap	harry("Harry");
+	std::cout << std::endl << "-Constructors-" << std::endl;
+	DiamondTrap Diam("Diamie");
+	DiamondTrap D2("Carlos");
 
+	std::cout << std::endl << "-Stats-" << std::endl;
+	Diam.whoAmI();
+	Diam.printStats();
 
-	// std::cout << "Atack Tests" << std::endl;
-	// harry.printStats();
-	// bob.attack("The World");
-	// bob.setAttackDamage(5);
-	// bob.attack(harry);
-	// harry.printStats();
-	// harry.beRepaired(1);
-	// for (int i = 0; i < 9; i++)
-	// 	bob.attack(harry);
-	// bob.beRepaired(5);
-	// harry.beRepaired(5);
+	D2.whoAmI();
+	D2.printStats();
+
+	std::cout << std::endl << "-Destructors-" << std::endl;
 }

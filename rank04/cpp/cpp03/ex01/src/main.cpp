@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:59 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 19:23:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 16:01:58 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	main(void)
 	ScavTrap	bob("Bob");
 	ClapTrap	harry("Harry");
 	std::cout << "garry" << std::endl;
-	ScavTrap	garry;
 	
-	std::cout << "Atack Tests" << std::endl;
+	std::cout << "-TrapStats-" << std::endl;
 	harry.printStats();
+	bob.printStats();
+	
+	std::cout << std::endl << "-LotsOfAttacks-" << std::endl;
 	bob.attack("The World");
 	bob.setAttackDamage(5);
 	bob.attack(harry);
@@ -31,5 +33,17 @@ int	main(void)
 		bob.attack(harry);
 	bob.beRepaired(5);
 	harry.beRepaired(5);
+
+	ScavTrap	garry (bob);
+	garry.setName("Garry");
+	
+	std::cout << std::endl << "-TrapStats-" << std::endl;
+	harry.printStats();
+	bob.printStats();
+	garry.printStats();
+
+	std::cout << std::endl << "-Guard Gate-" << std::endl;
 	bob.guardGate();
+	
+	std::cout << std::endl << "-Destructors-" << std::endl;
 }

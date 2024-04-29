@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 19:26:22 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/29 16:21:22 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,22 @@ ClapTrap::ClapTrap(const std::string &name)
 	, _energyPoints(10)
 	, _attackDamage(0)
 {
-	std::cout << "ClapTrap Name constructor called." << std::endl;
+	std::cout << "ClapTrap " << _name << " Name constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	std::cout << "ClapTrap Copy constructor called." << std::endl;
+	if (this == &other)
+		return ;
 	*this = other;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
 {
-	std::cout << "ClapTrap Copy Assignment operator called." << std::endl;
+	std::cout << "ClapTrap Assignment operator called." << std::endl;
+	if (this == &other)
+		return (*this);
 	_name = other._name;
 	_hitPoints = other._hitPoints;
 	_energyPoints = other._energyPoints;
@@ -49,7 +53,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called." << std::endl;
+	std::cout << "ClapTrap " << _name << " Destructor called." << std::endl;
 }
 
 //	Getters
@@ -108,8 +112,12 @@ void	ClapTrap::attack(ClapTrap &target)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (isDead() || isTired())
+	if (isDead())
+	{
+		std::cout	<< "ClapTrap " << _name
+					<< " is broken byond repair!" << std::endl;
 		return ;
+	}
 	std::cout	<< "ClapTrap " << _name << " is repaired for "
 				<< amount << " hit points!" << std::endl;
 	_hitPoints += amount;
