@@ -1,7 +1,7 @@
 .SILENT:
 NAME =			Polymorphism
-CC =			c++
-CFLAGS =		-Wall -Wextra -Werror -std=c++98
+CXX =			c++
+CXXFLAGS =		-Wall -Wextra -Werror -std=c++98
 SRC =			./src/main.cpp ./src/Animal.cpp ./src/Dog.cpp ./src/Cat.cpp ./src/WrongCat.cpp ./src/WrongAnimal.cpp
 INCLUDE_DIR =	./include/
 
@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(TAG) Making Program"
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(INCLUDE_DIR)
+	@$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME) -I $(INCLUDE_DIR)
 
 clean:
 
