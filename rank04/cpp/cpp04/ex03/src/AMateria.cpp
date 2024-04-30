@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:47:19 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/26 17:35:23 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/30 16:58:33 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ AMateria::AMateria(const AMateria &other)
 
 AMateria&	AMateria::operator=(const AMateria& other)
 {
-	std::cout << "AMateria Copy constructor called." << std::endl;
+	std::cout << "AMateria Assignmet operator called." << std::endl;
 	if (this == &other)
 		return (*this);
 	type = other.type;

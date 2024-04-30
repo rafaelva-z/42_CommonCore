@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:11:11 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/26 18:39:12 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/30 17:28:55 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ Character::~Character()
 {
 	std::cout << name << " Character Destructor" << std::endl;
 	for (int i = 0; i < MATERIA_SLOTS; i++)
-		if (this->materia_inventory[i])
+		if (materia_inventory[i])
 			delete materia_inventory[i];
 }
 

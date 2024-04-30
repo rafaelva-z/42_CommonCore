@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:47:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/29 18:23:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/04/30 18:04:46 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int main()
 	std::string reset = "\033[0m";
 
 	std::cout << red + "--Subject Main--" + reset << std::endl;
-
-	std::cout << cyan + "-Mostly Constructors-" + reset << std::endl;
+	std::cout << std::endl << cyan + "-Mostly Constructors-" + reset << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -39,24 +38,25 @@ int main()
 	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 
-	std::cout << cyan + "-Bob is attacked-" + reset << std::endl;
+	std::cout << std::endl << cyan + "-Bob is attacked-" + reset << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
 	
-	std::cout << cyan + "-Destructors-" + reset << std::endl;
+	std::cout << std::endl << cyan + "-Destructors-" + reset << std::endl;
 	delete bob;
 	delete me;
 	delete src;
 
-	std::cout << red + "--MateriaSource Tests--" + reset << std::endl;
+	std::cout << std::endl << red + "--MateriaSource Tests--" + reset << std::endl;
 	IMateriaSource* matSrc = new MateriaSource();
 	matSrc->learnMateria(new Ice());
 	matSrc->learnMateria(new Ice());
 	matSrc->learnMateria(new Cure());
 	matSrc->learnMateria(new Cure());
-	matSrc->learnMateria(new Ice());
 	matSrc->learnMateria(new Cure());
+	matSrc->learnMateria(new Ice());
 
-
-
+	// FIX LEAKS ON MAIN AND LEAVE THEM ON CLASS!!
+	
+	delete matSrc;
 }
