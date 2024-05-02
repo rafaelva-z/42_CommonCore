@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:11:11 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/30 17:28:55 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/02 18:24:37 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,17 @@ Character::Character() : name("CharName")
 
 Character::Character(const Character &other)
 {
-	std::cout << other.name << " Character Copy Constructor" << std::endl;
 	if (this == &other)
 		return ;
+	for (int i = 0; i < MATERIA_SLOTS; i++)
+		materia_inventory[i] = 0;
+	std::cout << other.name << "Character Copy Constructor" << std::endl;
 	*this = other;
 }
 
 Character::Character(const std::string &param_name) : name(param_name)
 {
-	std::cout << param_name << " Character Name Constructor" << std::endl;
+	std::cout << param_name << "Character Name Constructor" << std::endl;
 	for (int i = 0; i < MATERIA_SLOTS; i++)
 		materia_inventory[i] = 0;
 }

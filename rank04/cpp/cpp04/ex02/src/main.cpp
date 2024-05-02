@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/24 17:32:06 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/02 19:36:22 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ int main()
 	// Animal aAnimal;
 	// Animal* aAnimalptr = new Animal();
 	std::cout << cyan + "-Destructors-" + reset << std::endl;
+	delete aDogptr;
+	delete aCatptr;
 }

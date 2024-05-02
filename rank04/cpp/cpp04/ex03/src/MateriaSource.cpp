@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:49:43 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/30 17:48:19 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/02 18:25:18 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 
 MateriaSource & MateriaSource::operator=(const MateriaSource &other)
 {
-	std::cout << " MateriaSource Assignement Operator" << std::endl;
+	std::cout << "MateriaSource Assignement Operator" << std::endl;
 	if (this == &other)
 		return (*this);
 	for (int i = 0; i < MATERIA_TEMPLATE_SLOTS; i++)
@@ -64,7 +64,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 	{
 		if (!mat_inventory[i])
 		{
-			mat_inventory[i] = materia;
+			mat_inventory[i] = materia->clone();
 			std::cout << "MateriaSource of type " << materia->getType() << " Learned " << std::endl;
 			return ;
 		}

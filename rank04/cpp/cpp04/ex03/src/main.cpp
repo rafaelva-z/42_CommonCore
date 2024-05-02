@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:47:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/30 18:04:46 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/02 18:23:42 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,62 @@ int main()
 
 	std::cout << red + "--Subject Main--" + reset << std::endl;
 	std::cout << std::endl << cyan + "-Mostly Constructors-" + reset << std::endl;
+	AMateria *ice = new Ice();
+	AMateria *cure = new Cure();
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	src->learnMateria(ice);
+	src->learnMateria(cure);
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 
-	std::cout << std::endl << cyan + "-Bob is attacked-" + reset << std::endl;
+	std::cout << std::endl << cyan + "-Bob is attacked just as in the subject-" + reset << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
 	
+	std::cout << std::endl << cyan + "-Character Copy-" + reset << std::endl;
+	Character *char1 = new Character();
+	tmp = src->createMateria("ice");
+	char1->equip(tmp);
+	tmp = src->createMateria("cure");
+	char1->equip(tmp);
+	tmp = src->createMateria("ice");
+	char1->equip(tmp);
+	tmp = src->createMateria("cure");
+	char1->equip(tmp);
+	Character *char2 = new Character(*char1);
+	char2->use(3, *char1);
+
+
 	std::cout << std::endl << cyan + "-Destructors-" + reset << std::endl;
 	delete bob;
 	delete me;
 	delete src;
+	delete char1;
+	delete char2;
 
 	std::cout << std::endl << red + "--MateriaSource Tests--" + reset << std::endl;
 	IMateriaSource* matSrc = new MateriaSource();
-	matSrc->learnMateria(new Ice());
-	matSrc->learnMateria(new Ice());
-	matSrc->learnMateria(new Cure());
-	matSrc->learnMateria(new Cure());
-	matSrc->learnMateria(new Cure());
-	matSrc->learnMateria(new Ice());
+	matSrc->learnMateria(ice);
+	matSrc->learnMateria(ice);
+	matSrc->learnMateria(cure);
+	matSrc->learnMateria(cure);
+	matSrc->learnMateria(cure);
+	matSrc->learnMateria(ice);
 
 	// FIX LEAKS ON MAIN AND LEAVE THEM ON CLASS!!
 	
+	delete ice;
+	delete cure;
 	delete matSrc;
 }
