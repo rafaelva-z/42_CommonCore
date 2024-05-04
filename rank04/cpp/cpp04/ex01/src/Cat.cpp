@@ -6,20 +6,20 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:22:55 by rvaz              #+#    #+#             */
-/*   Updated: 2024/04/29 23:00:17 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/04 15:13:38 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 //	Orthodox Canonical Form
-Cat::Cat() : Animal(), brain(new Brain)
+Cat::Cat() : Animal(), brain(new Brain())
 {
 	std::cout << "Cat Default constructor called." << std::endl;
 	type = "Cat";
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animal(other), brain(new Brain(other.getBrain()))
 {
 	std::cout << "Cat Copy constructor called." << std::endl;
 	if (this == &other)
