@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:54:12 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/06 18:35:09 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/07 15:27:12 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Form::Form() :
 
 Form::Form(const std::string &name, const int &gradeToSign,
 	const int &gradeToExecute) :
-	_name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+	_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	if (gradeToSign < 1)
 		throw Form::GradeTooHighException("gradeToSign too high, try a lower value (maximum is 1)");
@@ -33,7 +33,8 @@ Form::Form(const std::string &name, const int &gradeToSign,
 	_signed = false;
 }
 
-Form::Form(const Form &other): _name(other._name + " copy"), _signed(other._signed),
+Form::Form(const Form &other):
+	_name(other._name + " copy"), _signed(other._signed),
 	_gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
 {
 	if (this == &other)

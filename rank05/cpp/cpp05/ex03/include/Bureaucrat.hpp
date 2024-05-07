@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:42:01 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 14:19:43 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/07 17:00:24 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <iostream>
 # include <exception>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -54,7 +54,8 @@ class Bureaucrat
 		//	Other Methods
 		void				incrementGrade(void);
 		void				decrementGrade(void);
-		void				signForm(Form &f);
+		void				signForm(AForm &f);
+		void				executeForm(AForm const & form) const;
 	private:
 		const std::string	_name;
 		unsigned int		_grade;
