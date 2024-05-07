@@ -1,8 +1,8 @@
 .SILENT:
-NAME =			Bureaucrat
+NAME =			Forms
 CXX =			c++
 CXXFLAGS =		-Wall -Wextra -Werror -g -std=c++98
-SRC =			./src/main.cpp ./src/Bureaucrat.cpp
+SRC =			./src/main.cpp ./src/Bureaucrat.cpp ./src/Form.cpp
 INCLUDE_DIR =	./include/
 
 
