@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:33:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 23:26:31 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:59:04 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <exception>
 
 #define B_AMOUNT 16
-#define F_AMOUNT 9
+#define F_AMOUNT 10
 
 // Colors for better readability on terminal
 #define CYAN "\033[96m";
@@ -119,6 +119,18 @@ int	main()
 		bureaucrat[14]->executeForm(*form[0]);
 		bureaucrat[1]->executeForm(*form[2]);
 		bureaucrat[5]->executeForm(*form[4]);
+
+		print_info("Executing Form not signed");
+		form[9] = new ShrubberyCreationForm("FormNotSigned");
+		try
+		{
+			bureaucrat[13]->executeForm(*form[9]);
+			print_error("This should not be printed");
+		}
+		catch (std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 
 		print_info("Executing Sucessfuly");
 		bureaucrat[13]->executeForm(*form[0]);

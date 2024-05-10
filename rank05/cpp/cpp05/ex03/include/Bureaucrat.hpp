@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:42:01 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 17:00:24 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:43:22 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ class Bureaucrat
 			const char *what() const throw();
 		private:
 			std::string	_msg;
+	};
+	class FormNotSignedException : public std::exception
+	{
+		public:
+			FormNotSignedException() throw();
+			FormNotSignedException(const std::string& msg) throw();
+			~FormNotSignedException() throw();
+			const char *what() const throw();
+		
+		private:
+			std::string			_msg;
 	};
 	
 	public:

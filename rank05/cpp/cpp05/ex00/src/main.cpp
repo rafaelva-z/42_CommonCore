@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:33:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/06 16:02:49 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:32:00 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main()
 
 	// Test 0
 	print_header("Bureaucrat class test");
-	print_info("Constructors");
+	print_info("Constructors (check main)");
 	/* Default constructor is inaccessible because the names would all be the same
 	*  and that would be confusing */
 	b[9] = new Bureaucrat("b9", 1);

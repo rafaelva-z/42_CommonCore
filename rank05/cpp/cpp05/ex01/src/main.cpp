@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:33:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 15:45:16 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:35:04 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,83 +55,7 @@ void	print_error(std::string s)
 }
 
 int	main()
-{
-	// Main from ex00
-	{
-	Bureaucrat	*bureaucrat[B_AMOUNT];
-
-	for (int i = 0; i < B_AMOUNT; i++)
-		bureaucrat[i] = 0;
-
-	// Test 0
-	print_header("Bureaucrat class test");
-	print_info("Constructors (check the main)");
-	bureaucrat[9] = new Bureaucrat("b9", 1);
-	bureaucrat[8] = new Bureaucrat(*bureaucrat[9]);
-	bureaucrat[7] = new Bureaucrat("b7", 42);
-	
-	print_info("insertion operator");
-	std::cout << *bureaucrat[9] << std::endl;
-	std::cout << *bureaucrat[8] << std::endl;
-	std::cout << *bureaucrat[7] << std::endl;
-	
-	
-	print_info("assignment operator");
-	*bureaucrat[7] = *bureaucrat[8];
-	std::cout << *bureaucrat[7] << std::endl;
-	print_info("Methods");
-	std::cout << "getName() Method (bureaucrat[7]):	" << bureaucrat[7]->getName() << std::endl;
-	std::cout << "getGrade() Method (bureaucrat[7]):	" << bureaucrat[7]->getGrade() << std::endl;
-	bureaucrat[7]->decrementGrade();
-	std::cout << "decrementGrade Method (bureaucrat[7]):	" << bureaucrat[7]->getGrade() << std::endl;
-	bureaucrat[7]->incrementGrade();
-	std::cout << "incrementGrade Method (bureaucrat[7]):	" << bureaucrat[7]->getGrade() << std::endl;
-
-	// Test 1
-	print_header("Exception tests");
-
-	print_info("No exeption");
-	try
-	{
-		bureaucrat[0] = new Bureaucrat("b0", 10);
-	}
-	catch (std::exception& e)
-	{
-		print_error("This should not be printed");
-		std::cout << e.what() << std::endl;
-		return 1;
-	}
-	if (bureaucrat[0])
-		std::cout << *bureaucrat[0] << std::endl;
-
-	print_info("GradeTooHighException");
-	try
-	{
-		bureaucrat[1] = new Bureaucrat("b3", 160);
-		print_error("This should not be printed");
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	
-	print_info("GradeTooLowException");
-	try
-	{
-		bureaucrat[2] = new Bureaucrat("b4", -100);
-		print_error("This should not be printed");
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
-	print_info("End of tests");
-	
-	for (int i = 0; i < B_AMOUNT; i++)
-		if (bureaucrat[i])
-			delete bureaucrat[i];
-	}
+{	
 	// Main for ex01
 	{
 		Bureaucrat	*bureaucrat[B_AMOUNT];

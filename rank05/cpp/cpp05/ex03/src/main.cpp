@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:33:24 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 23:40:23 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 13:09:12 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,33 @@ void	print_error(std::string s)
 int	main()
 {
 	Intern someRandomIntern;
-	AForm* rrf;
-	// AForm* ppf;
-	// AForm* scf;
+	AForm* rrf = NULL;
+	AForm* ppf = NULL;
+	AForm* scf = NULL;
+	AForm* noForm = NULL;
 
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	// ppf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-	// scf = someRandomIntern.makeForm("presitential pardon", "Bender");
+	ppf = someRandomIntern.makeForm("shrubbery creation", "Fender");
+	scf = someRandomIntern.makeForm("presidential pardon", "Xender");
+	noForm = someRandomIntern.makeForm("not a form", "Lender");
+	noForm = someRandomIntern.makeForm("", "Lender");
+
+	std::cout << std::endl;
+	if (rrf)
+	std::cout << *rrf << std::endl;
+	if (ppf)
+	std::cout << *ppf << std::endl;
+	if (scf)
+	std::cout << *scf << std::endl;
+	if (noForm)
+		std::cout << *noForm << std::endl;
 
 	if (rrf)
 		delete rrf;
+	if (ppf)
+		delete ppf;
+	if (scf)
+		delete scf;
+	if (noForm)
+		delete noForm;
 }

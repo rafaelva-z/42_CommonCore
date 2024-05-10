@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:47:54 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 23:10:33 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:54:20 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	Bureaucrat::signForm(AForm &f)
 
 void	Bureaucrat::executeForm(AForm const &form) const
 {
+	if (!form.getSigned())
+		throw (Bureaucrat::FormNotSignedException());
 	try
 	{
 		form.execute(*this);
@@ -109,7 +111,6 @@ void	Bureaucrat::executeForm(AForm const &form) const
 		std::cerr << form.getName() << " " << e.what() << '\n';
 	}
 }
-
 
 // Exception classes
 
@@ -151,6 +152,27 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return (_msg.c_str());
+}
+
+// FormNotSignedException
+Bureaucrat::FormNotSignedException::FormNotSignedException() throw()
+{
+	_msg = "FormNotSignedException";
+}
+
+Bureaucrat::FormNotSignedException::FormNotSignedException(const std::string &msg) throw()
+{
+	_msg = "FormNotSignedException: " + msg;
+}
+
+Bureaucrat::FormNotSignedException::~FormNotSignedException() throw()
+{
+	// Nothing to be done
+}
+
+const char *Bureaucrat::FormNotSignedException::what() const throw()
 {
 	return (_msg.c_str());
 }

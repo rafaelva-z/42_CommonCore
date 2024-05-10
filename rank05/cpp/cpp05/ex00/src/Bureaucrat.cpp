@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:47:54 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/06 15:59:26 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:56:28 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void	Bureaucrat::decrementGrade(void)
 // Exception classes
 
 // GradeTooHighException
+Bureaucrat::GradeTooHighException::GradeTooHighException() throw()
+{
+	_msg = "GradeTooHighException";
+}
+
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg) throw()
 {
 	_msg = "GradeTooHighException: " + msg;
@@ -89,7 +94,7 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg)
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 {
-	_msg = "";
+	// Nothing to be done
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
@@ -98,6 +103,11 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 }
 
 // GradeTooLowException
+Bureaucrat::GradeTooLowException::GradeTooLowException() throw()
+{
+	_msg = "GradeTooLowException";
+}
+
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &msg) throw()
 {
 	_msg = "GradeTooLowException: " + msg;
@@ -105,7 +115,7 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &msg) t
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 {
-	_msg = "";
+	// Nothing to be done
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()

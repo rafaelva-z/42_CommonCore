@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:54:12 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/07 23:24:27 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/10 12:55:45 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ AForm::AForm(const std::string &name, const int &gradeToSign,
 		throw AForm::GradeTooLowException("gradeToSign too low, try a higher value (minimum is 150)");
 	if (gradeToExecute > 150)
 		throw AForm::GradeTooLowException("gradeToExecute too low, try a higher value (minimum is 150)");
-	_signed = false;
 }
 
 AForm::AForm(const AForm &other):
