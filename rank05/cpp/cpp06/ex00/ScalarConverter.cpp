@@ -6,13 +6,16 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:11:36 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/13 20:12:04 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/15 18:44:30 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <cstdlib>
+#include <limits>
 
 /* Private: */
 
@@ -67,6 +70,189 @@ static void print_input(int type)
 	
 }
 
+static int	checkPseudoLiterals(std::string str)
+{
+	if (str == STR_NEG_INF || str == STR_NEG_INFF)
+		return (TYPE_NEG_INF);
+	else if (str == STR_INF || str == STR_INFF)
+		return (TYPE_INF);
+	else if (str == STR_NAN || str == STR_NANF)
+		return (TYPE_NAN);
+	return (TYPE_ERROR);
+}
+
+static int	checkNbType(std::string str)
+{
+	long	nb;
+
+	nb = atol(str.c_str());
+	std::cout << nb << std::endl;
+	if (nb <= std::numeric_limits<int>::max() && nb >= std::numeric_limits<int>::min())
+		return (TYPE_INT);
+	if (nb <= std::numeric_limits<long>::max() && nb >= std::numeric_limits<double>::min())
+		return (TYPE_DOUBLE);
+	return TYPE_ERROR;
+}
+
+static int	checkNb(std::string str)
+{
+	int			i = 0;
+	size_t		f_pos;
+
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!isdigit(str[i]))
+	{
+		std::cerr << "error1" << std::endl;
+		return (TYPE_ERROR);
+	}
+	while (isdigit(str[i]))
+		i++;
+	if (!str[i])
+		return (TYPE_NUMBER);
+	f_pos = str.find_first_of("f");
+	if (str[i] == 'f' && !(f_pos < str.size() - 1))
+		return (TYPE_FLOAT);
+	else if (str[i] == 'f')
+	{
+		std::cerr << "error f out of place" << std::endl;
+		return (TYPE_ERROR);
+	}
+	if (str[i] == '.')
+		i++;
+	if (!isdigit(str[i]))
+	{
+		std::cerr << "error2" << std::endl;
+		return (TYPE_ERROR);
+	}
+	while (isdigit(str[i]))
+		i++;
+	if (!str[i])
+		return (TYPE_DOUBLE);
+	if (str[i] == 'f' && !(f_pos < str.size() - 1))
+		return (TYPE_FLOAT);
+	else if (str[i] == 'f')
+	{
+		std::cerr << "error f out of place" << std::endl;
+		return (TYPE_ERROR);
+	}
+	std::cerr << "end of number" << std::endl;
+	return (TYPE_ERROR);
+}
+
+static void printConversionInt(std::string &str)
+{
+	std::cout << "DEBUG::TYPE INT" << std::endl;
+	float value;
+
+	value = atoi(str.c_str());
+	std::cout << "char:\t";
+	if (value <= std::numeric_limits<char>::max() 
+		&& value >= std::numeric_limits<char>::min()
+		&& isprint(static_cast<char>(value)))
+		std::cout << static_cast<char>(value) << std::endl;
+	else 
+		std::cout << "non displayable" << std::endl;
+	std::cout << "int:\t"		<< value << std::endl;
+	std::cout << "float:\t"		<< static_cast<float>(value) << ".0f" << std::endl;
+	std::cout << "double:\t"	<< static_cast<double>(value) << ".0" << std::endl;
+}
+
+static void printConversionChar(std::string &str)
+{
+	std::cout << "DEBUG::TYPE CHAR" << std::endl;
+	if (isprint(str[0]))
+		std::cout << "char:\t"	<< str[0] << std::endl;
+	else
+		std::cout << "char:\t"	<< "non displayable" << std::endl;
+	std::cout << "int:\t"		<< static_cast<int>(str[0]) << std::endl;
+	std::cout << "float:\t"		<< static_cast<float>(str[0]) << ".0f" << std::endl;
+	std::cout << "double:\t"	<< static_cast<double>(str[0]) << ".0" << std::endl;
+}
+
+static void printConversionFloat(std::string &str)
+{
+	std::cout << "DEBUG::TYPE FLOAT" << std::endl;
+	float value;
+
+	value = strtof(str.c_str(), NULL);
+	std::cout << "char:\t";
+	if (value <= std::numeric_limits<char>::max()
+		&& value >= std::numeric_limits<char>::min()
+		&& isprint(static_cast<char>(value)))
+		std::cout << static_cast<char>(value) << std::endl;
+	else 
+		std::cout << "non displayable" << std::endl;
+	std::cout << "int:\t"		<< static_cast<int>(value) << std::endl;
+	std::cout << "float:\t"		<< value;
+	if (value == static_cast<int>(value))
+		std::cout << ".0f" << std::endl;
+	else
+		std::cout << "f" << std::endl;
+	std::cout << "double:\t"	<< static_cast<double>(value);	
+	if (value == static_cast<int>(value))
+		std::cout << ".0" << std::endl;
+	else
+		std::cout << std::endl;
+}
+
+static void	printConversionDouble(std::string &str)
+{
+	std::cout << "DEBUG::TYPE DOUBLE" << std::endl;
+	float value;
+
+	value = strtod(str.c_str(), NULL);
+	std::cout << "char:\t";
+	if (value <= std::numeric_limits<char>::max()
+		&& value >= std::numeric_limits<char>::min()
+		&& isprint(static_cast<char>(value)))
+		std::cout << static_cast<char>(value) << std::endl;
+	else 
+		std::cout << "non displayable" << std::endl;
+	std::cout << "int:\t";
+	if (value <= std::numeric_limits<int>::max()
+		&& value >= std::numeric_limits<int>::min())
+		std::cout << static_cast<int>(value) << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	
+	std::cout << "float:\t"		<< static_cast<float>(value) << std::endl;
+	if (value == static_cast<int>(value))
+		std::cout << ".0f" << std::endl;
+	else
+		std::cout << "f" << std::endl;
+	std::cout << "double:\t"	<< value;	
+	if (value == static_cast<int>(value))
+		std::cout << ".0" << std::endl;
+	else
+		std::cout << std::endl;
+}
+
+
+static void	printConversion(int type, std::string &str)
+{
+	switch (type)
+	{
+		case TYPE_CHAR:
+			printConversionChar(str);
+			break ;
+		case TYPE_FLOAT:
+			printConversionFloat(str);
+			break ;
+		case TYPE_INT:
+			printConversionInt(str);
+			break ;
+		case TYPE_DOUBLE:
+			printConversionDouble(str);
+			break ;
+		default:
+			std::cout << "DEBUG::TYPE NONE" << std::endl;
+			print_input(type);
+			break;
+	}
+
+}
+
 void	ScalarConverter::convert(std::string str)
 {
 	int					type;
@@ -74,11 +260,11 @@ void	ScalarConverter::convert(std::string str)
 	std::string			clean_str;
 	std::string			test_str;
 
-	type = 0;
+	type = TYPE_ERROR;
 	if (str.empty())
 	{
 		std::cerr << "Error: string is empty!" << std::endl;
-		print_input(type);
+		print_input(TYPE_ERROR);
 		return ;
 	}
 	// clear white space
@@ -87,58 +273,22 @@ void	ScalarConverter::convert(std::string str)
 	if (test_str.size() > 0)
 	{
 		std::cerr << "Error: multiple words on input!" << std::endl;
-		print_input(type);
+		print_input(TYPE_ERROR);
 		return ;
 	}
-	std::cout << "input: >" << clean_str << std::endl << std::endl;
+	std::cout << "DEBUG::input >" << clean_str << std::endl << std::endl;
 	// check for pseudo literals
-	if (str == STR_NEG_INF || str == STR_NEG_INFF)
-		type = TYPE_NEG_INF;
-	else if (str == STR_INF || str == STR_INFF)
-		type = TYPE_INF;
-	else if (str == STR_NAN || str == STR_NANF)
-		type = TYPE_NAN;
-	if (type)
+	type = checkPseudoLiterals(clean_str);
+	// check other type
+	if (!type)
 	{
-		print_input(type);
-		return ;
+		if (clean_str.size() == 1 && !isdigit(clean_str[0]))
+			type = TYPE_CHAR;
+		else
+			type = checkNb(clean_str);
+		if (type == TYPE_NUMBER)
+			type = checkNbType(clean_str);
 	}
-	// check type
-	if (clean_str.size() == 1 && !isdigit(clean_str[0]))
-	{
-		type = TYPE_CHAR;
-	}
-	else
-	{
-		// int		i = 0;
-		// bool	sign;
-
-		// sign = (clean_str[0] != '-');
-		// if (clean_str[i] == '+' || clean_str[i] == '-')
-		// 	i++;		
-		// if (clean_str.find_first_not_of("0123456789.f")) // This is not working
-		// {
-		// 	type = 0;
-		// 	print_input(type);
-		// 	return ;
-		// }
-		// while (isdigit(clean_str[i]))
-		// 	i++;
-		// if (clean_str[i] == 'f')
-		// 	type = 0;
-		// if (!clean_str[i] && i != 0)
-		// 	type = TYPE_INT;
-		// if (clean_str[i] == '.')
-		// 	i++;
-		// while (isdigit(clean_str[i]))
-		// 	i++;
-		
-	}
-	// Conversion
-
-	// Print
-	std::cout << "char:\t"		<< static_cast<char>(clean_str[0]) << std::endl;
-	std::cout << "int:\t"		<< static_cast<int>(clean_str[0]) << std::endl;
-	std::cout << "float:\t"		<< static_cast<float>(clean_str[0]) << std::endl;
-	std::cout << "double:\t"	<< static_cast<double>(clean_str[0]) << std::endl;
+	// Conversion/Print
+	printConversion(type, clean_str);
 }
