@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:11:43 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/15 12:28:43 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/20 13:21:05 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,12 @@
 class ScalarConverter
 {
 	public:
-		static void	convert(std::string str);
+		static void	convert(const std::string &str);
 	private:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter &other);
 		ScalarConverter &operator=(ScalarConverter &other);
 		~ScalarConverter();
-		// static int	checkNb(std::string str);
-		// static int	checkPseudoLiterals(std::string str);
-
 };
 
 #endif

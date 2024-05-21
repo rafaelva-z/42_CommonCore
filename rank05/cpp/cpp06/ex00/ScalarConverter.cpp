@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:11:36 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/16 16:57:40 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/20 13:49:11 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,24 @@ static void print_input(int type)
 		case TYPE_NEG_INF:
 			std::cout << "float:\t"		<< STR_NEG_INFF << std::endl;
 			std::cout << "double:\t"	<< STR_NEG_INF << std::endl;
-			return ;
+			break ;
 		case TYPE_INF:
 			std::cout << "float:\t"		<< STR_INFF << std::endl;
 			std::cout << "double:\t"	<< STR_INF << std::endl;
-			return ;
+			break ;
 		case TYPE_NAN:
 			std::cout << "float:\t"		<< STR_NANF << std::endl;
 			std::cout << "double:\t"	<< STR_NAN << std::endl;
-			return ;
+			break ;
 		default:
 			std::cout << "float:\t"		<< BAD_CONVERSION << std::endl;
 			std::cout << "double:\t"	<< BAD_CONVERSION << std::endl;
-			return ;
+			break ;
 	}
-	
+	std::cout << std::endl;
 }
 
-static int	checkPseudoLiterals(std::string str)
+static int	checkPseudoLiterals(std::string &str)
 {
 	if (str == STR_NEG_INF || str == STR_NEG_INFF)
 		return (TYPE_NEG_INF);
@@ -81,19 +81,19 @@ static int	checkPseudoLiterals(std::string str)
 	return (TYPE_ERROR);
 }
 
-static int	checkNbType(std::string str)
+static int	checkNbType(std::string &str)
 {
 	long	nb;
 
 	nb = atol(str.c_str());
 	if (nb <= std::numeric_limits<int>::max() && nb >= std::numeric_limits<int>::min())
 		return (TYPE_INT);
-	if (nb <= std::numeric_limits<long>::max() && nb >= std::numeric_limits<double>::min())
+	if (nb <= std::numeric_limits<double>::max() && nb >= std::numeric_limits<double>::min())
 		return (TYPE_DOUBLE);
 	return TYPE_ERROR;
 }
 
-static int	checkNb(std::string str)
+static int	checkNb(std::string &str)
 {
 	int			i = 0;
 	size_t		f_pos;
@@ -154,6 +154,7 @@ static void printConversionInt(std::string &str)
 	std::cout << "int:\t"		<< value << std::endl;
 	std::cout << "float:\t"		<< static_cast<float>(value) << ".0f" << std::endl;
 	std::cout << "double:\t"	<< static_cast<double>(value) << ".0" << std::endl;
+	std::cout << std::endl;
 }
 
 static void printConversionChar(std::string &str)
@@ -165,6 +166,7 @@ static void printConversionChar(std::string &str)
 	std::cout << "int:\t"		<< static_cast<int>(str[0]) << std::endl;
 	std::cout << "float:\t"		<< static_cast<float>(str[0]) << ".0f" << std::endl;
 	std::cout << "double:\t"	<< static_cast<double>(str[0]) << ".0" << std::endl;
+	std::cout << std::endl;
 }
 
 static void printConversionFloat(std::string &str)
@@ -179,7 +181,12 @@ static void printConversionFloat(std::string &str)
 		std::cout << static_cast<char>(value) << std::endl;
 	else 
 		std::cout << "non displayable" << std::endl;
-	std::cout << "int:\t"		<< static_cast<int>(value) << std::endl;
+	std::cout << "int:\t";
+	if (value <= std::numeric_limits<int>::max()
+		&& value >= std::numeric_limits<int>::min())
+		std::cout << static_cast<int>(value) << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
 	std::cout << "float:\t"		<< value;
 	if (value == static_cast<int>(value))
 		std::cout << ".0f" << std::endl;
@@ -190,6 +197,7 @@ static void printConversionFloat(std::string &str)
 		std::cout << ".0" << std::endl;
 	else
 		std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 static void	printConversionDouble(std::string &str)
@@ -227,6 +235,7 @@ static void	printConversionDouble(std::string &str)
 		std::cout << ".0" << std::endl;
 	else
 		std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 
@@ -252,7 +261,7 @@ static void	printConversion(int type, std::string &str)
 	}
 }
 
-void	ScalarConverter::convert(std::string str)
+void	ScalarConverter::convert(const std::string &str)
 {
 	int					type;
 	std::stringstream	ss(str);

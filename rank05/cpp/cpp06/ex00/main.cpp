@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:59:47 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/16 17:04:38 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/20 13:30:58 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,51 +49,54 @@ int	main(int argc, char** argv)
 		return (1);
 	}
 	if (argc == 2)
-		ScalarConverter::convert(std::string(argv[1]));
+		ScalarConverter::convert(argv[1]);
 	else
 	{
 		print_header("Subject");
 		ScalarConverter::convert(std::string("0"));
-		ScalarConverter::convert(std::string("nan"));
-		ScalarConverter::convert(std::string("*"));
+		ScalarConverter::convert("nan");
+		ScalarConverter::convert("*");
 		std::cin.get();
 
 		print_header("Pseudo");
-		ScalarConverter::convert(std::string("+inf"));
-		ScalarConverter::convert(std::string("+inff"));
-		ScalarConverter::convert(std::string("-inf"));
-		ScalarConverter::convert(std::string("-inff"));
-		ScalarConverter::convert(std::string("nan"));
+		ScalarConverter::convert("+inf");
+		ScalarConverter::convert("+inff");
+		ScalarConverter::convert("-inf");
+		ScalarConverter::convert("-inff");
+		ScalarConverter::convert("nan");
 		std::cin.get();
 
 		print_header("Chars");
-		ScalarConverter::convert(std::string("c"));
-		ScalarConverter::convert(std::string("A"));
-		ScalarConverter::convert(std::string("_"));
-		ScalarConverter::convert(std::string("!"));
+		ScalarConverter::convert("c");
+		ScalarConverter::convert("A");
+		ScalarConverter::convert("_");
+		ScalarConverter::convert("!");
+		ScalarConverter::convert(std::string(1, char(-10)));
+		ScalarConverter::convert(std::string(1, char(2)));
+		ScalarConverter::convert(std::string(1, char(31)));
 		std::cin.get();
 		
 		print_header("Int");
-		ScalarConverter::convert(std::string("-42"));
-		ScalarConverter::convert(std::string("42"));
-		ScalarConverter::convert(std::string("2147483647"));
-		ScalarConverter::convert(std::string("-2147483648"));
+		ScalarConverter::convert("-42");
+		ScalarConverter::convert("42");
+		ScalarConverter::convert("2147483647");
+		ScalarConverter::convert("-2147483648");
 		std::cin.get();
 		
 		print_header("Float"); 
-		ScalarConverter::convert(std::string("4.2f"));
+		ScalarConverter::convert("4.2f");
 		std::cin.get();
 		
 		print_header("Double");
-		ScalarConverter::convert(std::string("4.321"));
+		ScalarConverter::convert("4.321");
 		std::cin.get();
 
 		print_header("Oher invalid input");
-		ScalarConverter::convert(std::string(""));
-		ScalarConverter::convert(std::string("Hello"));
-		ScalarConverter::convert(std::string("123 42"));
-		ScalarConverter::convert(std::string("123f11"));
-		ScalarConverter::convert(std::string("1.1ff"));
+		ScalarConverter::convert("");
+		ScalarConverter::convert("Hello");
+		ScalarConverter::convert("123 42");
+		ScalarConverter::convert("123f11");
+		ScalarConverter::convert("1.1ff");
 
 		print_header("End of tests");
 	}
