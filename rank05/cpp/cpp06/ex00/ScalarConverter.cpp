@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:11:36 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/20 13:49:11 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/22 15:33:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 #include <cstdlib>
 #include <limits>
+#include <iomanip>
+#include <math.h>
 
 /* Private: */
 
@@ -43,6 +45,56 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter &other)
 }
 
 /* Public: */
+
+static void printChar(const double d)
+{
+	std::cout << "char:\t";
+	if (d <= std::numeric_limits<char>::max() 
+		&& d >= std::numeric_limits<char>::min()
+		&& isprint(static_cast<char>(d)))
+		std::cout << static_cast<char>(d) << std::endl;
+	else 
+		std::cout << "non displayable" << std::endl;
+}
+
+static void printInt(const double d)
+{
+	std::cout << "int:\t";
+	if (d <= std::numeric_limits<int>::max()
+		&& d >= std::numeric_limits<int>::min())
+		std::cout << static_cast<int>(d) << std::endl;
+	else
+		std::cout << BAD_CONVERSION << std::endl;
+}
+
+static void printFloat(const float f)
+{
+	std::cout << "float:\t";
+	if (std::isinf(f))
+	{
+		if (f > 0)
+			std::cout << std::fixed << STR_INFF << std::endl;
+		else if (f < 0)
+			std::cout << std::fixed << STR_NEG_INFF << std::endl;
+	}
+	else
+		std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+}
+
+static void printDouble(const double d)
+{
+	std::cout << "double:\t";
+	if (std::isinf(d))
+	{
+		if (d > 0)
+			std::cout << std::fixed << STR_INF << std::endl;
+		else if (d < 0)
+			std::cout << std::fixed << STR_NEG_INF << std::endl;
+	}
+	else
+		std::cout << std::fixed << std::setprecision(1) << d << std::endl;
+}
+
 
 static void print_input(int type)
 {
@@ -83,14 +135,12 @@ static int	checkPseudoLiterals(std::string &str)
 
 static int	checkNbType(std::string &str)
 {
-	long	nb;
+	double	nb;
 
-	nb = atol(str.c_str());
+	nb = strtod(str.c_str(), NULL);
 	if (nb <= std::numeric_limits<int>::max() && nb >= std::numeric_limits<int>::min())
 		return (TYPE_INT);
-	if (nb <= std::numeric_limits<double>::max() && nb >= std::numeric_limits<double>::min())
-		return (TYPE_DOUBLE);
-	return TYPE_ERROR;
+	return (TYPE_DOUBLE);
 }
 
 static int	checkNb(std::string &str)
@@ -121,7 +171,7 @@ static int	checkNb(std::string &str)
 		i++;
 	if (!isdigit(str[i]))
 	{
-		std::cerr << "Error: Bad character on string" << std::endl;
+		std::cerr << "Error: bad character on string" << std::endl;
 		return (TYPE_ERROR);
 	}
 	while (isdigit(str[i]))
@@ -135,106 +185,52 @@ static int	checkNb(std::string &str)
 		std::cerr << "Error: f out of place on second segment" << std::endl;
 		return (TYPE_ERROR);
 	}
-	std::cerr << "Error: end of number" << std::endl;
+	std::cerr << "Error: invalid number" << std::endl;
 	return (TYPE_ERROR);
 }
 
 static void printConversionInt(std::string &str)
 {
-	float value;
+	int	value;
 
 	value = atoi(str.c_str());
-	std::cout << "char:\t";
-	if (value <= std::numeric_limits<char>::max() 
-		&& value >= std::numeric_limits<char>::min()
-		&& isprint(static_cast<char>(value)))
-		std::cout << static_cast<char>(value) << std::endl;
-	else 
-		std::cout << "non displayable" << std::endl;
+	printChar(static_cast<double>(value));
 	std::cout << "int:\t"		<< value << std::endl;
-	std::cout << "float:\t"		<< static_cast<float>(value) << ".0f" << std::endl;
-	std::cout << "double:\t"	<< static_cast<double>(value) << ".0" << std::endl;
+	std::cout << "float:\t"		<< std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "double:\t"	<< std::fixed << std::setprecision(1) << static_cast<double>(value) << std::endl;
 	std::cout << std::endl;
 }
 
 static void printConversionChar(std::string &str)
 {
-	if (isprint(str[0]))
-		std::cout << "char:\t"	<< str[0] << std::endl;
-	else
-		std::cout << "char:\t"	<< "non displayable" << std::endl;
+	printChar(static_cast<double>(str[0]));
 	std::cout << "int:\t"		<< static_cast<int>(str[0]) << std::endl;
-	std::cout << "float:\t"		<< static_cast<float>(str[0]) << ".0f" << std::endl;
-	std::cout << "double:\t"	<< static_cast<double>(str[0]) << ".0" << std::endl;
+	std::cout << "float:\t"		<< std::fixed << std::setprecision(1) << static_cast<float>(str[0]) << "f" << std::endl;
+	std::cout << "double:\t"	<< std::fixed << std::setprecision(1) << static_cast<double>(str[0]) << std::endl;
 	std::cout << std::endl;
 }
 
 static void printConversionFloat(std::string &str)
 {
-	float value;
+	double	value;
 
-	value = strtof(str.c_str(), NULL);
-	std::cout << "char:\t";
-	if (value <= std::numeric_limits<char>::max()
-		&& value >= std::numeric_limits<char>::min()
-		&& isprint(static_cast<char>(value)))
-		std::cout << static_cast<char>(value) << std::endl;
-	else 
-		std::cout << "non displayable" << std::endl;
-	std::cout << "int:\t";
-	if (value <= std::numeric_limits<int>::max()
-		&& value >= std::numeric_limits<int>::min())
-		std::cout << static_cast<int>(value) << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "float:\t"		<< value;
-	if (value == static_cast<int>(value))
-		std::cout << ".0f" << std::endl;
-	else
-		std::cout << "f" << std::endl;
-	std::cout << "double:\t"	<< static_cast<double>(value);	
-	if (value == static_cast<int>(value))
-		std::cout << ".0" << std::endl;
-	else
-		std::cout << std::endl;
+	value = strtod(str.c_str(), NULL);
+	printChar(value);
+	printInt(value);
+	printFloat(strtof(str.c_str(), NULL));
+	printDouble(value);
 	std::cout << std::endl;
 }
 
 static void	printConversionDouble(std::string &str)
 {
-	float value;
+	double	value;
 
 	value = strtod(str.c_str(), NULL);
-	std::cout << "char:\t";
-	if (value <= std::numeric_limits<char>::max()
-		&& value >= std::numeric_limits<char>::min()
-		&& isprint(static_cast<char>(value)))
-		std::cout << static_cast<char>(value) << std::endl;
-	else 
-		std::cout << "non displayable" << std::endl;
-	std::cout << "int:\t";
-	if (value <= std::numeric_limits<int>::max()
-		&& value >= std::numeric_limits<int>::min())
-		std::cout << static_cast<int>(value) << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "float:\t";
-	if (static_cast<float>(value) <= std::numeric_limits<float>::max()
-		&& static_cast<float>(value) >= std::numeric_limits<float>::min())
-	{
-		std::cout << static_cast<float>(value);
-		if (value == static_cast<int>(value))
-			std::cout << ".0f" << std::endl;
-		else
-			std::cout << "f" << std::endl;
-	}
-	else
-		std::cout << BAD_CONVERSION << std::endl;
-	std::cout << "double:\t"	<< value;	
-	if (value == static_cast<int>(value))
-		std::cout << ".0" << std::endl;
-	else
-		std::cout << std::endl;
+	printChar(value);
+	printInt(value);
+	printFloat(value);
+	printDouble(value);
 	std::cout << std::endl;
 }
 
@@ -286,7 +282,7 @@ void	ScalarConverter::convert(const std::string &str)
 	}
 	// check for pseudo literals
 	type = checkPseudoLiterals(clean_str);
-	// check other type
+	// check type
 	if (!type)
 	{
 		if (clean_str.size() == 1 && !isdigit(clean_str[0]))

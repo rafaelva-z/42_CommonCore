@@ -2,7 +2,7 @@
 NAME =			RealType
 CXX =			c++
 CXXFLAGS =		-Wall -Wextra -Werror -Wconversion -g -std=c++98
-SRC =			./src/main.cpp ./src/Base.cpp ./src/A.cpp ./src/B.cpp ./src/C.cpp
+SRC =			./src/main.cpp ./src/Base.cpp
 INCLUDE_DIR =	./include/
 
 
