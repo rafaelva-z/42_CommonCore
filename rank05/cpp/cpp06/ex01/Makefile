@@ -2,7 +2,7 @@
 NAME =			Serialization
 CXX =			c++
 CXXFLAGS =		-Wall -Wextra -Werror -Wconversion -g -std=c++98
-SRC =			./src/main.cpp ./src/Serializer.cpp ./src/Data.cpp
+SRC =			./src/main.cpp ./src/Serializer.cpp
 INCLUDE_DIR =	./include/
 
 

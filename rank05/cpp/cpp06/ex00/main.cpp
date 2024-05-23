@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:59:47 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/22 15:28:53 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/23 13:17:43 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int argc, char** argv)
 		print_header("Subject");
 		ScalarConverter::convert("0");
 		ScalarConverter::convert("nan");
-		ScalarConverter::convert("*");
+		ScalarConverter::convert("42.0f");
 
 		print_header("Pseudo literals");
 		std::cin.get();
@@ -113,7 +113,6 @@ int	main(int argc, char** argv)
 		ScalarConverter::convert("-2147483649");
 		ScalarConverter::convert("--0");
 		ScalarConverter::convert("++0");
-
 		
 		print_header("Float"); 
 		std::cin.get();
@@ -137,7 +136,6 @@ int	main(int argc, char** argv)
 		ScalarConverter::convert("10000000000000000000000000000000000000000f");
 		ScalarConverter::convert("-10000000000000000000000000000000000000000f");
 
-		
 		print_header("Double");
 		std::cin.get();
 		std::cout << GREEN << "✅ Valid Doubles:" << std::endl;
@@ -157,6 +155,7 @@ int	main(int argc, char** argv)
 		print_header("More invalid inputs");
 		std::cin.get();
 		ScalarConverter::convert("");
+		ScalarConverter::convert("\0");
 		ScalarConverter::convert("Hello");
 		ScalarConverter::convert("123 42");
 		ScalarConverter::convert("123f11");

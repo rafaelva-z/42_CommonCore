@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:36:54 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/21 13:28:23 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/23 13:19:52 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "Data.hpp"
 # include <stdint.h>
 # include <iostream>
-
-class Data;
 
 class Serializer
 {

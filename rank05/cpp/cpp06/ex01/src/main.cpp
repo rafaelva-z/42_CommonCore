@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:10:57 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/21 13:27:03 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/23 13:21:01 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 
 int	main()
 {
-	Data* data0 = new Data(50);
-	Data* data1 = NULL;
-	uintptr_t uint_ptr;
+	Data		dataStruct;
+	Data*		data1;
+	uintptr_t	uint_ptr;
 
-	std::cout << "data0: " <<  data0->getData() << std::endl;
+	dataStruct.data = 50;
 
-	uint_ptr =	Serializer::serialize(data0);
+	std::cout << "dataStruct ptr:\t" << &dataStruct << " | content: " << dataStruct.data << std::endl;
+
+	uint_ptr = Serializer::serialize(&dataStruct);
 	data1 = Serializer::deserialize(uint_ptr);
 	
-	if (data1 == data0)
+	if (data1 == &dataStruct)
 		std::cout << "These pointers have the same address!" << std::endl;
 	else 
 		std::cout << "These pointers have different addresses!" << std::endl;
 
 	if (data1)
-		std::cout << "data1: " << data1->getData() << std::endl;
-	delete (data0);
+		std::cout << "data1 ptr:\t" << data1 << " | content: " << data1->data << std::endl;
 }

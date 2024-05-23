@@ -6,7 +6,7 @@
 /*   By: rvaz <rvaz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:11:36 by rvaz              #+#    #+#             */
-/*   Updated: 2024/05/22 15:33:52 by rvaz             ###   ########.fr       */
+/*   Updated: 2024/05/23 12:59:21 by rvaz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <cstdlib>
-#include <limits>
 #include <iomanip>
-#include <math.h>
+#include <cstdlib>
+#include <cmath>
+#include <limits>
 
 /* Private: */
 
@@ -96,7 +96,7 @@ static void printDouble(const double d)
 }
 
 
-static void print_input(int type)
+static void printPseudo(int type)
 {
 	std::cout << "char:\t"		<< BAD_CONVERSION << std::endl;
 	std::cout << "int:\t"		<< BAD_CONVERSION << std::endl;
@@ -152,7 +152,7 @@ static int	checkNb(std::string &str)
 		i++;
 	if (!isdigit(str[i]))
 	{
-		std::cerr << "Error: Bad character at the start (index 0 or 1)" << std::endl;
+		std::cerr << "Error: bad character at the start (index 0 or 1)" << std::endl;
 		return (TYPE_ERROR);
 	}
 	while (isdigit(str[i]))
@@ -229,7 +229,7 @@ static void	printConversionDouble(std::string &str)
 	value = strtod(str.c_str(), NULL);
 	printChar(value);
 	printInt(value);
-	printFloat(value);
+	printFloat(static_cast<float>(value));
 	printDouble(value);
 	std::cout << std::endl;
 }
@@ -252,7 +252,7 @@ static void	printConversion(int type, std::string &str)
 			printConversionDouble(str);
 			break ;
 		default:
-			print_input(type);
+			printPseudo(type);
 			break;
 	}
 }
@@ -268,7 +268,7 @@ void	ScalarConverter::convert(const std::string &str)
 	if (str.empty())
 	{
 		std::cerr << "Error: string is empty!" << std::endl;
-		print_input(TYPE_ERROR);
+		printPseudo(TYPE_ERROR);
 		return ;
 	}
 	// clear white space
@@ -277,7 +277,7 @@ void	ScalarConverter::convert(const std::string &str)
 	if (test_str.size() > 0)
 	{
 		std::cerr << "Error: multiple words on input!" << std::endl;
-		print_input(TYPE_ERROR);
+		printPseudo(TYPE_ERROR);
 		return ;
 	}
 	// check for pseudo literals
