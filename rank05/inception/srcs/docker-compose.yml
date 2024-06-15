@@ -1,0 +1,80 @@
+version: "3.9"
+
+services:
+  # Mandatory Services
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/mysql 
+    networks:
+      - wp-network
+    restart: on-failure 
+    healthcheck:
+      test: "mysql $MYSQL_DATABASE -uroot -p$MYSQL_ROOT_PASSWORD -e 'SELECT 1;'"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wp-data:/var/www/html
+    networks:
+      - wp-network
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    restart: on-failure
+
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    ports:
+      - "443:443"
+    volumes:
+      - wp-data:/var/www/html:ro
+    networks:
+      - wp-network
+    depends_on:
+      - wordpress
+    restart: on-failure
+
+  # Bonus Services
+  ftp:
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    ports:
+      - "20:20"
+      - "21:21"
+      - "21100:21100"
+    volumes:
+      - wp-data:/wordpress:rw
+    networks:
+      - wp-network
+    depends_on:
+      - wordpress
+    restart: on-failure
+
+networks:
+  wp-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/rvaz/data/db-data
+  wp-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/rvaz/data/wp-data
