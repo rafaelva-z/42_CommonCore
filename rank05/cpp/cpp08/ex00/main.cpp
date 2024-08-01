@@ -3,7 +3,9 @@
 #include <set>
 #include <list>
 
-//	Note: Associative containers automatically sort and organize elements as they are inserted
+/*	Note: Associative containers automatically sort and organize elements as they are inserted
+ *			as oposed to sequential containers.
+*/
 
 int main() {
 	int values[] = {3, 422, 86, 42, 1};
