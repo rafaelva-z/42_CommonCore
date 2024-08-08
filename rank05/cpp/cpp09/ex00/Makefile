@@ -2,7 +2,7 @@
 NAME =			btc
 CXX =			c++
 CXXFLAGS =		-Wall -Wextra -Werror -g -std=c++98
-SRC =			./main.cpp
+SRC =			./main.cpp ./BitcoinExchange.cpp
 INCLUDE_DIR =	.
 
 
