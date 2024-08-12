@@ -49,7 +49,10 @@ int BitcoinExchange::importDb(const char *db_filename)
 
 		std::getline(ss, date, ',');
 		if (ss.fail() || !(ss >> value))
+		{
+			db_file.close();
 			throw (std::runtime_error("Parsing: Invalid data format in db file"));
+		}
 		if (this->checkDate(date))
 		{
 			db_file.close();
@@ -67,12 +70,12 @@ int BitcoinExchange::importDb(const char *db_filename)
 int BitcoinExchange::checkDate(const std::string &date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
-		return (print_error("Invalid date format: yyyy-mm-dd"));
+		return (print_error("Invalid date format: valid format is yyyy-mm-dd"));
 	
 	for (size_t i = 0; i < date.size(); i++)
 	{
 		if (!isdigit(date[i]) && i != 4 && i != 7)
-			return (print_error("Invalid date format: yyyy-mm-dd"));
+			return (print_error("Invalid date format: valid format is yyyy-mm-dd"));
 	}
 
 	short	month_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
