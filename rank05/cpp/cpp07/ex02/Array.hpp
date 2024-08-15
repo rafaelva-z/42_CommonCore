@@ -2,62 +2,83 @@
 # define ARRAY_HPP
 
 # include <iostream>
-# include <stdlib.h> // for Array.cpp provided in the subject
 
 template<typename T>
 class Array {
 private:
-    T				*array = NULL;
-	size_t	arr_size;
+	T		*_array;
+	unsigned int	_arr_size;
 
 public:
-    Array() : array(new T()), arr_size(0) {}
-	Array(size_t n) : array(new T[n]), arr_size(n) {}
-	Array(const Array &other)
+	Array() : _array(NULL), _arr_size(0)
+	{
+		// Nothing to be done
+	}
+
+	Array(unsigned int n) : _array(new T[n]), _arr_size(n)
+	{
+		// Initialize values
+		for (unsigned int i = 0; i < n; i++)
+			_array[i] = T();
+	}
+
+	Array(const Array &other): _array(NULL), _arr_size(0)
 	{
 		*this = other;
 	}
+
 	~Array()
 	{
-		delete[] array;
+		delete[] _array;
 	}
 	
 	Array &operator=(const Array &other)
 	{
 		if (this == &other)
 			return (*this);
-		// if (array)
-		// 	delete[] array;
-		T *new_array = new T[other.arr_size];
+		delete[] _array;
+		_array = NULL;
+		if (other._array)
+		{
+			T *new_array = new T[other._arr_size];
 
-		for (size_t i = 0; i < other.arr_size; i++)
-			new_array[i] = other.array[i];
-		delete[] array;
-
-		array = new_array;
-		arr_size = other.arr_size;
-
-		// arr_size = other.arr_size;
-		// array = new T[arr_size];
-		// for (size_t i = 0; i < arr_size; i++)
-		// {
-		// 	array[i] = other.array[i]; 
-		// 	// std::cout << "cat" << std::endl;
-		// }
+			for (unsigned int i = 0; i < other._arr_size; i++)
+			{
+				new_array[i] = other._array[i];
+			}
+			_array = new_array;
+		}
+		_arr_size = other._arr_size;
 		return (*this);
 	}
 
-    T& operator[](size_t index)
+	T& operator[](unsigned int index)
 	{
-		if (index >= arr_size)
+		if (index >= _arr_size)
 			throw std::out_of_range("Index is out of range!");
-		return array[index];
-    }
+		return (_array[index]);
+	}
 
-    size_t size() const
+	unsigned int get_size() const
 	{
-		return arr_size;
-    }
+		return (_arr_size);
+	}
+
+	void	print_values() const
+	{
+		std::cout << "{ ";
+		if (_array && _arr_size > 0)
+		{
+			for (unsigned int i = 0; i < _arr_size; i++)
+			{
+				std::cout << _array[i] << " ";
+			}
+		}
+		else
+			std::cout << "empty ";
+		std::cout << "} ";
+		std::cout << _arr_size << " values" << std::endl;
+	}
 };
 
 #endif
