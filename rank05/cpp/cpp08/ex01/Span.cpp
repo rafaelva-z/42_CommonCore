@@ -1,5 +1,6 @@
 #include "Span.hpp"
 #include <limits>
+#include <set>
 
 Span::Span()
 {
@@ -8,6 +9,7 @@ Span::Span()
 
 Span::Span(unsigned int N): maxSize(N)
 {
+	// Nothing to be done
 }
 
 Span::Span(const Span &other)
@@ -28,13 +30,13 @@ Span &Span::operator=(const Span &other)
 
 Span::~Span()
 {
-
+	// Nothing to be done
 }
 
 void			Span::addNumber(int number)
 {
 	if (container.size() >= maxSize)
-		throw  std::out_of_range("Could not add number, Span is full.");
+		throw  (std::out_of_range("Could not add number, Span is full."));
 	container.insert(number);
 }
 
@@ -68,6 +70,6 @@ unsigned int	Span::longestSpan()
 {
 	if (container.size() < 2)
 		throw std::logic_error("Not enough elements to find a span");
-	return *container.rbegin() - *container.begin();
+	return (*container.rbegin() - *container.begin());
 
 }

@@ -15,11 +15,11 @@ class Span
 
 		void			addNumber(int number);
 		template<typename InputIterator>
-		void	addNumbers(InputIterator begin, InputIterator end)
+		void			addNumbers(InputIterator begin, InputIterator end)
 		{
 			size_t distance = std::distance(begin, end);
 			if (container.size() + distance > maxSize)
-				throw std::out_of_range("Cannot add more numbers, container will exceed max size");
+				throw std::out_of_range("Cannot add more numbers, container would exceed max size");
 			container.insert(begin, end);
 		}
 		void			printNumbers();
@@ -28,8 +28,8 @@ class Span
 
 
 	private:
-		unsigned int maxSize;
-		std::set<int> container;
+		unsigned int	maxSize;
+		std::set<int>	container;
 		
 		Span();
 };
