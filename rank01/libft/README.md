@@ -1,144 +1,101 @@
-# Libft
-C library composed of 45 functions that will be used during the course + some functions that i found to be useful in different situations. At 42, most functions are forbidden, and besides some exceptions like malloc and free, if i need a function i will have to make it.
+# Libft - C Library Implementation
 
-# Functions
-### ft_atoi.c
-Convert a string to an int, ignoring all spaces before the number, and stopping at the first character that isn't a digit, '+' or '-'.\
-*INPUT:*	(char *) number in string format to be converted.\
-*RETURN:*	the string given as an int.
-### ft_itoa.c
-Convert an int to a string.\
-*INPUT:*	(int) to be converted.\
-*RETURN:*	(char *) pointer to the converted value.
-### ft_isalpha.c
-Checks if the char given as input represents a letter.\
-*INPUT:*	(char) to be checked.\
-*RETURN:*	1 if the input value represents a letter, 0 if it doesn't.
-### ft_isdigit.c
-Checks if the char given as input represents a number.\
-*INPUT:*	(char) to be checked.\
-*RETURN:*	1 if the input value represents a number, 0 if it doesn't.
-### ft_isalnum.c
-Checks if the char given as input represents a number or a letter.\
-*INPUT:*	(char) to be checked.\
-*RETURN:*	1 if the input value represents a number or a letter, 0 if it doesn't.
-### ft_isprint.c
-Checks if the char given as input represents a printable character.\
-*INPUT:*	(char) to be checked.\
-*RETURN:*	1 if the input value represents a printable character, 0 if it doesn't.
-### ft_isascii.c
-Checks if the char given as input represents a printable character.\
-*INPUT:*	(char) to be checked.\
-*RETURN:*	1 if the input value represents an ascii character, 0 if it doesn't.
-### ft_putendl_fd.c
-Writes a '\n' after the string passed to the designated file descriptor\
-*INPUT*		(char *), (int)
-### ft_putchar_fd.c
-Writes a given char to the designated file descriptor\
-*INPUT*		(char *), (int)
-### ft_putnbr_fd.c
-Writes a given int to the designated file descriptor\
-*INPUT*		(int), (int)
-### ft_putstr_fd.c
-Writes a given string to the designated file descriptor\
-*INPUT*		(char *), (int)
-### ft_strcat.c
-Concatenates n bytes from s2 to s1\
-*INPUT*		(char *), (char *), (unsigned long)
-### ft_strjoin.c
-Joins two strings into a new alocated string\
-*INPUT*		(char *) string1, (char *) string2\
-*RETURN*	(char *) a new string with the contents of str1 followed by the contents in str2
-### ft_strmapi.c
-Copies the given string to a newly allocated string using function passed as a parameter and returns it\
-*INPUT*		(char *), (char)(*function(unsigned int, char))\
-*RETURN*	(char *)
-### ft_strrchr.c
-Returns the last occurence of the given int (char) on a string\
-*INPUT*		(char *), (int)\
-*RETURN*	(char *)
-### ft_toupper.c
-Returns the given character in uppercase\
-*INPUT*		(char)\
-*RETURN*	(char) uppercase character or same char if it doesn't correspond to a lowercase letter
-### ft_bzero.c
-Clears the memory on n bytes starting on the given pointer\
-*INPUT*		(void *) adress to clear, (unsigned int) number of bytes to clear\
-### ft_calloc.c
-Alocates memory, and sets it to '\0'\
-*INPUT:*	(int) amount of slots, (int) size of slots in bytes\
-*RETURN:*	(void *) pointer to the address of the alocated memory.
-### ft_memcpy.c
-Copies n bytes from source to destination.\
-*INPUT*		(void *) destination pointer, (void *) source pointer, (unsigned int) number of bytes\
-*RETURN*	(void *) destination pointer
-### ft_memmove.c
-Copies n bytes from source to destination, both objects may overlap and nothing will be lost, as opposed to ft_memcpy\
-*INPUT*		(void *) destination pointer, (void *) source pointer, (unsigned int) number of bytes\
-*RETURN*	(void *) destination pointer
-### ft_memchr.c
-Returns a pointer to the first occurence of int c on the n bytes after the given pointer, or NULL if there is none\
-*INPUT*		(void *), (int), (unsigned long)\
-*RETURN*	(void *)
-### ft_memset.c
-Sets n bytes starting on the given pointer to the given char\
-*INPUT*		(void *), (int), (unsigned long)\
-*RETURN*	(void *)
-### ft_memcmp.c
-Compares n bytes from s1 and s2, and returns the difference of the first different byte (s1 - s2) or 0 if every byte matches\
-*INPUT*		(void *), (void *), (int)\
-*RETURN*	(int)
-### ft_strtrim.c
-Removes each ocurrence of every character of the given character set from the start and end of the given string\
-and returns a pointer to the start of the resulting string \
-*INPUT*		(char *), (char *)\
-*RETURN*	(char *)
-### ft_strnstr.c
-### ft_strdup.c
-### ft_strlcpy.c
-### ft_strncmp.c
-### ft_striteri.c
-### ft_strlen.c
-Returns the amount of characters in a string\
-*INPUT*		(char *)\
-*RETURN*	(int)
-### ft_strchr.c
-Returns a pointer to the first ocurrence of the given int (char) on the given string or NULL if there is none\
-*INPUT*		(char *), (int c)\
-*RETURN*	(char *)
-### ft_strlcat.c
-### ft_strncat.c
-### ft_split.c
-Splits the given string on every instance of the separator\
-*INPUT:*	(char *) string, (char) separator\
-*RETURN:*	(char **) an array containing the splitted strings
-### ft_substr.c
-### ft_tolower.c
-### ft_lstdelone.c
-Uses a given function to clear the content of t_list, and frees it\
-*INPUT*		(t_list *), (void)(*function(void *))
-### ft_lstnew.c
-Creates a new t_list and puts content into it\
-*INPUT:*	(void *) content\
-*RETURN*	(t_list *) pointer to the allocated list
-### ft_lstadd_front.c
-Adds a given t_list to the begining of a given linked list\
-*INPUT*		(t_list **), (t_list *)
-### ft_lstadd_back.c
-Adds a given t_list to the end of a given linked list\
-*INPUT*		(t_list **), (t_list *)
-### ft_lstiter.c
-Iterates through every item on the given list and aplies the given function to each items content\
-*INPUT*		(t_list *), (void)(*function(void *))
-### ft_lstsize.c
-Returns the size of a given linked list\
-*INPUT*		(t_list *)
-### ft_lstlast.c
-Returns a pointer to the lat item of the linked list\
-*INPUT*		(t_list *)\
-*RETURN*	(t_list *)
-### ft_lstclear.c
-Deletes every item on a linked list using the given function using ft_lstdelone()\
-*INPUT*		(t_list **), (void)(*function(void *))
-### ft_lstmap.c
+## Overview
 
+The first project of the 42 curriculum (common core) introduced the basics of the C programming language. The goal was to write several standard library functions from scratch, adhering to their original behavior as defined in the C Standard Library (`libc`). This custom library, contains functions that convert, seek and manipulate memory, characters (that are values in memory) and strings (which is basically a group of characters). By building these functions, I gained a better understanding into low-level programming concepts, memory management, and algorithm optimization.
+
+## Function List
+
+### **Memory Functions**
+Functions for allocating, copying, moving, and zeroing memory.
+- `ft_bzero`: Set a block of memory to zero (null bytes).
+- `ft_calloc`: Allocate and initialize memory, setting it to zero.
+- `ft_memset`: Fill a block of memory with a specific value.
+- `ft_memcpy`: Copy a block of memory from one location to another.
+- `ft_memmove`: Safely copy a block of memory from one location to another, even if they overlap.
+- `ft_memchr`: Search for a byte within a block of memory.
+- `ft_memcmp`: Compare two blocks of memory.
+
+### **String Functions**
+Functions to handle and modify strings.
+- `ft_strlen`: Calculate the length of a string.
+- `ft_strcpy`: Copy a string to another buffer.
+- `ft_strncpy`: Copy a specific number of characters from one string to another.
+- `ft_strchr`: Locate a character in a string.
+- `ft_strdup`: Duplicate a string by allocating memory for the new copy.
+- `ft_strcat`: Concatenate two strings.
+- `ft_strncat`: Concatenate a specified number of characters from one string to another.
+- `ft_strlcat`: Concatenate two strings safely by preventing buffer overflow.
+- `ft_strrchr`: Locate the last occurrence of a character in a string.
+- `ft_strcmp`: Compare two strings lexicographically.
+- `ft_strncmp`: Compare a specified number of characters of two strings.
+- `ft_strnstr`: Find a substring in a string within a limited number of characters.
+- `ft_strlcpy`: Copy a string to a buffer while preventing buffer overflow.
+- `ft_strjoin`: Concatenate two strings into a newly allocated string.
+- `ft_striteri`: Apply a function to each character of a string, passing its index as the first argument.
+- `ft_split`: Split a string into an array of substrings based on a given delimiter.
+
+### **Character Functions**
+Functions that check or convert the given character.
+- `ft_isalpha`: Check if a character is alphabetic.
+- `ft_isdigit`: Check if a character is a digit.
+- `ft_isalnum`: Check if a character is alphanumeric.
+- `ft_isascii`: Check if a character belongs to the ASCII set.
+- `ft_isprint`: Check if a character is printable.
+- `ft_tolower`: Convert an uppercase character to lowercase.
+- `ft_toupper`: Convert a lowercase character to uppercase.
+
+### **Conversion Functions**
+Functions that convert data between incompatible types
+- `ft_atoi`: Convert a string to an integer.
+- `ft_itoa`: Convert an integer to a string.
+
+### **Output Functions**
+Output data to the provided file discriptor.
+- `ft_putchar_fd`: Output a character to a given file descriptor.
+- `ft_putstr_fd`: Output a string to a given file descriptor.
+- `ft_putendl_fd`: Output a string followed by a newline to a given file descriptor.
+- `ft_putnbr_fd`: Output an integer to a given file descriptor.
+
+### **Linked List Functions**
+Linked list operations, such as creating, adding, deleting, and iterating through nodes.
+- `ft_lstnew`: Create a new node for a linked list.
+- `ft_lstadd_front`: Add a new node to the front of the list.
+- `ft_lstadd_back`: Add a new node to the end of the list.
+- `ft_lstsize`: Count the number of nodes in a list.
+- `ft_lstlast`: Get the last node of a list.
+- `ft_lstdelone`: Delete a single node from a list.
+- `ft_lstclear`: Delete all nodes from a list.
+- `ft_lstiter`: Apply a function to each node in a list.
+- `ft_lstmap`: Apply a function to each node and create a new list with the results.
+
+## Using Libft
+
+To use `libft` in a project, follow these steps:
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/rafaelva-z/42_CommonCore.git
+    cd 42_CommonCore/rank01/libft
+    ```
+
+2. **Compile the library**:
+    ```bash
+    make
+    ```
+    This will generate the `libft.a` library file.
+
+3. **Link the library** to your project by including the `libft.h` header:
+    ```c
+    #include "libft.h"
+    ```
+
+    And compile your project linking against `libft.a`:
+    ```bash
+    gcc -o my_program my_program.c -L. -lft
+    ```
+
+## Final Notes
+
+- This project was developed with the constraints and standards of the **42 School**. As such, no external libraries are used (aside from standard C headers like `<stdlib.h>` and `<unistd.h>`).
+- The project cannot contain any memory leaks, and must not crash under any circumstance, the code has to be explained to and tested by 3 different evaluators in order for it to be finished.
