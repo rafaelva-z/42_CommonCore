@@ -38,7 +38,7 @@ int BitcoinExchange::importDb(const char *db_filename)
 	if (line != "date,exchange_rate")
 	{
 		db_file.close();
-		throw (std::runtime_error("Parsing: db file: header invalid"));
+		throw (std::runtime_error("Parsing: db file: header invalid. First line should be: date,exchange_rate"));
 	}
 
 	while (std::getline(db_file, line))
@@ -86,7 +86,7 @@ int BitcoinExchange::checkDate(const std::string &date)
 	if (!(year % 4))
 		month_days[1] = 29;
 	if (year < 2009)
-		return (print_error("Invalid date: Invalid year, minimum year is 2009"));
+		return (print_error("Invalid date: Invalid year, minimum year is 2009")); // Bitcoin launched in 2009
 	if (month <= 0 || month > 12)
 		return (print_error("Invalid date: Invalid month"));
 	if (day <= 0 || day > month_days[month - 1])
@@ -136,10 +136,12 @@ int	BitcoinExchange::outputResults(const char *input_file)
 	if (line != "date|value")
 	{
 		data_file.close();
-		throw (std::runtime_error("Parsing: data file header invalid"));
+		throw (std::runtime_error("Parsing: data file header invalid. First line should be: date | value"));
 	}
 	while (std::getline(data_file, line))
 	{
+		if (line.empty())
+			continue ;
 		line = removeSpaces(line);
 		std::stringstream	ss(line);
 		std::string			i_date;
@@ -152,14 +154,17 @@ int	BitcoinExchange::outputResults(const char *input_file)
 			continue ;
 		std::map<std::string, double>::iterator db_it;
 
-		// optimize checking exact date
-		for (db_it = _db.begin(); db_it != _db.end(); db_it++)
+		db_it = _db.find(i_date);
+		if (db_it == _db.end())
 		{
-			if (db_it->first > i_date)
-				break;
+			for (db_it = _db.begin(); db_it != _db.end(); db_it++)
+			{
+				if (db_it->first > i_date)
+					break;
+			}
+			db_it--;
 		}
-		db_it--;
-		double	result = db_it->second * i_value;
+		double	result = (db_it->second * i_value);
 		std::cout << i_date << " => " << i_value << " = " << result << std::endl; 
 	}
 	data_file.close();

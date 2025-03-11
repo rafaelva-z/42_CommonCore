@@ -1,8 +1,8 @@
 .SILENT:
 NAME =			PmergeMe
 CXX =			c++
-CXXFLAGS =		-Wall -Wextra -Werror -g -std=c++98
-SRC =			./main.cpp ./PmergeMe.hpp
+CXXFLAGS =		-Wall -Wextra -Werror -Wpedantic -g -std=c++98
+SRC =			./main.cpp ./PmergeMe.hpp ./PmergeMe.cpp
 INCLUDE_DIR =	.
 
 

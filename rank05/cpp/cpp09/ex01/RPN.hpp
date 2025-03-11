@@ -22,6 +22,10 @@ class RPN {
 		std::stack<int>	_stack;
 		std::string		_inputString;
 
+		void	reset();
+		void	trim(std::string &str);
+
+
 
 };
 

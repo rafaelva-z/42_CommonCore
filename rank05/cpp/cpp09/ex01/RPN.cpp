@@ -17,17 +17,33 @@ RPN::RPN(const RPN &other)
 
 RPN &RPN::operator=(const RPN &other)
 {
-    if (this != &other)
-        _stack = other._stack;
-    return (*this);
+	if (this != &other)
+		_stack = other._stack;
+	return (*this);
 }
 RPN::~RPN()
 {
 	// Nothing to do here
 }
 
+void	RPN::reset()
+{
+	while (!_stack.empty())
+		_stack.pop();
+	_inputString.clear();
+}
+
+void	RPN::trim(std::string &str)
+{
+	str.erase(0, str.find_first_not_of(" \t\n\r\f\v"));
+	str.erase(str.find_last_not_of(" \t\n\r\f\v") + 1);
+}
+
 void	RPN::calculate(std::string &str)
 {
+	reset();
+	// Trim whitespace from both ends of the string
+	trim(str);
 	std::stringstream	ss(str);
 	std::string			token;
 
@@ -68,22 +84,22 @@ void	RPN::operation(char &operand)
 
 	switch (operand)
 	{
-		 case '+':
-            _stack.push(value1 + value2);
-            break;
-        case '-':
-            _stack.push(value2 - value1);
-            break;
-        case '/':
-            if (value1 == 0)
-                throw std::runtime_error("Division by zero error");
-            _stack.push(value2 / value1);
-            break;
-        case '*':
-            _stack.push(value1 * value2);
-            break;
-        default:
-            throw std::invalid_argument("Unsupported operation");
+		case '+':
+			_stack.push(value1 + value2);
+			break;
+		case '-':
+			_stack.push(value2 - value1);
+			break;
+		case '/':
+			if (value1 == 0)
+				throw std::runtime_error("Division by zero");
+			_stack.push(value2 / value1);
+			break;
+		case '*':
+			_stack.push(value1 * value2);
+			break;
+		default:
+			throw std::invalid_argument("Unsupported operation");
 	}
 }
 

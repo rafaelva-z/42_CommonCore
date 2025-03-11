@@ -6,6 +6,8 @@
 #include <list>
 #include <vector>
 #include <exception>
+#include <climits>
+
 
 class PmergeMe {
 
@@ -15,13 +17,19 @@ class PmergeMe {
 		PmergeMe	&operator=(const PmergeMe &other);
 		~PmergeMe();
 
-		void	execute(std::vector<int> &list);
+		void				execute();
+		void				parseArgs(const char **argv);
 	private:
 		std::vector<int>	_containerVector;
 		std::list<int>		_containerList;
 
-		void				handleVector()
-		void				handleList();
+		void				handleVector(std::vector<int> &vec);
+		void				insertSortedVector(std::vector<int>&arr, int value);
+
+		void				handleList(std::list<int> &lst);
+		void				insertSortedList(std::list<int>&lst, int value);
+
+		void				reset();
 		void				printResults();	
 };
 
