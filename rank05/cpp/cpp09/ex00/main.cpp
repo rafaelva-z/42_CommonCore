@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-	BitcoinExchange btcE;
+	BitcoinExchange	btcE;
 
 	if (argc != 2)
 		return (print_error("Invalid syntax: Try ./btc [input_file]"));

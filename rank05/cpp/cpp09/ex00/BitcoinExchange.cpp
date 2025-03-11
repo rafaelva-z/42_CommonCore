@@ -168,15 +168,15 @@ int	BitcoinExchange::outputResults(const char *input_file)
 
 int	print_error(const char *msg)
 {
-	std::cout << "Error: ";
-	std::cout << msg << std::endl;
+	std::cerr << "Error: ";
+	std::cerr << msg << std::endl;
 	return (1);
 }
 
 int	print_error(const std::string &msg)
 {
-	std::cout << "Error: ";
-	std::cout << msg << std::endl;
+	std::cerr << "Error: ";
+	std::cerr << msg << std::endl;
 	return (1);
 }
 
