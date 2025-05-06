@@ -2,7 +2,7 @@
 NAME =			PmergeMe
 CXX =			c++
 CXXFLAGS =		-Wall -Wextra -Werror -Wpedantic -g -std=c++98
-SRC =			./main.cpp ./PmergeMe.hpp ./PmergeMe.cpp
+SRC =			./main.cpp ./PmergeMe.cpp
 INCLUDE_DIR =	.
 
 

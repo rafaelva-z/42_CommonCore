@@ -1,6 +1,4 @@
 #include "PmergeMe.hpp"
-#include <algorithm>
-#include <ctime>
 
 PmergeMe::PmergeMe()
 {
@@ -82,21 +80,21 @@ void	PmergeMe::handleVector(std::vector<int> &vec)
 	}
 
 	if (vec.size() % 2 != 0)
-		lesser.push_back(vec.back());
+		greater.push_back(vec.back());
 
-	handleVector(lesser);
+	handleVector(greater);
 
 	// Insertion sort
-	for (size_t i = 0; i < greater.size(); ++i)
-		insertSortedVector(lesser, greater[i]);
+	for (size_t i = 0; i < lesser.size(); ++i)
+		insertSortedVector(greater, lesser[i]);
 
-	vec = lesser;
+	vec = greater;
 }
 
-void	PmergeMe::insertSortedVector(std::vector<int>&vec, int value)
+void	PmergeMe::insertSortedVector(std::vector<int>&greater, int value)
 {
-	std::vector<int>::iterator it = std::upper_bound(vec.begin(), vec.end(), value);
-	vec.insert(it, value);
+	std::vector<int>::iterator it = std::upper_bound(greater.begin(), greater.end(), value);
+	greater.insert(it, value);
 }
 
 void	PmergeMe::handleList(std::list<int> &lst)
@@ -131,21 +129,21 @@ void	PmergeMe::handleList(std::list<int> &lst)
 	}
 
 	if (lst.size() % 2 != 0)
-		lesser.push_back(lst.back());
+		greater.push_back(lst.back());
 
-	handleList(lesser);
+	handleList(greater);
 
 	// Insertion sort
-	for (std::list<int>::iterator it = greater.begin(); it != greater.end(); ++it)
-		insertSortedList(lesser, *it);
+	for (std::list<int>::iterator it = lesser.begin(); it != lesser.end(); ++it)
+		insertSortedList(greater, *it);
 
-	lst = lesser;
+	lst = greater;
 }
 
-void	PmergeMe::insertSortedList(std::list<int>&lst, int value)
+void	PmergeMe::insertSortedList(std::list<int>&greater, int value)
 {
-	std::list<int>::iterator it = std::upper_bound(lst.begin(), lst.end(), value);
-	lst.insert(it, value);
+	std::list<int>::iterator it = std::upper_bound(greater.begin(), greater.end(), value);
+	greater.insert(it, value);
 }
 
 void	PmergeMe::reset()

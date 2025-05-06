@@ -12,9 +12,7 @@ int main(int argc, char **argv)
 	try
 	{
 		std::string	input(argv[1]);
-		std::cout << input << std::endl;
 		rpn.calculate(input);
-
 	}
 	catch (std::exception &e)
 	{

@@ -20,7 +20,6 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		int	importDb(const char *db_filename);
-		int	importDataFile(const char *data_filename);
 		int	outputResults(const char *input_file);
 
 	private:
@@ -28,6 +27,8 @@ class BitcoinExchange
 
 		int	checkDate(const std::string &date);
 		int	checkValue(std::stringstream &ss, double *i_value);
+
+		void reset();
 };
 
 int			print_error(const char *msg);

@@ -28,6 +28,7 @@ BitcoinExchange::~BitcoinExchange()
 
 int BitcoinExchange::importDb(const char *db_filename)
 {
+	reset();
 	std::ifstream	db_file(db_filename);
 	if (!db_file.is_open())
 		throw (std::runtime_error("Parsing: Couldn't open db file"));
@@ -169,6 +170,11 @@ int	BitcoinExchange::outputResults(const char *input_file)
 	}
 	data_file.close();
 	return (0);
+}
+
+void		BitcoinExchange::reset()
+{
+	_db.clear();
 }
 
 int	print_error(const char *msg)

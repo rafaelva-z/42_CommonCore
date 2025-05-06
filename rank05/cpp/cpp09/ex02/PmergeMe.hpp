@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <string>
-#include <list>
-#include <vector>
 #include <exception>
 #include <climits>
-
+#include <algorithm>
+#include <ctime>
+#include <list>
+#include <vector>
 
 class PmergeMe {
 
